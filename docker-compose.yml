@@ -1,0 +1,36 @@
+
+services:
+  api_container2:
+    image: api_imagen2:01
+    build: .
+    ports:
+      - "8090:8090"
+    networks: 
+      - api-network
+    depends_on:
+      - mysql_container2
+    #environment:
+      #DATABASE_URL: jdbc:mysql://mysql_container2:3306/androi_ord_trab
+      #DATABASE_USERNAME: root
+      #DATABASE_PASSWORD: 12qwaszx
+
+  mysql_container2:
+    image: mysql:8.0.37
+    restart: always
+    ports:
+      - "3307:3306"
+    networks: 
+      - api-network
+    environment:
+      MYSQL_DATABASE: androi_ord_trab
+      MYSQL_ROOT_PASSWORD: 12qwaszx
+      #MYSQL_USER: hmartinez
+      #MYSQL_PASSWORD: 12qwaszx
+    volumes:
+      - ./bdatos:/var/lib/mysql
+
+volumes:
+  bdatos:
+
+networks:
+  api-network:
