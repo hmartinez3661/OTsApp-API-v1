@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.mantprev.entidades.Usuarios;
+import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Usuarios01_DTO;
 import com.mantprev.security.AuthResponse;
 import com.mantprev.security.UserCredentials;
@@ -11,8 +12,6 @@ import com.mantprev.security.UserRegisterRequest;
 
 
 public interface UsuariosService {
-	
-	
 	
 	
 	public List<Usuarios01_DTO> getLstaDeSupervisores(); 
@@ -34,6 +33,8 @@ public interface UsuariosService {
 	public Usuarios getUserByEmail(String emailUsuario); 
 	
 	public AuthResponse loginRequest (UserCredentials solicRegistroUser); 
+	
+	public Integer registrarNvaEmpresa(Empresas_DTO nvaEmpresa);
 	
 	public AuthResponse registrarUserAdmin(UserRegisterRequest solicRegistroUser); 
 	

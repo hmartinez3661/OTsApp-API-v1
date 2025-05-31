@@ -14,8 +14,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mantprev.entidades.Empresas_Inscrit;
 import com.mantprev.entidades.Usuarios;
+import com.mantprev.repositorios.Empresas_Repository;
 import com.mantprev.repositorios.Usuarios_Repository;
+import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Usuarios01_DTO;
 import com.mantprev.exceptions.UserNotFoundException;
 import com.mantprev.security.AuthResponse;
@@ -34,6 +37,9 @@ public class UsuariosService_Impl implements UsuariosService {
 	
 	@Autowired
 	private Usuarios_Repository usuariosReposit;
+	
+	@Autowired
+	private Empresas_Repository empresasReposit;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -268,6 +274,28 @@ public class UsuariosService_Impl implements UsuariosService {
 	
 	@Transactional
 	@Override
+	public Integer registrarNvaEmpresa(Empresas_DTO nvaEmpresaDTO) {
+	/***************************************************************/
+		Date dateSuscrip = MetodosEstaticos.getDateFromString(nvaEmpresaDTO.getFechaSuscrip());
+		Date dateFnlSuscrip = MetodosEstaticos.getDateFromString(nvaEmpresaDTO.getFechaFnlSuscrip()); 
+		
+		Empresas_Inscrit nuevaEmpresa = new Empresas_Inscrit(); 
+		nuevaEmpresa.setNombEmpresa(nvaEmpresaDTO.getNombEmpresa());
+        nuevaEmpresa.setPaisEmpresa(nvaEmpresaDTO.getPaisEmpresa());
+        nuevaEmpresa.setIdiomaGrupo(nvaEmpresaDTO.getIdiomaGrupo());
+        nuevaEmpresa.setSimbMoneda(nvaEmpresaDTO.getSimbMoneda());
+        nuevaEmpresa.setCodigoPais(nvaEmpresaDTO.getCodigoPais());
+        nuevaEmpresa.setCantMaxUsers(nvaEmpresaDTO.getCantMaxUsers());
+        nuevaEmpresa.setFechaSuscrip(dateSuscrip);
+        nuevaEmpresa.setFechaFnlSuscrip(dateFnlSuscrip);
+		
+        empresasReposit.save(nuevaEmpresa); 
+		return nuevaEmpresa.getIdEmpresa();
+	}
+	
+	
+	@Transactional
+	@Override
 	public AuthResponse registrarUserAdmin(UserRegisterRequest solicRegistroUser) {
 	/****************************************************************************/
 		//verifica si ya existe usuario con el mismo correo
@@ -287,6 +315,7 @@ public class UsuariosService_Impl implements UsuariosService {
 			nvoUsuarioAdmin.setUserRol(solicRegistroUser.getUserRol());
 			nvoUsuarioAdmin.setIdiomaGrupo(solicRegistroUser.getIdiomaGrupo());
 			nvoUsuarioAdmin.setNombreEmpresa(solicRegistroUser.getNombreEmpresa());
+			nvoUsuarioAdmin.setIdEmpresa(solicRegistroUser.getIdEmpresa()); 
 			nvoUsuarioAdmin.setPaisEmpresa(solicRegistroUser.getPaisEmpresa());
 			nvoUsuarioAdmin.setSimbMoneda(solicRegistroUser.getSimbMoneda());
 			nvoUsuarioAdmin.setCodigoPais(solicRegistroUser.getCodigoPais());

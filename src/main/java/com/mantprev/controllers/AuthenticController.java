@@ -16,12 +16,13 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mantprev.entidadesDTO.ConfigSpinners_DTO;
+import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Usuarios01_DTO;
 import com.mantprev.security.AuthResponse;
 import com.mantprev.security.UserCredentials;
 import com.mantprev.security.UserRegisterRequest;
 import com.mantprev.services.ConfigSpnService;
-import com.mantprev.services.UsuariosService_Impl;
+import com.mantprev.services.UsuariosService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,7 +34,7 @@ public class AuthenticController {
 
 	
 	@Autowired
-	private UsuariosService_Impl usuariosService;
+	private UsuariosService usuariosService;
 	
 	@Autowired
 	private ConfigSpnService configSpnService;
@@ -45,6 +46,14 @@ public class AuthenticController {
 	public ResponseEntity<AuthResponse> loginUser (@RequestBody UserCredentials userCredent){	
 	//***************************************************************************************
 		return ResponseEntity.ok(usuariosService.loginRequest(userCredent));
+	} 
+	
+	
+	@PostMapping(path = "/registNvaEmpresa")
+	@ResponseStatus(HttpStatus.OK) //Cod. 200  
+	public Integer registrarNvaEmpresa (@RequestBody Empresas_DTO nvaEmpresa){	
+	//************************************************************************
+		return usuariosService.registrarNvaEmpresa(nvaEmpresa);  
 	} 
 	
 	

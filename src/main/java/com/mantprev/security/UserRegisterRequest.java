@@ -20,6 +20,7 @@ public class UserRegisterRequest{
     private String password;
     private String userRol;
     private String nombreEmpresa;
+    private int    idEmpresa;
     private String paisEmpresa;
     private String idiomaGrupo;
     private String simbMoneda;
