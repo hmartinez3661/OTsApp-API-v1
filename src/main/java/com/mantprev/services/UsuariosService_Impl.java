@@ -358,6 +358,7 @@ public class UsuariosService_Impl implements UsuariosService {
 			nvoUsuario.setUserRol(solicRegistroUser.getUserRol());
 			nvoUsuario.setIdiomaGrupo(solicRegistroUser.getIdiomaGrupo());
 			nvoUsuario.setNombreEmpresa(solicRegistroUser.getNombreEmpresa());
+			nvoUsuario.setIdEmpresa(solicRegistroUser.getIdEmpresa());
 			nvoUsuario.setPaisEmpresa(solicRegistroUser.getPaisEmpresa());
 			nvoUsuario.setCodigoPais(solicRegistroUser.getCodigoPais());
 			nvoUsuario.setSimbMoneda(solicRegistroUser.getSimbMoneda());

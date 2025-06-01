@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mantprev.entidades.ConfigSpinners;
 import com.mantprev.entidades.ConfigSpn_Espa;
 import com.mantprev.entidades.ConfigSpn_Ingl;
 import com.mantprev.entidades.ConfigSpn_Port;
 import com.mantprev.entidadesDTO.ConfigSpinners_DTO;
+import com.mantprev.repositorios.ConfigSpinner_Repository;
 import com.mantprev.repositorios.ConfigSpnEspa_Repository;
 import com.mantprev.repositorios.ConfigSpnIngl_Repository;
 import com.mantprev.repositorios.ConfigSpnPort_Repository;
@@ -21,6 +23,9 @@ import com.mantprev.repositorios.ConfigSpnPort_Repository;
 @Service
 public class ConfigSpnService_Impl implements ConfigSpnService{
 	
+	
+	@Autowired
+	private ConfigSpinner_Repository configSpinner_Reposit;
 	
 	@Autowired
 	private ConfigSpnEspa_Repository configSpnEspa_Reposit;
@@ -596,6 +601,14 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 		}
 		
 		return "OK";
+	}
+
+
+	@Override
+	public String setConfigInicSpinners(ConfigSpinners configSpinn) {
+	/****************************************************************/
+		configSpinner_Reposit.save(configSpinn);
+		return "Exito";
 	}
 
 

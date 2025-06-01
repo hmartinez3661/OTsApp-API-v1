@@ -2,6 +2,7 @@ package com.mantprev.services;
 
 import java.util.List;
 
+import com.mantprev.entidades.ConfigSpinners;
 import com.mantprev.entidadesDTO.ConfigSpinners_DTO;
 
 
@@ -34,6 +35,10 @@ public interface ConfigSpnService {
 	public String actualizarListEstadosEquips(List<String> listEstadosEqu, String idioma);
 	
 	public String actualizarListClasificFallas(List<String> listClasificFall, String idioma);
+	
+	
+	//Realizado al eleminar las config de spinner por idioma
+	public String setConfigInicSpinners(ConfigSpinners configSpinn);
 	
 	
 	

@@ -1,3 +1,4 @@
+
 package com.mantprev.entidades;
 
 import jakarta.persistence.Column;
@@ -13,8 +14,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor   //Constructor vacio
 @AllArgsConstructor  //Constructor con todos loa atributos 
 @Entity
-@Table(name = "config_spn_espa")
-public class ConfigSpn_Espa {
+@Table(name = "config_spinners")
+public class ConfigSpinners {
 
 	
 	@Id
@@ -34,7 +35,6 @@ public class ConfigSpn_Espa {
 	private int idEmpresa;
 	
 	
-	//GETTERS AND SETTERS
 	public int getId() {
 		return id;
 	}
@@ -62,7 +62,7 @@ public class ConfigSpn_Espa {
 	public String getClasificTrabOTs() {
 		return clasificTrabOTs;
 	}
-
+	
 	public void setClasificTrabOTs(String clasificTrabOTs) {
 		this.clasificTrabOTs = clasificTrabOTs;
 	}
@@ -114,17 +114,14 @@ public class ConfigSpn_Espa {
 	public void setMsgsWhatsApp(String msgsWhatsApp) {
 		this.msgsWhatsApp = msgsWhatsApp;
 	}
-
+	
 	public int getIdEmpresa() {
 		return idEmpresa;
 	}
-
+	
 	public void setIdEmpresa(int idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
-	
-	
-	
 	
 	
 	

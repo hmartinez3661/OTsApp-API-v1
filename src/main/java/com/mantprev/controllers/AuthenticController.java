@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mantprev.entidades.ConfigSpinners;
 import com.mantprev.entidadesDTO.ConfigSpinners_DTO;
 import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Usuarios01_DTO;
@@ -111,6 +112,23 @@ public class AuthenticController {
 	//*******************************************************************
 		return this.usuariosService.getUsuarioByEmail(emailUser); 
 	} 
+	
+	
+	@PostMapping(path = "/setConfigSpins")
+	@ResponseStatus(HttpStatus.OK) //Cod. 200  
+	public String setConfigInicSpinners(@RequestBody ConfigSpinners configSpinn){
+	/*************************************************************************************/
+		String response = configSpnService.setConfigInicSpinners(configSpinn);
+		return response;  
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

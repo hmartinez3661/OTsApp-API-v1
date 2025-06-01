@@ -45,7 +45,7 @@ public class Usuarios implements UserDetails{
     private String userRol;
     private String telefonoUser;
     private String nombreEmpresa;
-    private int    idEmpresa;
+    private Integer idEmpresa;
     private String paisEmpresa;
     private String idiomaGrupo;
     private String simbMoneda;
@@ -157,11 +157,11 @@ public class Usuarios implements UserDetails{
 		this.nombreEmpresa = nombreEmpresa;
 	}
 	
-	public int getIdEmpresa() {
+	public Integer getIdEmpresa() {
 		return idEmpresa;
 	}
 
-	public void setIdEmpresa(int idEmpresa) {
+	public void setIdEmpresa(Integer idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
 
@@ -220,6 +220,8 @@ public class Usuarios implements UserDetails{
 	public void setCodigoPais(String codigoPais) {
 		this.codigoPais = codigoPais;
 	}
+
+	
 
 	
 
