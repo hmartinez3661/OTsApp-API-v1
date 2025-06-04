@@ -27,6 +27,7 @@ public class Documentos_OTs{
     private String  nombreSinEsp;    //nombre del documento fisico en el folder donde se guarda
     private Integer idOrdTrab;
     private String  comodin;
+	private int idEmpresa;
     
     
     //GETTERS AND SETTERS
@@ -69,6 +70,14 @@ public class Documentos_OTs{
 
 	public void setNombreSinEsp(String nombreSinEsp) {
 		this.nombreSinEsp = nombreSinEsp;
+	}
+
+	public int getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(int idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
     
     

@@ -29,19 +29,19 @@ public class ConfigSpinersController {
 	
 	
 	
-	@GetMapping(path = "/getStatusOTs/{idioma}") 
+	@GetMapping(path = "/getStatusOTs/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.OK) //Cod. 200 
-	public List<String> getItemsStatusOTs(@PathVariable String idioma){ 	
+	public List<String> getItemsStatusOTs(@PathVariable int idEmpresa){ 	
 	//**************************************
-		return this.configSpnService.getItemsStatusDeOTs(idioma); 
+		return this.configSpnService.getItemsStatusDeOTs(idEmpresa); 
 	} 
 	
 	
-	@GetMapping(path = "/getConf/{idioma}")
+	@GetMapping(path = "/getConf/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<ConfigSpinners_DTO> getConfiguracSpinner(@PathVariable String idioma){	
+	public List<ConfigSpinners_DTO> getConfiguracSpinner(@PathVariable int idEmpresa){	
 	//*******************************************************************************
-		return this.configSpnService.getConfiguracSpinners(idioma); 
+		return this.configSpnService.getConfiguracSpinners(idEmpresa); 
 	} 
 	
 	
@@ -77,60 +77,66 @@ public class ConfigSpinersController {
 	}
 	
 	
-	@PutMapping(path = "/updateConfigEmails/{idConfig}/{configEmails}/{idioma}") 
+	@PutMapping(path = "/updateConfigEmails/{configEmails}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String actualizarConfigEmails(@PathVariable int idConfig, @PathVariable String configEmails, @PathVariable String idioma){
+	public String actualizarConfigEmails(@PathVariable String configEmails, @PathVariable int idEmpresa){
 	/*************************************************************************************************/	
-		return this.configSpnService.actualizarConfigEmails(idConfig, configEmails, idioma); 
+		return this.configSpnService.actualizarConfigEmails(configEmails, idEmpresa); 
 	}
 	
 	
-	@PutMapping(path = "/actualizEjectOTs/{idioma}")
+	@PutMapping(path = "/actualizEjectOTs/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public String actualizarEjectOTs(@RequestBody List<String> listEjecOTs, @PathVariable String idioma){
+	public String actualizarEjectOTs(@RequestBody List<String> listEjecOTs, @PathVariable int idEmpresa){
 	/**************************************************************************************************/
-		String response = configSpnService.actualizarListaEjectOTs(listEjecOTs, idioma);
+		String response = configSpnService.actualizarListaEjectOTs(listEjecOTs, idEmpresa);
 		return response;  
 	}
 	
 	
-	@PutMapping(path = "/actualizClasificOTs/{idioma}")
+	@PutMapping(path = "/actualizClasificOTs/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public String actualizClasificOTs(@RequestBody List<String> listClasificOTs, @PathVariable String idioma){
+	public String actualizClasificOTs(@RequestBody List<String> listClasificOTs, @PathVariable int idEmpresa){
 	/**************************************************************************************************/
-		String response = configSpnService.actualizarListaClasificOTs(listClasificOTs, idioma);
+		String response = configSpnService.actualizarListaClasificOTs(listClasificOTs, idEmpresa);
 		return response;  
 	}
 	
 	
-	@PutMapping(path = "/actualizPrioridsOTs/{idioma}")
+	@PutMapping(path = "/actualizPrioridsOTs/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public String actualizarPrioridadsOTs(@RequestBody List<String> listPrioridsOTs, @PathVariable String idioma){
+	public String actualizarPrioridadsOTs(@RequestBody List<String> listPrioridsOTs, @PathVariable int idEmpresa){
 	/**************************************************************************************************/
-		String response = configSpnService.actualizarListPrioridadsOTs(listPrioridsOTs, idioma);
+		String response = configSpnService.actualizarListPrioridadsOTs(listPrioridsOTs, idEmpresa);
 		return response;  
 	}
 	
 	
-	@PutMapping(path = "/actualizEstadosEqu/{idioma}")
+	@PutMapping(path = "/actualizEstadosEqu/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public String actualizarListEstadosEquips(@RequestBody List<String> listEstadosEqu, @PathVariable String idioma){
+	public String actualizarListEstadosEquips(@RequestBody List<String> listEstadosEqu, @PathVariable int idEmpresa){
 	/**************************************************************************************************/
-		String response = configSpnService.actualizarListEstadosEquips(listEstadosEqu, idioma);
+		String response = configSpnService.actualizarListEstadosEquips(listEstadosEqu, idEmpresa);
 		return response;  
 	}
 	
 	
-	@PutMapping(path = "/actualizClasificFallas/{idioma}")
+	@PutMapping(path = "/actualizClasificFallas/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public String actualizarClasificFallas(@RequestBody List<String> listClasificFall, @PathVariable String idioma){
+	public String actualizarClasificFallas(@RequestBody List<String> listClasificFall, @PathVariable int idEmpresa){
 	/**************************************************************************************************/
-		String response = configSpnService.actualizarListClasificFallas(listClasificFall, idioma);
+		String response = configSpnService.actualizarListClasificFallas(listClasificFall, idEmpresa);
 		return response;  
 	}
 	
 	
-	
+	@PostMapping(path = "/setConfigSpins")
+	@ResponseStatus(HttpStatus.OK) //Cod. 200  
+	public String setConfigInicSpinners(@RequestBody List<ConfigSpinners> listConfigSpinn){
+	/***************************************************************************/
+		String response = configSpnService.setConfigInicSpinners(listConfigSpinn);
+		return response;  
+	}
 	
 	
 	

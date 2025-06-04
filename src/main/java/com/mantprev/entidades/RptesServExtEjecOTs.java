@@ -30,6 +30,7 @@ public class RptesServExtEjecOTs {
 	private String  nombreServic;
     private Double  costoServic;
     private Date    fechaServic;
+    private Integer idEmpresa;
     
     
     //GETTERS AND SETTERS
@@ -72,6 +73,14 @@ public class RptesServExtEjecOTs {
 
 	public void setFechaServic(Date fechaServic) {
 		this.fechaServic = fechaServic;
+	}
+
+	public Integer getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Integer idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
 	
 	

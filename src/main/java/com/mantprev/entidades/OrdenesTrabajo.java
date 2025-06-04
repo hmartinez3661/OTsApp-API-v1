@@ -58,6 +58,7 @@ public class OrdenesTrabajo {
 	private Integer cantFotosAnex;
 	private String  comodinCorrelat;
 	private Integer idRpteEjecOT;
+	private Integer idEmpresa;
 	
 	
 	//* RELACIONES ENTRE TABLAS ********************************************
@@ -307,6 +308,14 @@ public class OrdenesTrabajo {
 	
 	public void setIdRpteEjecOT(Integer idRpteEjecOT) {
 		this.idRpteEjecOT = idRpteEjecOT;
+	}
+
+	public Integer getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Integer idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
 
 	

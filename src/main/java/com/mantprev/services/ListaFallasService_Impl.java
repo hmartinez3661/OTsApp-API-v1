@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mantprev.entidades.RegistroFallas;
 import com.mantprev.entidades.RegistroFallas_Espa;
 import com.mantprev.entidades.RegistroFallas_Ingl;
 import com.mantprev.entidades.RegistroFallas_Port;
@@ -15,6 +16,7 @@ import com.mantprev.entidadesDTO.RegistroFallasDTO;
 import com.mantprev.repositorios.RegistroFallasEspa_Repository;
 import com.mantprev.repositorios.RegistroFallasIngl_Repository;
 import com.mantprev.repositorios.RegistroFallasPort_Repository;
+import com.mantprev.repositorios.RegistroFallas_Repository;
 
 
 
@@ -32,49 +34,26 @@ public class ListaFallasService_Impl implements ListaFallasService {
 	RegistroFallasPort_Repository listaFallasPort_Reposit;
 	
 	@Autowired
+	RegistroFallas_Repository registroFallas_Reposit;
+	
+	@Autowired
 	ModelMapper modelMapper;
 	
 	
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<RegistroFallasDTO> getListaDeFallas(String idioma) {
-	/***********************************************/
-		String idiomaSpinners = idioma;
+	public List<RegistroFallasDTO> getListaDeFallas(int idEmpresa) {
+	/**************************************************************/
 		List<RegistroFallasDTO> registroFallasDTO = new ArrayList<RegistroFallasDTO>();
 		
-		if(idiomaSpinners.equals("es")) {  //Español
+		List<RegistroFallas> listaFallas = registroFallas_Reposit.getListaDeFallas(idEmpresa);
+		
+		for(int i=0; i<listaFallas.size(); i++) {
 			
-			List<RegistroFallas_Espa> listaFallasEspa = (List<RegistroFallas_Espa>) listaFallasEspa_Reposit.getListaDeFallasEspa();
-    		
-    		for(int i=0; i<listaFallasEspa.size(); i++) {
-    			
-    			RegistroFallas_Espa detalleFall_esp = listaFallasEspa.get(i);
-    			RegistroFallasDTO detalleFallaDTO   = modelMapper.map(detalleFall_esp, RegistroFallasDTO.class); 
-    			registroFallasDTO.add(detalleFallaDTO);
-    		}
-			
-		} else if(idiomaSpinners.equals("pt")) { //Portuguez
-			
-			List<RegistroFallas_Port> listaFallasPort = (List<RegistroFallas_Port>) listaFallasPort_Reposit.getListaDeFallasPort();
-    		
-    		for(int i=0; i<listaFallasPort.size(); i++) {
-    			
-    			RegistroFallas_Port detalleFall_port = listaFallasPort.get(i);
-    			RegistroFallasDTO detalleFallaDTO    = modelMapper.map(detalleFall_port, RegistroFallasDTO.class); 
-    			registroFallasDTO.add(detalleFallaDTO);
-    		}
-			
-		} else if(idiomaSpinners.equals("en")) { //Ingles
-			
-			List<RegistroFallas_Ingl> listaFallasIngl = (List<RegistroFallas_Ingl>) listaFallasIngl_Reposit.getListaDeFallasIngl();
-    		
-    		for(int i=0; i<listaFallasIngl.size(); i++) {
-    			
-    			RegistroFallas_Ingl detalleFall_esp = listaFallasIngl.get(i);
-    			RegistroFallasDTO detalleFallaDTO   = modelMapper.map(detalleFall_esp, RegistroFallasDTO.class); 
-    			registroFallasDTO.add(detalleFallaDTO);
-    		}
+			RegistroFallas detalleFall = listaFallas.get(i);
+			RegistroFallasDTO detalleFallaDTO   = modelMapper.map(detalleFall, RegistroFallasDTO.class); 
+			registroFallasDTO.add(detalleFallaDTO);
 		}
 		
 		return registroFallasDTO;
@@ -180,85 +159,40 @@ public class ListaFallasService_Impl implements ListaFallasService {
 
 	@Transactional
 	@Override
-	public int guardarDescripcFalla(RegistroFallasDTO descripFalla, String idioma) {
+	public int guardarDescripcFalla(RegistroFallasDTO descripFalla, int idEmpresa) {
 	/****************************************************************************/
-		String idiomaSpinners = idioma;
-		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	RegistroFallas_Espa nuevaFallaEspa = modelMapper.map(descripFalla, RegistroFallas_Espa.class); 
-	        	
-	        	try {
-	        		listaFallasEspa_Reposit.save(nuevaFallaEspa);
-	        		return nuevaFallaEspa.getIdFalla();
-	        		
-	        	} catch (Exception exp) {
-	        		return 0;
-	        	}
-	
-	        	
-	        case "pt":  //Portuguez
-	        	RegistroFallas_Port nuevaFallaPort = modelMapper.map(descripFalla, RegistroFallas_Port.class); 
-	        	
-	        	try {
-	        		listaFallasPort_Reposit.save(nuevaFallaPort);
-	        		return nuevaFallaPort.getIdFalla();
-	        		
-	        	} catch (Exception exp) {
-	        		return 0;
-	        	}
-	
-	        	
-	        default:  //es idioma Ingles (en)
-	        	RegistroFallas_Ingl nuevaFallaIngl = modelMapper.map(descripFalla, RegistroFallas_Ingl.class); 
-	        	
-	        	try {
-	        		listaFallasIngl_Reposit.save(nuevaFallaIngl);
-	        		return nuevaFallaIngl.getIdFalla();
-	        		
-	        	} catch (Exception exp) {
-	        		return 0;
-	        	}
-	    }
+		RegistroFallas nuevaFalla = modelMapper.map(descripFalla, RegistroFallas.class);
+		nuevaFalla.setIdEmpresa(idEmpresa); 
+    	
+    	try {
+    		registroFallas_Reposit.save(nuevaFalla);
+    		return nuevaFalla.getIdFalla();
+    		
+    	} catch (Exception exp) {
+    		return 0;
+    	}
 	}
 
 
 	@Transactional
 	@Override         //Eliminar falla en opcion Web
-	public String eliminarRegistroFalla2(int idFalla, String idioma) {
-	/*****************************************************************/	
-		String idiomaSpinners = idioma;
-		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	try {
-	        		listaFallasEspa_Reposit.deleteById(idFalla); 
-	        		return "Exito";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO ELIMINAR FALLA";
-	        	}
-	        	
-	        case "pt":  //Portuguez
-	        	try {
-	        		listaFallasPort_Reposit.deleteById(idFalla); 
-	        		return "Exito";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO ELIMINAR FALLA";
-	        	}
-	        	
-	        default:  //es idioma Ingles (en)
-	        	try {
-	        		listaFallasIngl_Reposit.deleteById(idFalla); 
-	        		return "Exito";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO ELIMINAR FALLA";
-	        	}
-	    }
+	public String eliminarRegistroFalla2(int idFalla, int idEmpresa) {
+	/***************************************************************/	
+		try {
+			registroFallas_Reposit.deleteById(idFalla); 
+    		return "Exito";
+    		
+    	} catch (Exception exp) {
+    		return "FALLO ELIMINAR FALLA";
+    	}
+	}
+
+
+	@Override
+	public String saveListaInicFallas(List<RegistroFallas> listaInicFallas) {
+	/**********************************************************************/
+		registroFallas_Reposit.saveAll(listaInicFallas);
+		return null;
 	}
 
 	

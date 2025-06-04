@@ -36,6 +36,7 @@ public class RptesReptosEjecOTs {
     private Double  costoTotal;
     private Date    fechaConsumo;
     private Integer idRepSum;
+    private Integer idEmpresa;
     
     
     /* RELACION ENTRE TABLAS ******************************/
@@ -130,6 +131,14 @@ public class RptesReptosEjecOTs {
 
 	public void setCantidad(Double cantidad) {
 		this.cantidad = cantidad;
+	}
+
+	public Integer getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Integer idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
 
 	

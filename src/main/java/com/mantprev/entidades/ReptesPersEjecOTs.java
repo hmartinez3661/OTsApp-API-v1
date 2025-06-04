@@ -35,6 +35,7 @@ public class ReptesPersEjecOTs {
     private Date    fechaEjec;
     private Integer idOT;
     private Integer idEmpleado;
+    private Integer idEmpresa;
 	
  
    /* ******************************************************* */   
@@ -122,6 +123,14 @@ public class ReptesPersEjecOTs {
 	
 	public void setIdEmpleado(Integer idEmpleado) {
 		this.idEmpleado = idEmpleado;
+	}
+
+	public Integer getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Integer idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
 
 	

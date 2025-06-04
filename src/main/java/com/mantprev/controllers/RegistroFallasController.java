@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mantprev.entidades.RegistroFallas;
 import com.mantprev.entidadesDTO.RegistroFallasDTO;
 import com.mantprev.services.ListaFallasService;
 
@@ -28,11 +29,11 @@ public class RegistroFallasController {
 	
 	
 	
-	@GetMapping(path = "/getAll/{idioma}") // @GetMapping
+	@GetMapping(path = "/getAll/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RegistroFallasDTO> getListaDeFallas(@PathVariable String idioma){	
+	public List<RegistroFallasDTO> getListaDeFallas(@PathVariable int idEmpresa){	
 	//***********************************************************************
-		return this.listaFallasService.getListaDeFallas(idioma); 
+		return this.listaFallasService.getListaDeFallas(idEmpresa); 
 	} 
 	
 	
@@ -52,23 +53,29 @@ public class RegistroFallasController {
 	}
 	
 	
-	@PutMapping(path = "/saveFallaForm/{idioma}")
+	@PutMapping(path = "/saveFallaForm/{idEmpresa}")
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 201
-	public int guardarDescripcFalla(@RequestBody RegistroFallasDTO descripFalla, @PathVariable String idioma) {
+	public int guardarDescripcFalla(@RequestBody RegistroFallasDTO descripFalla, @PathVariable int idEmpresa) {
 	//*******************************************************************************************************
-		return listaFallasService.guardarDescripcFalla(descripFalla, idioma);
+		return listaFallasService.guardarDescripcFalla(descripFalla, idEmpresa);
 	}
 	
 	
-	@DeleteMapping(path = "/delete2/{idFalla}/{idioma}") //Metodo que utiliza opcion Web
+	@DeleteMapping(path = "/delete2/{idFalla}/{idEmpresa}") //Metodo que utiliza opcion Web
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 201
-	public String eliminarRegistroFalla2(@PathVariable int idFalla, @PathVariable String idioma) {
+	public String eliminarRegistroFalla2(@PathVariable int idFalla, @PathVariable int idEmpresa) {
 	//*********************************************************************************************
-		return listaFallasService.eliminarRegistroFalla2(idFalla, idioma);
+		return listaFallasService.eliminarRegistroFalla2(idFalla, idEmpresa);
 	}
 	
 	
-	
+	@PutMapping(path = "/saveFallasInic")
+	@ResponseStatus(HttpStatus.OK) //Cod. 200  
+	public String setConfigInicSpinners(@RequestBody List<RegistroFallas> listInicFallas){ 
+	/***************************************************************************/
+		String response = listaFallasService.saveListaInicFallas(listInicFallas); 
+		return response;  
+	}
 	
 	
 	

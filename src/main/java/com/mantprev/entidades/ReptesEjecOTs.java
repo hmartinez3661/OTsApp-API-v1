@@ -40,6 +40,7 @@ public class ReptesEjecOTs  {
     private Integer cantFotosCierre;
     private Integer cantRptosUtiliz;
     private Integer cantServExter;
+	private Integer idEmpresa;
     
     
     /***************************************************/
@@ -165,6 +166,14 @@ public class ReptesEjecOTs  {
 	
 	public void setCantServExter(Integer cantServExter) {
 		this.cantServExter = cantServExter;
+	}
+
+	public Integer getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Integer idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
     
     

@@ -40,6 +40,7 @@ public class Repuestos_Sum{
     private Double costoProm;
     private String fotoRep;
     private String especifTecn;
+    private Integer idEmpresa;
     
     
     /* RELACION ENTRE TABLAS *********************************/
@@ -126,6 +127,14 @@ public class Repuestos_Sum{
 
 	public void setEspecifTecn(String especifTecn) {
 		this.especifTecn = especifTecn;
+	}
+
+	public Integer getIdEmpresa() {
+		return idEmpresa;
+	}
+
+	public void setIdEmpresa(Integer idEmpresa) {
+		this.idEmpresa = idEmpresa;
 	}
 	
 	

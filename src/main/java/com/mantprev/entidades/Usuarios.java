@@ -50,7 +50,7 @@ public class Usuarios implements UserDetails{
     private String idiomaGrupo;
     private String simbMoneda;
     private String codigoPais;
-    private int    cantMaxUsers;
+    private Integer cantMaxUsers;
     private Date   fechaSuscrip;
     private Date   fechaFnlSuscrip;
     

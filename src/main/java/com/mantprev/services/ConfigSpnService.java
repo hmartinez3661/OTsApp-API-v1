@@ -10,9 +10,9 @@ import com.mantprev.entidadesDTO.ConfigSpinners_DTO;
 public interface ConfigSpnService {
 	
 	
-	public List<String> getItemsStatusDeOTs(String idioma);
+	public List<String> getItemsStatusDeOTs(int idEmpresa);
 	
-	public List<ConfigSpinners_DTO> getConfiguracSpinners(String idioma);
+	public List<ConfigSpinners_DTO> getConfiguracSpinners(int idEmpresa);
 	
 	public String actualizarEjecutorOTs(int idItemConf, String nombreEjecut, String idioma);
 	
@@ -22,23 +22,23 @@ public interface ConfigSpnService {
 	
 	public String actualizarClasificFallasOTs(int idItemConf, String nombrClasificFalla, String idioma);
 	
-	public String actualizarConfigEmails(int idConfig, String configEmails, String idioma);
+	public String actualizarConfigEmails(String configEmails, int idEmpresa);
 	
 	
 	//Utilizado por Web App
-	public String actualizarListaEjectOTs(List<String> listEjecOTs, String idioma);
+	public String actualizarListaEjectOTs(List<String> listEjecOTs, int idEmpresa);
 	
-	public String actualizarListaClasificOTs(List<String> listClasificOTs, String idioma);
+	public String actualizarListaClasificOTs(List<String> listClasificOTs, int idEmpresa);
 	
-	public String actualizarListPrioridadsOTs(List<String> listPrioridsOTs, String idioma);
+	public String actualizarListPrioridadsOTs(List<String> listPrioridsOTs, int idEmpresa);
 	
-	public String actualizarListEstadosEquips(List<String> listEstadosEqu, String idioma);
+	public String actualizarListEstadosEquips(List<String> listEstadosEqu, int idEmpresa);
 	
-	public String actualizarListClasificFallas(List<String> listClasificFall, String idioma);
+	public String actualizarListClasificFallas(List<String> listClasificFall, int idEmpresa);
 	
 	
 	//Realizado al eleminar las config de spinner por idioma
-	public String setConfigInicSpinners(ConfigSpinners configSpinn);
+	public String setConfigInicSpinners(List<ConfigSpinners> listConfigSpinn);
 	
 	
 	

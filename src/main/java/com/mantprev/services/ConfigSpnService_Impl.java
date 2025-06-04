@@ -43,24 +43,11 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	
 	@Transactional(readOnly = true) 
 	@Override
-	public List<String> getItemsStatusDeOTs(String idioma) {
-	/****************************************/
+	public List<String> getItemsStatusDeOTs(int idEmpresa) {
+	/*****************************************************/
 		List<String> listaStatusOTs = new ArrayList<String>();
-		String idiomaSpinners = idioma;
 		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	listaStatusOTs = configSpnEspa_Reposit.getItemsDeStatusDeOTs();;
-	            break;
-	
-	        case "pt":  //Portuguez
-	        	listaStatusOTs = configSpnPort_Reposit.getItemsDeStatusDeOTs();;
-	            break;
-	
-	        default:  //es idioma Ingles
-	        	listaStatusOTs = configSpnIngl_Reposit.getItemsDeStatusDeOTs();;
-	    }
+		listaStatusOTs = configSpinner_Reposit.getItemsDeStatusDeOTs(idEmpresa);
 		
 		return listaStatusOTs;
 	}
@@ -68,43 +55,16 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	
 	@Transactional(readOnly = true) 
 	@Override
-	public List<ConfigSpinners_DTO> getConfiguracSpinners(String idioma) { 
-	/******************************************************/
-		String idiomaSpinners = idioma;
+	public List<ConfigSpinners_DTO> getConfiguracSpinners(int idEmpresa) { 
+	/*****************************************************************/
 		List<ConfigSpinners_DTO> listaConfigSpnDTO = new ArrayList<ConfigSpinners_DTO>();
+		List<ConfigSpinners> listConfigSpnn = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		
-		if (idiomaSpinners.equals("es")) {  //El idiona es Espanol
-			List<ConfigSpn_Espa> configSpnEs = configSpnEspa_Reposit.getConfigSpinners();
-    		
-    		for(int i=0; i<configSpnEs.size(); i++) {
-    			
-    			ConfigSpn_Espa confSpn_esp = configSpnEs.get(i);
-    			ConfigSpinners_DTO configSpnDTO = modelMapper.map(confSpn_esp, ConfigSpinners_DTO.class); 
-    			listaConfigSpnDTO.add(configSpnDTO);
-    		}
-    		
-		} else if (idiomaSpinners.equals("pt")) {  //El idiona es portugues
+		for(int i=0; i<listConfigSpnn.size(); i++) {
 			
-			List<ConfigSpn_Port> configSpnPort = configSpnPort_Reposit.getConfigSpinners();
-        	
-        	for(int i=0; i<configSpnPort.size(); i++) {
-    			
-        		ConfigSpn_Port confSpn_port = configSpnPort.get(i);
-    			ConfigSpinners_DTO configSpnDTO = modelMapper.map(confSpn_port, ConfigSpinners_DTO.class); 
-    			listaConfigSpnDTO.add(configSpnDTO);
-    		}
-        	
-		} else if (idiomaSpinners.equals("en")) {  //El idiona es Ingles
-			
-			List<ConfigSpn_Ingl> configSpnIngl = configSpnIngl_Reposit.getConfigSpinners(); 
-        	
-        	for(int i=0; i<configSpnIngl.size(); i++) {
-    			
-        		ConfigSpn_Ingl confSpn_ingl = configSpnIngl.get(i);
-    			ConfigSpinners_DTO configSpnDTO = modelMapper.map(confSpn_ingl, ConfigSpinners_DTO.class); 
-    			listaConfigSpnDTO.add(configSpnDTO);
-    		}
+			ConfigSpinners confSpn = listConfigSpnn.get(i);
+			ConfigSpinners_DTO configSpnDTO = modelMapper.map(confSpn, ConfigSpinners_DTO.class); 
+			listaConfigSpnDTO.add(configSpnDTO);
 		}
 		
 		return listaConfigSpnDTO;
@@ -359,255 +319,136 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 
 	@Transactional
 	@Override
-	public String actualizarConfigEmails(int idConfig, String configEmails, String idioma) {
-	/***********************************************************************/
-		String idiomaSpinners = idioma;
+	public String actualizarConfigEmails(String configEmails, int idEmpresa) {
+	/************************************************************************/
+		ConfigSpinners configSpin = configSpinner_Reposit.getConfigSpinners(idEmpresa);
 		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	Optional<ConfigSpn_Espa> configOptEs = configSpnEspa_Reposit.findById(idConfig); //idConfi = 1
-	        	
-	        	if (configOptEs != null) {
-	        		
-	        		ConfigSpn_Espa configSpn = configOptEs.get();
-	        		configSpn.setConfigCorreos(configEmails);
-	        		
-	        		configSpnEspa_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	            
-	
-	        case "pt":  //Portuguez
-	        	Optional<ConfigSpn_Port> configPtOpt = configSpnPort_Reposit.findById(idConfig); //idConfi = 1
-	        	
-	        	if (configPtOpt != null) {
-	        		
-	        		ConfigSpn_Port configSpn = configPtOpt.get();
-	        		configSpn.setConfigCorreos(configEmails);
-	        		
-	        		configSpnPort_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	
-	        default:  //es idioma Ingles (en)
-	        	Optional<ConfigSpn_Ingl> configInglOpt = configSpnIngl_Reposit.findById(idConfig); //idConfi = 1
-	        	
-	        	if (configInglOpt != null) {
-	        		
-	        		ConfigSpn_Ingl configSpn = configInglOpt.get();
-	        		configSpn.setConfigCorreos(configEmails);
-	        		
-	        		configSpnIngl_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	    }
+		configSpin.setConfigCorreos(configEmails);
+		configSpinner_Reposit.save(configSpin);
+		return "EXITO";
 	}
 
 
 	@Transactional
 	@Override
-	public String actualizarListaEjectOTs(List<String> listEjecOTs, String idioma) {
+	public String actualizarListaEjectOTs(List<String> listEjecOTs, int idEmpresa) {
 	/*****************************************************************************/
-		String idiomaSpinners = idioma;   
+		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		if (idiomaSpinners.equals("es")) {
-			List<ConfigSpn_Espa> listaConfGen = configSpnEspa_Reposit.getConfigSpinners();
+		for(int i=0; i<listaConfGen.size(); i++) {
 			
-			for(int i=0; i<listEjecOTs.size(); i++) {
-				String ejecutor = listEjecOTs.get(i);
-				listaConfGen.get(i).setEjecutoresOTs(ejecutor); 
+			if (i < listEjecOTs.size()) {
+				
+				String config = listEjecOTs.get(i);
+				listaConfGen.get(i).setEjecutoresOTs(config);
+				
+			} else {
+				listaConfGen.get(i).setEjecutoresOTs("");
 			}
-			configSpnEspa_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("pt")) {
-			List<ConfigSpn_Port> listaConfGen = configSpnPort_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listEjecOTs.size(); i++) {
-				String ejecutor = listEjecOTs.get(i);
-				listaConfGen.get(i).setEjecutoresOTs(ejecutor); 
-			}
-			configSpnPort_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("en")) {
-			List<ConfigSpn_Ingl> listaConfGen = configSpnIngl_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listEjecOTs.size(); i++) {
-				String ejecutor = listEjecOTs.get(i);
-				listaConfGen.get(i).setEjecutoresOTs(ejecutor); 
-			}
-			configSpnIngl_Reposit.saveAll(listaConfGen);
 		}
 		
+		configSpinner_Reposit.saveAll(listaConfGen);
 		return "OK";
 	}
 
 
 	@Transactional
 	@Override
-	public String actualizarListaClasificOTs(List<String> listClasificOTs, String idioma) {
+	public String actualizarListaClasificOTs(List<String> listClasificOTs, int idEmpresa) {
 	/*************************************************************************************/
-		String idiomaSpinners = idioma;   
+		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
+ 		
 		
-		if (idiomaSpinners.equals("es")) {
-			List<ConfigSpn_Espa> listaConfGen = configSpnEspa_Reposit.getConfigSpinners();
+		for(int i=1; i<listaConfGen.size(); i++) {
 			
-			for(int i=0; i<listClasificOTs.size(); i++) {
+			if (i < listClasificOTs.size()) {
+				
 				String clasific = listClasificOTs.get(i);
-				listaConfGen.get(i).setClasificTrabOTs(clasific); 
+				listaConfGen.get(i).setClasificTrabOTs(clasific);
+				
+			} else {
+				listaConfGen.get(i).setClasificTrabOTs("");
 			}
-			configSpnEspa_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("pt")) {
-			List<ConfigSpn_Port> listaConfGen = configSpnPort_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listClasificOTs.size(); i++) {
-				String clasific = listClasificOTs.get(i);
-				listaConfGen.get(i).setClasificTrabOTs(clasific); 
-			}
-			configSpnPort_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("en")) {
-			List<ConfigSpn_Ingl> listaConfGen = configSpnIngl_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listClasificOTs.size(); i++) {
-				String clasific = listClasificOTs.get(i);
-				listaConfGen.get(i).setClasificTrabOTs(clasific); 
-			}
-			configSpnIngl_Reposit.saveAll(listaConfGen);
 		}
 		
+		configSpinner_Reposit.saveAll(listaConfGen);
 		return "OK";
 	}
 
 
 	@Transactional
 	@Override
-	public String actualizarListPrioridadsOTs(List<String> listPrioridsOTs, String idioma) {
+	public String actualizarListPrioridadsOTs(List<String> listPrioridsOTs, int idEmpresa) {
 	/*******************************************************************************/
-		String idiomaSpinners = idioma;   
+		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		if (idiomaSpinners.equals("es")) {
-			List<ConfigSpn_Espa> listaConfGen = configSpnEspa_Reposit.getConfigSpinners();
+		for(int i=0; i<listaConfGen.size(); i++) {
 			
-			for(int i=0; i<listPrioridsOTs.size(); i++) {
-				String prioridad = listPrioridsOTs.get(i);
-				listaConfGen.get(i).setPrioridTrabOTs(prioridad); 
+			if (i < listPrioridsOTs.size()) {
+				
+				String config = listPrioridsOTs.get(i);
+				listaConfGen.get(i).setPrioridTrabOTs(config);
+				
+			} else {
+				listaConfGen.get(i).setPrioridTrabOTs("");
 			}
-			configSpnEspa_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("pt")) {
-			List<ConfigSpn_Port> listaConfGen = configSpnPort_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listPrioridsOTs.size(); i++) {
-				String prioridad = listPrioridsOTs.get(i);
-				listaConfGen.get(i).setPrioridTrabOTs(prioridad); 
-			}
-			configSpnPort_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("en")) {
-			List<ConfigSpn_Ingl> listaConfGen = configSpnIngl_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listPrioridsOTs.size(); i++) {
-				String prioridad = listPrioridsOTs.get(i);
-				listaConfGen.get(i).setPrioridTrabOTs(prioridad); 
-			}
-			configSpnIngl_Reposit.saveAll(listaConfGen);
 		}
 		
+		configSpinner_Reposit.saveAll(listaConfGen);
 		return "OK";
 	}
 
 
 	@Transactional
 	@Override
-	public String actualizarListEstadosEquips(List<String> listEstadosEqu, String idioma) {
+	public String actualizarListEstadosEquips(List<String> listEstadosEqu, int idEmpresa) {
 	/***********************************************************************************/
-		String idiomaSpinners = idioma;   
+		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		if (idiomaSpinners.equals("es")) {
-			List<ConfigSpn_Espa> listaConfGen = configSpnEspa_Reposit.getConfigSpinners();
+		for(int i=0; i<listaConfGen.size(); i++) {
 			
-			for(int i=0; i<listEstadosEqu.size(); i++) {
-				String estado = listEstadosEqu.get(i);
-				listaConfGen.get(i).setEstadoEquipo(estado); 
+			if (i < listEstadosEqu.size()) {
+				
+				String config = listEstadosEqu.get(i);
+				listaConfGen.get(i).setEstadoEquipo(config);
+				
+			} else {
+				listaConfGen.get(i).setEstadoEquipo("");
 			}
-			configSpnEspa_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("pt")) {
-			List<ConfigSpn_Port> listaConfGen = configSpnPort_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listEstadosEqu.size(); i++) {
-				String estado = listEstadosEqu.get(i);
-				listaConfGen.get(i).setEstadoEquipo(estado); 
-			}
-			configSpnPort_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("en")) {
-			List<ConfigSpn_Ingl> listaConfGen = configSpnIngl_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listEstadosEqu.size(); i++) {
-				String estado = listEstadosEqu.get(i);
-				listaConfGen.get(i).setEstadoEquipo(estado); 
-			}
-			configSpnIngl_Reposit.saveAll(listaConfGen);
 		}
 		
+		configSpinner_Reposit.saveAll(listaConfGen);
 		return "OK";
 	}
 
 	
 	@Transactional
 	@Override
-	public String actualizarListClasificFallas(List<String> listClasificFall, String idioma) {
+	public String actualizarListClasificFallas(List<String> listClasificFall, int idEmpresa) {
 	/**************************************************************************************/
-		String idiomaSpinners = idioma;   
+		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		if (idiomaSpinners.equals("es")) {
-			List<ConfigSpn_Espa> listaConfGen = configSpnEspa_Reposit.getConfigSpinners();
+		for(int i=0; i<listaConfGen.size(); i++) {
 			
-			for(int i=0; i<listClasificFall.size(); i++) {
-				String clasific = listClasificFall.get(i);
-				listaConfGen.get(i).setClasificFallas(clasific); 
+			if (i < listClasificFall.size()) {
+				
+				String config = listClasificFall.get(i);
+				listaConfGen.get(i).setClasificFallas(config);
+				
+			} else {
+				listaConfGen.get(i).setClasificFallas("");
 			}
-			configSpnEspa_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("pt")) {
-			List<ConfigSpn_Port> listaConfGen = configSpnPort_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listClasificFall.size(); i++) {
-				String clasific = listClasificFall.get(i);
-				listaConfGen.get(i).setClasificFallas(clasific); 
-			}
-			configSpnPort_Reposit.saveAll(listaConfGen);
-			
-		} else if (idiomaSpinners.equals("en")) {
-			List<ConfigSpn_Ingl> listaConfGen = configSpnIngl_Reposit.getConfigSpinners();
-
-			for(int i=0; i<listClasificFall.size(); i++) {
-				String clasific = listClasificFall.get(i);
-				listaConfGen.get(i).setClasificFallas(clasific);
-			}
-			configSpnIngl_Reposit.saveAll(listaConfGen);
 		}
 		
+		configSpinner_Reposit.saveAll(listaConfGen);
 		return "OK";
 	}
 
 
 	@Override
-	public String setConfigInicSpinners(ConfigSpinners configSpinn) {
+	public String setConfigInicSpinners(List<ConfigSpinners> listConfigSpinn) {
 	/****************************************************************/
-		configSpinner_Reposit.save(configSpinn);
+		configSpinner_Reposit.saveAll(listConfigSpinn);
 		return "Exito";
 	}
 

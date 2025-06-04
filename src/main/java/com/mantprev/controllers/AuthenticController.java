@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mantprev.entidades.ConfigSpinners;
 import com.mantprev.entidadesDTO.ConfigSpinners_DTO;
 import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Usuarios01_DTO;
@@ -98,11 +97,11 @@ public class AuthenticController {
 	}
 	
 	
-	@GetMapping(path = "/getConf/{idioma}")
+	@GetMapping(path = "/getConf/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<ConfigSpinners_DTO> getConfiguracSpinner(@PathVariable String idioma){	
+	public List<ConfigSpinners_DTO> getConfiguracSpinner(@PathVariable int idEmpresa){	
 	//*******************************************************************************
-		return this.configSpnService.getConfiguracSpinners(idioma); 
+		return this.configSpnService.getConfiguracSpinners(idEmpresa); 
 	} 
 	
 	
@@ -114,13 +113,7 @@ public class AuthenticController {
 	} 
 	
 	
-	@PostMapping(path = "/setConfigSpins")
-	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public String setConfigInicSpinners(@RequestBody ConfigSpinners configSpinn){
-	/*************************************************************************************/
-		String response = configSpnService.setConfigInicSpinners(configSpinn);
-		return response;  
-	}
+	
 	
 	
 	
