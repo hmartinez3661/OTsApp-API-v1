@@ -44,11 +44,12 @@ public class PersonalTecnService_Impl implements PersonalTecnService {
 
 	@Transactional
 	@Override
-	public String registrarNuevoTecnico(String nombrTecnico, String tipoEjecutor) {
+	public String registrarNuevoTecnico(String nombrTecnico, String tipoEjecutor, int idEmpresa) {
 	/*****************************************************************************/
 		Personal_Tecnico nvoPersTecn = new Personal_Tecnico();
 		nvoPersTecn.setNombreEmpl(nombrTecnico);
 		nvoPersTecn.setTipoEjecutor(tipoEjecutor);
+		nvoPersTecn.setIdEmpresa(idEmpresa); 
 		
 		try {
 			persTecnico_Reposit.save(nvoPersTecn);
@@ -72,6 +73,7 @@ public class PersonalTecnService_Impl implements PersonalTecnService {
 			nvoPersTecn.setTipoEjecutor(persTecn.getTipoEjecutor());
 			nvoPersTecn.setInformAdic(persTecn.getInformAdic());
 			nvoPersTecn.setStatusPers("Activo");
+			nvoPersTecn.setIdEmpresa(persTecn.getIdEmpresa()); 
 			
 			persTecnico_Reposit.save(nvoPersTecn);
 			return "EXITO";
@@ -90,9 +92,9 @@ public class PersonalTecnService_Impl implements PersonalTecnService {
 
 	@Transactional
 	@Override
-	public String actualizarDatosTecnico(String nombreTecn, String tipoEjecut, String nombrOrign) {
-	/************************************************************************************/
-		List<Personal_Tecnico> listPersTecn = persTecnico_Reposit.getPersonalTecnicoByName(nombrOrign);
+	public String actualizarDatosTecnico(String nombreTecn, String tipoEjecut, String nombrOrign, int idEmpresa) {
+	/***********************************************************************************************************/
+		List<Personal_Tecnico> listPersTecn = persTecnico_Reposit.getPersonalTecnicoByName(nombrOrign, idEmpresa);
 		Personal_Tecnico persTecn = listPersTecn.get(0);
 		
 		persTecn.setNombreEmpl(nombreTecn);
@@ -110,9 +112,9 @@ public class PersonalTecnService_Impl implements PersonalTecnService {
 
 	@Transactional
 	@Override
-	public String eliminarPersTecnico(String nombreTecn) {
+	public String eliminarPersTecnico(String nombreTecn, int idEmpresa) {
 	//****************************************************
-		List<Personal_Tecnico> listPersTecn = persTecnico_Reposit.getPersonalTecnicoByName(nombreTecn);
+		List<Personal_Tecnico> listPersTecn = persTecnico_Reposit.getPersonalTecnicoByName(nombreTecn, idEmpresa);
 		Personal_Tecnico persTecn = listPersTecn.get(0);
 		persTecn.setStatusPers("Inactivo");   //Inabilita al personal para que ya no aparesca en el listado de personal
 		

@@ -37,19 +37,19 @@ public class RegistroFallasController {
 	} 
 	
 	
-	@PostMapping(path = "/save/{nombrFalla}/{tipoFalla}/{idioma}")
+	@PostMapping(path = "/save/{nombrFalla}/{tipoFalla}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.CREATED) //Cod. 201
-	public String registrarNuevoEquipo(@PathVariable String nombrFalla, @PathVariable String tipoFalla, @PathVariable String idioma) {
+	public String registrarNuevaFalla(@PathVariable String nombrFalla, @PathVariable String tipoFalla, @PathVariable int idEmpresa) {
 	//**************************************************************************************************************************
-		return listaFallasService.registrarNuevaFalla(nombrFalla, tipoFalla, idioma); 
+		return listaFallasService.registrarNuevaFalla(nombrFalla, tipoFalla, idEmpresa); 
 	}
 	
 	
-	@DeleteMapping(path = "/delete/{nombreFalla}/{idioma}") //Metodo que utiliza androi
+	@DeleteMapping(path = "/delete/{nombreFalla}/{idEmpresa}") //Metodo que utiliza androi
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 201
-	public String eliminarRegistroFalla(@PathVariable String nombreFalla, @PathVariable String idioma) {
+	public String eliminarRegistroFalla(@PathVariable String nombreFalla, @PathVariable int idEmpresa) {
 	//*********************************************************************************************
-		return listaFallasService.eliminarRegistroFalla(nombreFalla, idioma);
+		return listaFallasService.eliminarRegistroFalla(nombreFalla, idEmpresa);
 	}
 	
 	

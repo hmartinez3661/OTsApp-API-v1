@@ -147,14 +147,14 @@ public class UsuariosService_Impl implements UsuariosService {
 
 	@Transactional
 	@Override
-	public String actualizarDatosUsuario1(Usuarios01_DTO userDTO) {
-	/******************************************************/
+	public String actualizarDatosUsuario1(Usuarios01_DTO userDTO, int idEmpresa) {
+	/***********************************************************************/
 		String nombOrigin = userDTO.getNombreUsuario();
 		String nombreUser = userDTO.getPassword();    //El nuevo nombre de usuario viene el el password desde la APP
 		String emailUser  = userDTO.getEmailUsuario();
 		String rolDeUser  = userDTO.getUserRol();
 		
-		Usuarios usuario = usuariosReposit.getUsuarioByName(nombOrigin).get(0);
+		Usuarios usuario = usuariosReposit.getUsuarioByNameAndIdEmpresa(nombOrigin, idEmpresa);
 		usuario.setNombreUsuario(nombreUser);
 		usuario.setEmailUsuario(emailUser);
 		usuario.setUserRol(rolDeUser);

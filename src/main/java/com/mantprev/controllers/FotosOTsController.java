@@ -74,23 +74,23 @@ public class FotosOTsController {
 	
 	@PostMapping(path = "/uploadImgsIngr/{idOT}")  
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String uploadFtosIngrToServer(@RequestParam("file") MultipartFile file, @PathVariable int idOT){
-	/*****************************************************************************************/
+	public String uploadFtosIngrToServer(@RequestParam MultipartFile file, @PathVariable int idOT){
+	/**********************************************************************************************/
 		return this.fotosIngrOTsServ.uploadImgsIngrOTsToServer(file, idOT); 
 	}
 	
 	
 	@PostMapping(path = "/uploadListImgsIngr/{idOT}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)   //@RequestParam  @RequestPart             
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String uploadListImgsIngr(@RequestParam("listParts") List<MultipartFile> listParts, @PathVariable int idOT){ 
-	/***************************************************************************************************************/
+	public String uploadListImgsIngr(@RequestParam List<MultipartFile> listParts, @PathVariable int idOT){ 
+	/***************************************************************************************************/
 		return this.fotosIngrOTsServ.uploadListImgsToServer(listParts, idOT);
 	}
 	
 	
 	@PostMapping(path = "/uploadImgCierre/{idOT}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String uploadFtosCierreToServer(@RequestParam("file") MultipartFile file, @PathVariable int idOT){
+	public String uploadFtosCierreToServer(@RequestParam MultipartFile file, @PathVariable int idOT){
 	/*****************************************************************************************/
 		return this.fotosIngrOTsServ.uploadImgsCierreOTsToServer(file, idOT);
 	}

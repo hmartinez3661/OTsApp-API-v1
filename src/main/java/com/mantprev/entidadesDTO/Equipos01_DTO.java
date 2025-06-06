@@ -15,6 +15,7 @@ public class Equipos01_DTO {
     private String correlativo;
     private String caractTecnicas;
     private String nombFotoEquip;
+    private Integer idEmpresa;
     
     
 	

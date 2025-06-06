@@ -9,29 +9,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mantprev.entidades.RegistroFallas;
-import com.mantprev.entidades.RegistroFallas_Espa;
-import com.mantprev.entidades.RegistroFallas_Ingl;
-import com.mantprev.entidades.RegistroFallas_Port;
 import com.mantprev.entidadesDTO.RegistroFallasDTO;
-import com.mantprev.repositorios.RegistroFallasEspa_Repository;
-import com.mantprev.repositorios.RegistroFallasIngl_Repository;
-import com.mantprev.repositorios.RegistroFallasPort_Repository;
 import com.mantprev.repositorios.RegistroFallas_Repository;
 
 
 
 @Service
 public class ListaFallasService_Impl implements ListaFallasService {
-
 	
-	@Autowired
-	RegistroFallasEspa_Repository listaFallasEspa_Reposit;
-	
-	@Autowired
-	RegistroFallasIngl_Repository listaFallasIngl_Reposit;
-	
-	@Autowired
-	RegistroFallasPort_Repository listaFallasPort_Reposit;
 	
 	@Autowired
 	RegistroFallas_Repository registroFallas_Reposit;
@@ -62,98 +47,36 @@ public class ListaFallasService_Impl implements ListaFallasService {
 
 	@Transactional
 	@Override
-	public String registrarNuevaFalla(String nombrFalla, String tipoFalla, String idioma) {
+	public String registrarNuevaFalla(String nombrFalla, String tipoFalla, int idEmpresa) {
 	/***********************************************************************/
-		String idiomaSpinners = idioma;
-		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	
-	        	RegistroFallas_Espa nuevaFallaEspa = new RegistroFallas_Espa();
-	        	nuevaFallaEspa.setNombreFalla(nombrFalla);
-	        	nuevaFallaEspa.setTipoFalla(tipoFalla); 
-	        	
-	        	try {
-	        		listaFallasEspa_Reposit.save(nuevaFallaEspa);
-	        		return "EXITO";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO REGISTRAR FALLA";
-	        	}
-	
-	        	
-	        case "pt":  //Portuguez
-	        	RegistroFallas_Port nuevaFallaPort = new RegistroFallas_Port();
-	        	nuevaFallaPort.setNombreFalla(nombrFalla);
-	        	nuevaFallaPort.setTipoFalla(tipoFalla); 
-	        	
-	        	try {
-	        		listaFallasPort_Reposit.save(nuevaFallaPort);
-	        		return "EXITO";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO REGISTRAR FALLA";
-	        	}
-	
-	        	
-	        default:  //es idioma Ingles (en)
-	        	RegistroFallas_Ingl nuevaFallaIngl = new RegistroFallas_Ingl();
-	        	nuevaFallaIngl.setNombreFalla(nombrFalla);
-	        	nuevaFallaIngl.setTipoFalla(tipoFalla); 
-	        	
-	        	try {
-	        		listaFallasIngl_Reposit.save(nuevaFallaIngl);
-	        		return "EXITO";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO REGISTRAR FALLA";
-	        	}
-	    }
+		RegistroFallas nuevaFalla = new RegistroFallas();
+    	nuevaFalla.setNombreFalla(nombrFalla);
+    	nuevaFalla.setTipoFalla(tipoFalla); 
+    	nuevaFalla.setIdEmpresa(idEmpresa); 
+    	
+    	try {
+    		registroFallas_Reposit.save(nuevaFalla);
+    		return "EXITO";
+    		
+    	} catch (Exception exp) {
+    		return "FALLO REGISTRAR FALLA";
+    	}
 	}
 
 
 	@Transactional
 	@Override        //Eliminar Falla en Androi
-	public String eliminarRegistroFalla(String nombreFalla, String idioma) {
+	public String eliminarRegistroFalla(String nombreFalla, int idEmpresa) {
 	/********************************************************/
-		String idiomaSpinners = idioma;
-		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	RegistroFallas_Espa registroFallaEsp = listaFallasEspa_Reposit.getRegistroFallasEspa(nombreFalla); 
-	        	
-	        	try {
-	        		listaFallasEspa_Reposit.delete(registroFallaEsp);
-	        		return "Eliminado";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO ELIMINAR FALLA";
-	        	}
-	        	
-	        case "pt":  //Portuguez
-	        	RegistroFallas_Port registroFallaPort = listaFallasPort_Reposit.getRegistroFallasPort(nombreFalla); 
-	        	
-	        	try {
-	        		listaFallasPort_Reposit.delete(registroFallaPort);
-	        		return "Eliminado";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO ELIMINAR FALLA";
-	        	}
-	        	
-	        default:  //es idioma Ingles (en)
-	        	RegistroFallas_Ingl registroFallaIngl = listaFallasIngl_Reposit.getRegistroFallasIngl(nombreFalla); 
-	        	
-	        	try {
-	        		listaFallasIngl_Reposit.delete(registroFallaIngl);
-	        		return "Eliminado";
-	        		
-	        	} catch (Exception exp) {
-	        		return "FALLO ELIMINAR FALLA";
-	        	}
-	    }
+		RegistroFallas registroFallaEsp = registroFallas_Reposit.getRegistroFallas(nombreFalla, idEmpresa); 
+    	
+    	try {
+    		registroFallas_Reposit.delete(registroFallaEsp);
+    		return "Eliminado";
+    		
+    	} catch (Exception exp) {
+    		return "FALLO ELIMINAR FALLA";
+    	}
 	}
 
 

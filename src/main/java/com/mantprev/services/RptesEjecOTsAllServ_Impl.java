@@ -569,6 +569,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		int    cantFotos  = repteEjecOT.getCantFotosCierre();
 		int    cantRptos  = repteEjecOT.getCantRptosUtiliz();;
 		int    cantSrvEx  = repteEjecOT.getCantServExter();
+		int    idEmpresa  = repteEjecOT.getIdEmpresa();
 		
 		Date fechaEjecDt = null;
 		try {
@@ -588,6 +589,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			repteEjec.setCantFotosCierre(cantFotos);
 			repteEjec.setCantRptosUtiliz(cantRptos);
 			repteEjec.setCantServExter(cantSrvEx); 
+			repteEjec.setIdEmpresa(idEmpresa);
 			
 			reptesEjecOTs_Reposit.save(repteEjec);
 			return "EXITO";
@@ -615,6 +617,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		int    cantFotos  = repteEjecOT.getCantFotosCierre();
 		int    cantRptos  = repteEjecOT.getCantRptosUtiliz();;
 		int    cantSrvEx  = repteEjecOT.getCantServExter();
+		int    idEmpresa  = repteEjecOT.getIdEmpresa();
 		
 		Date fechaEjecDt = null;
 		try {
@@ -634,6 +637,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			repteEjec.setCantFotosCierre(cantFotos);
 			repteEjec.setCantRptosUtiliz(cantRptos);
 			repteEjec.setCantServExter(cantSrvEx); 
+			repteEjec.setIdEmpresa(idEmpresa);
 			
 			reptesEjecOTs_Reposit.save(repteEjec);
 			return repteEjec.getIdReporte();
@@ -654,6 +658,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		String fchaEje = reptePers.getFechaEjec();
 		int idOrdTr    = reptePers.getIdOT();
 		int idEmple    = reptePers.getIdEmpleado();
+		int idEmpresa  = reptePers.getIdEmpresa();
 		
 		Date fechaEjecDt = null;
 		try {
@@ -665,6 +670,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			reptePersn.setFechaEjec(fechaEjecDt);
 			reptePersn.setIdOT(idOrdTr);
 			reptePersn.setIdEmpleado(idEmple);
+			reptePersn.setIdEmpresa(idEmpresa);
 			
 			rtesPersEjecOTs_Reposit.save(reptePersn);
 			return "OK";
@@ -683,6 +689,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		String nombRepto = rpteRepto.getNombreRep();
 		String costTotal = rpteRepto.getCostTotal();
 		String fechConsu = rpteRepto.getDateConsu();
+		int    idEmpresa = rpteRepto.getIdEmpresa();
 		
 		Date fechaConsDt = null;
 		try {
@@ -693,6 +700,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			repteRepto.setNombreRep(nombRepto);
 			repteRepto.setCostoTotal(Double.parseDouble(costTotal));
 			repteRepto.setFechaConsumo(fechaConsDt); 
+			repteRepto.setIdEmpresa(idEmpresa);
 			
 			rptesReptosEjecOTs_Reposit.save(repteRepto);
 			return "OK";
@@ -713,6 +721,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		Double costTotal = rpteRepto.getCostoTotal();
 		Date fechConsu = rpteRepto.getFechaConsumo();
 		int  idRepSum  = rpteRepto.getIdRepSum();
+		int  idEmpresa = rpteRepto.getIdEmpresa();
 		
 		RptesReptosEjecOTs repteRepto = new RptesReptosEjecOTs();
 		
@@ -721,6 +730,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		repteRepto.setCantidad(cantidad);
 		repteRepto.setCostoTotal(costTotal);
 		repteRepto.setFechaConsumo(fechConsu);
+		repteRepto.setIdEmpresa(idEmpresa);
 		
 		if (idRepSum > 0) {
 			repteRepto.setIdRepSum(idRepSum);
@@ -739,6 +749,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		String nombrServ = repteServEx.getNombreServic();
 		Double costoServ = repteServEx.getCostoServic();
 		String fechaServ = repteServEx.getFechaServic();
+		int idEmpresa = repteServEx.getIdEmpresa();
 		
 		Date fechaServDt = null;
 		try {
@@ -749,6 +760,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			repteServExt.setNombreServic(nombrServ);
 			repteServExt.setCostoServic(costoServ);
 			repteServExt.setFechaServic(fechaServDt);  
+			repteServExt.setIdEmpresa(idEmpresa);
 			
 			rptesServExtEjecOTs_Reposit.save(repteServExt);
 			return "OK";

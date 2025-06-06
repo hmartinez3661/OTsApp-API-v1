@@ -22,7 +22,7 @@ public interface UsuariosService {
 	
 	public String actualizarDatosUsuario(Usuarios01_DTO userDTO);
 	
-	public String actualizarDatosUsuario1(Usuarios01_DTO userDTO);
+	public String actualizarDatosUsuario1(Usuarios01_DTO userDTO, int idEmpresa);
 	
 	public String actualizarDatosUsuario2(Usuarios01_DTO userDTO);
 	

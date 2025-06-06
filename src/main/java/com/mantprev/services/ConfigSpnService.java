@@ -16,11 +16,11 @@ public interface ConfigSpnService {
 	
 	public String actualizarEjecutorOTs(int idItemConf, String nombreEjecut, int idEmpresa);
 	
-	public String actualizarClasificOTs(int idItemConf, String nombreClasif, String idioma);
+	public String actualizarClasificOTs(int idItemConf, String nombreClasif, int idEmpresa);
 	
-	public String actualizarPrioridadOTs(int idItemConf, String nombrePriorid, String idioma);
+	public String actualizarPrioridadOTs(int idItemConf, String nombrePriorid, int idEmpresa);
 	
-	public String actualizarClasificFallasOTs(int idItemConf, String nombrClasificFalla, String idioma);
+	public String actualizarClasificFallasOTs(int idItemConf, String nombrClasificFalla, int idEmpresa);
 	
 	public String actualizarConfigEmails(String configEmails, int idEmpresa);
 	

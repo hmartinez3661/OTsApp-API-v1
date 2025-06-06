@@ -13,6 +13,7 @@ public class RepteServExtOTs_DTO {
 	private String nombreServic;
     private Double costoServic;
     private String fechaServic;
+    private int    idEmpresa;
 
     
     

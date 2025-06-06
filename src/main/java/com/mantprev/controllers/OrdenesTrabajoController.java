@@ -50,19 +50,19 @@ public class OrdenesTrabajoController {
 	} 
 	
 	
-	@GetMapping(path = "/listNewOTs/{idioma}")
+	@GetMapping(path = "/listNewOTs/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200
-	public List<OrdTrabInformOtDTO> getListaNewOTs(@PathVariable String idioma){
+	public List<OrdTrabInformOtDTO> getListaNewOTs(@PathVariable int idEmpresa){
 	/***********************************************/	
-		return this.ordsTrabServices.getListaDeOTsNuevas(idioma);  
+		return this.ordsTrabServices.getListaDeOTsNuevas(idEmpresa);  
 	} 
 	
 	
-	@GetMapping(path = "/listNewOTsEjec/{ejecutor}/{idioma}")
+	@GetMapping(path = "/listNewOTsEjec/{ejecutor}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200
-	public List<OrdTrabInformOtDTO> getListaNewOTsByEjecut(@PathVariable String ejecutor, @PathVariable String idioma){
+	public List<OrdTrabInformOtDTO> getListaNewOTsByEjecut(@PathVariable String ejecutor, @PathVariable int idEmpresa){
 	/************************************************************************************/	
-		return this.ordsTrabServices.getListaNewOTsByEjecutor(ejecutor, idioma); 
+		return this.ordsTrabServices.getListaNewOTsByEjecutor(ejecutor, idEmpresa); 
 	} 
 	
 	
@@ -74,7 +74,7 @@ public class OrdenesTrabajoController {
 	} 
 	
 	
-	@GetMapping(path = "/OTsByFechasUser/{fechaInic}/{fechaFinal}/{nombrUser}")
+	@GetMapping(path = "/OTsByFechasUser/{fechaInic}/{fechaFinal}/{nombrUser}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
 	public List<OrdTrabInformOtDTO> getListaOTsByFechasUser(@PathVariable String fechaInic, 
 														    @PathVariable String fechaFinal, 
@@ -84,7 +84,7 @@ public class OrdenesTrabajoController {
 	} 
 	
 	
-	@GetMapping(path = "/OTsLast30days/{fechaInic}/{fechaFinal}")
+	@GetMapping(path = "/OTsLast30days/{fechaInic}/{fechaFinal}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
 	public List<OrdTrabInformOtDTO> getListaOTsLast30days(@PathVariable String fechaInic, @PathVariable String fechaFinal, @PathVariable int idEmpresa){	
 	//***********************************************************************************************************
@@ -92,7 +92,7 @@ public class OrdenesTrabajoController {
 	} 
 	
 	
-	@GetMapping(path = "/OTsLast30daysUser/{fechaInic}/{fechaFinal}/{nombrUser}")
+	@GetMapping(path = "/OTsLast30daysUser/{fechaInic}/{fechaFinal}/{nombrUser}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
 	public List<OrdTrabInformOtDTO> getListaOTsLast30daysUser(@PathVariable String fechaInic, 
 														     @PathVariable String fechaFinal, 
@@ -102,21 +102,21 @@ public class OrdenesTrabajoController {
 	} 
 	
 	
-	@GetMapping(path = "/OTsParaCerrar/{status1}/{status2}")
+	@GetMapping(path = "/OTsParaCerrar/{status1}/{status2}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<OrdTrabInformOtDTO> getListaOTsParaCerrar(@PathVariable String status1, @PathVariable String status2){	
+	public List<OrdTrabInformOtDTO> getListaOTsParaCerrar(@PathVariable String status1, @PathVariable String status2, @PathVariable int idEmpresa){
 	//***********************************************************************************************************
-		return this.ordsTrabServices.getListOTsParaCerrar(status1, status2);
+		return this.ordsTrabServices.getListOTsParaCerrar(status1, status2, idEmpresa);
 	} 
 	
 	
-	@GetMapping(path = "/OTsParaCerrarEjec/{status1}/{status2}/{ejecutor}")
+	@GetMapping(path = "/OTsParaCerrarEjec/{status1}/{status2}/{ejecutor}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
 	public List<OrdTrabInformOtDTO> getListaOTsParaCerrarEjecut(@PathVariable String status1, 
 															   @PathVariable String status2,
-															   @PathVariable String ejecutor){	
+															   @PathVariable String ejecutor, @PathVariable int idEmpresa){
 	//****************************************************************************************
-		return this.ordsTrabServices.getListOTsParaCerrarEjecut(status1, status2, ejecutor); 
+		return this.ordsTrabServices.getListOTsParaCerrarEjecut(status1, status2, ejecutor, idEmpresa); 
 	} 
 	
 

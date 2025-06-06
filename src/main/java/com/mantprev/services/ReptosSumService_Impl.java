@@ -41,7 +41,7 @@ public class ReptosSumService_Impl implements ReptosSumService {
 	@Transactional(readOnly = true) 
 	@Override
 	public Page<Repuestos_Sum> getRepuestosByCodigoRepto(Pageable pageRequest, String codeBuscar) {
-	/**************************************************************************************************/	
+	/**********************************************************************************************/	
 		return reptosSumReposit.findByCodigoRepContaining(codeBuscar, pageRequest);
 	}
 
@@ -57,6 +57,7 @@ public class ReptosSumService_Impl implements ReptosSumService {
 		nvoRepuesto.setClasificac(repuesto.getClasificac());
 		nvoRepuesto.setCostoProm(repuesto.getCostoProm());
 		nvoRepuesto.setEspecifTecn(repuesto.getEspecifTecn());
+		nvoRepuesto.setIdEmpresa(repuesto.getIdEmpresa()); 
 		
 		reptosSumReposit.save(nvoRepuesto);
 		return "Exito";
@@ -75,6 +76,7 @@ public class ReptosSumService_Impl implements ReptosSumService {
 		nvoRepuesto.setClasificac(repuesto.getClasificac());
 		nvoRepuesto.setCostoProm(repuesto.getCostoProm());
 		nvoRepuesto.setEspecifTecn(repuesto.getEspecifTecn());
+		nvoRepuesto.setIdEmpresa(repuesto.getIdEmpresa());
 		
 		reptosSumReposit.save(nvoRepuesto);
 		return "Exito";
@@ -83,9 +85,9 @@ public class ReptosSumService_Impl implements ReptosSumService {
 
 	@Transactional(readOnly = true) 
 	@Override
-	public String verificarCodigoRepuesto(String codigoRepto) {
+	public String verificarCodigoRepuesto(String codigoRepto, int idEmpresa) {
 	/**********************************************************/
-		Repuestos_Sum repuesto = reptosSumReposit.getRepuestoByCodigoRep(codigoRepto);
+		Repuestos_Sum repuesto = reptosSumReposit.getRepuestoByCodigoRep(codigoRepto, idEmpresa);
 		
 		String codResponse = "***";
 		if (repuesto != null) {
@@ -97,9 +99,9 @@ public class ReptosSumService_Impl implements ReptosSumService {
 
 	@Transactional(readOnly = true) 
 	@Override
-	public Page<Repuestos_Sum> getListaAllReptosPag(Pageable pageRequest) {
-	/******************************************************************/
-		Page<Repuestos_Sum> pageReptos = reptosSumReposit.findByCodigoRepIsNotNull(pageRequest);
+	public Page<Repuestos_Sum> getListaAllReptosPag(Pageable pageRequest, int idEmpresa) {
+	/***********************************************************************************/
+		Page<Repuestos_Sum> pageReptos = reptosSumReposit.findByIdEmpresa(idEmpresa, pageRequest);
 		return pageReptos;
 	}
 
@@ -151,11 +153,11 @@ public class ReptosSumService_Impl implements ReptosSumService {
 	
 	@Transactional
 	@Override
-	public String saveListaReptos(List<RepuestosSum_DTO> listReptosDto) {
-	/***************************************************************/
+	public String saveListaReptos(List<RepuestosSum_DTO> listReptosDto, int idEmpresa) {
+	/*********************************************************************************/
 		//boolean existeCodigo = listReptosEnBD.stream().anyMatch(Obj -> "codigoRep".equals(Obj.getCodigoRep())); 
 		
-		listReptosEnBD = (List<Repuestos_Sum>) reptosSumReposit.findAll();
+		listReptosEnBD = reptosSumReposit.getListaTodosRepSum(idEmpresa);
 		
 		for (int i=0; i<listReptosDto.size(); i++) {
 			
@@ -168,7 +170,7 @@ public class ReptosSumService_Impl implements ReptosSumService {
 				reptosSumReposit.save(repuesto);
 				
 			} else {  //Si existe el repuesto --> lo actualiza
-				Repuestos_Sum reptoEnBD = reptosSumReposit.getRepuestoByCodigoRep(codReptoDto);
+				Repuestos_Sum reptoEnBD = reptosSumReposit.getRepuestoByCodigoRep(codReptoDto, idEmpresa);
 				int idReptoEnBD = reptoEnBD.getIdRepSum();
 				
 				reptoDto.setIdRepSum(idReptoEnBD);  //Le pone el id para que al guardar solo lo actualice

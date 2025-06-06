@@ -16,6 +16,7 @@ public class RepuestosSum_DTO {
     private Double costoProm;
     private String fotoRep;
     private String especifTecn;
+    private int idEmpresa;
 	
 	
 }

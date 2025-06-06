@@ -13,6 +13,7 @@ public class Usuarios01_DTO {
     private String emailUsuario;
     private String password;
     private String nombreEmpresa;
+    private int idEmpresa;
 	
 	
     

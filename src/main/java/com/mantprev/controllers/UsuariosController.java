@@ -64,11 +64,11 @@ public class UsuariosController {
 	}
 	
 	
-	@PutMapping(path = "/update") 
+	@PutMapping(path = "/update/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String actualizarDatosUsuario(@RequestBody Usuarios01_DTO userDTO){ 
+	public String actualizarDatosUsuario(@RequestBody Usuarios01_DTO userDTO, @PathVariable int idEmpresa){ 
 	/**********************************************************************/	
-		return this.usuariosService.actualizarDatosUsuario1(userDTO); 
+		return this.usuariosService.actualizarDatosUsuario1(userDTO, idEmpresa);  
 		
 	}
 	

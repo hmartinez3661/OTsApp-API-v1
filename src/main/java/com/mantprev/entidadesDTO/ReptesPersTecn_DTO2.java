@@ -15,6 +15,7 @@ public class ReptesPersTecn_DTO2 {
     private int idEmpleado;
     private String comdNombrEmpl;
     private String comdTipoEjec;
+    private int idEmpresa;
     
     
 	

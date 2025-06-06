@@ -36,11 +36,11 @@ public class PersonalTecnController {
 	} 
 	
 	
-	@PostMapping(path = "/saveNew/{nombrTecnico}/{tipoEjecutor}") 
+	@PostMapping(path = "/saveNew/{nombrTecnico}/{tipoEjecutor}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public  String registrarNuevoTecnico(@PathVariable String nombrTecnico, @PathVariable String tipoEjecutor){
+	public  String registrarNuevoTecnico(@PathVariable String nombrTecnico, @PathVariable String tipoEjecutor, @PathVariable int idEmpresa){
 	/*******************************************************************************************************/	
-		return this.personalTecnService.registrarNuevoTecnico(nombrTecnico, tipoEjecutor); 
+		return this.personalTecnService.registrarNuevoTecnico(nombrTecnico, tipoEjecutor, idEmpresa); 
 	}
 	
 	
@@ -52,22 +52,22 @@ public class PersonalTecnController {
 	}
 	
 	
-	@PutMapping(path = "/update/{nombreTecn}/{tipoEjecut}/{nombrOrign}") 
+	@PutMapping(path = "/update/{nombreTecn}/{tipoEjecut}/{nombrOrign}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
 	public String actualizarDatosTecnico(@PathVariable String nombreTecn, 
 										 @PathVariable String tipoEjecut,
-										 @PathVariable String nombrOrign){
-	/**********************************************************************/	
-		return this.personalTecnService.actualizarDatosTecnico(nombreTecn, tipoEjecut, nombrOrign); 
+										 @PathVariable String nombrOrign, @PathVariable int idEmpresa){
+	/*************************************************************************************************/	
+		return this.personalTecnService.actualizarDatosTecnico(nombreTecn, tipoEjecut, nombrOrign, idEmpresa); 
 		
 	}
 	
 	
-	@PutMapping(path = "/delete/{nombreTecn}")
+	@PutMapping(path = "/delete/{nombreTecn}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 201
-	public String inactivarTecnico(@PathVariable String nombreTecn) {
+	public String inactivarTecnico(@PathVariable String nombreTecn, @PathVariable int idEmpresa) {
 	/***************************************************************/
-		return this.personalTecnService.eliminarPersTecnico(nombreTecn); 
+		return this.personalTecnService.eliminarPersTecnico(nombreTecn, idEmpresa); 
 	}
 	
 	

@@ -61,19 +61,19 @@ public class ConfigSpinersController {
 	}
 	
 	
-	@PutMapping(path = "/updatePriorid/{idItemConf}/{nombrePriorid}/{idioma}") 
+	@PutMapping(path = "/updatePriorid/{idItemConf}/{nombrePriorid}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String actualizarPrioridadOTs(@PathVariable int idItemConf, @PathVariable String nombrePriorid, @PathVariable String idioma){
+	public String actualizarPrioridadOTs(@PathVariable int idItemConf, @PathVariable String nombrePriorid, @PathVariable int idEmpresa){
 	/*************************************************************************************************/	
-		return this.configSpnService.actualizarPrioridadOTs(idItemConf, nombrePriorid, idioma); 
+		return this.configSpnService.actualizarPrioridadOTs(idItemConf, nombrePriorid, idEmpresa); 
 	}
 	
 	
-	@PutMapping(path = "/updateClasificFallas/{idItemConf}/{nombrClasificFalla}/{idioma}") 
+	@PutMapping(path = "/updateClasificFallas/{idItemConf}/{nombrClasificFalla}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String actualizarClasifcFallasOTs(@PathVariable int idItemConf, @PathVariable String nombrClasificFalla, @PathVariable String idioma){
+	public String actualizarClasifcFallasOTs(@PathVariable int idItemConf, @PathVariable String nombrClasificFalla, @PathVariable int idEmpresa){
 	/*************************************************************************************************/	
-		return this.configSpnService.actualizarClasificFallasOTs(idItemConf, nombrClasificFalla, idioma); 
+		return this.configSpnService.actualizarClasificFallasOTs(idItemConf, nombrClasificFalla, idEmpresa); 
 	}
 	
 	

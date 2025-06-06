@@ -25,9 +25,7 @@ import com.mantprev.entidadesDTO.OrdTrabInformHomeDTO;
 import com.mantprev.entidadesDTO.OrdTrabInformOtDTO;
 import com.mantprev.entidadesDTO.OrdTrabRevisionDTO;
 import com.mantprev.entidadesDTO.OrdenesTrabajoDTO_2;
-import com.mantprev.repositorios.ConfigSpnEspa_Repository;
-import com.mantprev.repositorios.ConfigSpnIngl_Repository;
-import com.mantprev.repositorios.ConfigSpnPort_Repository;
+import com.mantprev.repositorios.ConfigSpinner_Repository;
 import com.mantprev.repositorios.DocumentosOTs_Repository;
 import com.mantprev.repositorios.OrdsTrab_Repository;
 import com.mantprev.repositorios.ReptesEjecOTs_Repository;
@@ -48,13 +46,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 	private ReptesEjecOTs_Repository reptesEjecOTs_Reposit;
 	
 	@Autowired
-	private ConfigSpnEspa_Repository configSpnEspa_Reposit;
-	
-	@Autowired
-	private ConfigSpnIngl_Repository configSpnIngl_Reposit;
-	
-	@Autowired
-	private ConfigSpnPort_Repository configSpnPort_Reposit;
+	private ConfigSpinner_Repository configSpinn_Reposit;
 	
 	@Autowired
 	private DocumentosOTs_Repository documentsOT_repost;
@@ -131,27 +123,13 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<OrdTrabInformOtDTO> getListaDeOTsNuevas(String idioma) {
-	/******************************************************/ 
+	public List<OrdTrabInformOtDTO> getListaDeOTsNuevas(int idEmpresa) {
+	/***************************************************************/  
 		List<String> listaStatusOTs = new ArrayList<String>();
-		String idiomaSpinners = idioma;
-		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	listaStatusOTs = configSpnEspa_Reposit.getItemsDeStatusDeOTs();;
-	            break;
-	
-	        case "pt":  //Portuguez
-	        	listaStatusOTs = configSpnPort_Reposit.getItemsDeStatusDeOTs();;
-	            break;
-	
-	        default:  //es idioma Ingles
-	        	listaStatusOTs = configSpnIngl_Reposit.getItemsDeStatusDeOTs();;
-	    }
+		listaStatusOTs = configSpinn_Reposit.getItemsDeStatusDeOTs(idEmpresa);
 		
 		String statusNewsOTs = listaStatusOTs.get(1);
-		List<OrdenesTrabajo> listaNewOTs = ordsTrab_Reposit.getListaOrdTrabByStatus(statusNewsOTs);
+		List<OrdenesTrabajo> listaNewOTs = ordsTrab_Reposit.getListaOrdTrabByStatus(statusNewsOTs, idEmpresa);
 		
 		List<OrdTrabInformOtDTO> listaOTsNuevasDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
@@ -180,27 +158,13 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<OrdTrabInformOtDTO> getListaNewOTsByEjecutor(String ejecutor, String idioma) {
+	public List<OrdTrabInformOtDTO> getListaNewOTsByEjecutor(String ejecutor, int idEmpresa) {
 	/**************************************************************************/
 		List<String> listaStatusOTs = new ArrayList<String>();
-		String idiomaSpinners = idioma;
-		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	listaStatusOTs = configSpnEspa_Reposit.getItemsDeStatusDeOTs();;
-	            break;
-	
-	        case "pt":  //Portuguez
-	        	listaStatusOTs = configSpnPort_Reposit.getItemsDeStatusDeOTs();;
-	            break;
-	
-	        default:  //es idioma Ingles
-	        	listaStatusOTs = configSpnIngl_Reposit.getItemsDeStatusDeOTs();;
-	    }
+		listaStatusOTs = configSpinn_Reposit.getItemsDeStatusDeOTs(idEmpresa);
 		
 		String statusNewsOTs = listaStatusOTs.get(1);
-		List<OrdenesTrabajo> listaNewOTs = ordsTrab_Reposit.getListaOrdTrabByStatus(statusNewsOTs);
+		List<OrdenesTrabajo> listaNewOTs = ordsTrab_Reposit.getListaOrdTrabByStatus(statusNewsOTs, idEmpresa);
 		
 		List<OrdTrabInformOtDTO> listaNewOTsDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
@@ -316,9 +280,9 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<OrdTrabInformOtDTO> getListOTsParaCerrar(String status1, String status2) {
+	public List<OrdTrabInformOtDTO> getListOTsParaCerrar(String status1, String status2, int idEmpresa) {
 	/***********************************************************************************/ 
-		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getListaOTsParaCerrar(status1, status2);
+		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getListaOTsParaCerrar(status1, status2, idEmpresa);
 		ArrayList<OrdTrabInformOtDTO> listOTsParaCerrarDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
@@ -346,9 +310,9 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<OrdTrabInformOtDTO> getListOTsParaCerrarEjecut(String status1, String status2, String ejecutor) {
+	public List<OrdTrabInformOtDTO> getListOTsParaCerrarEjecut(String status1, String status2, String ejecutor, int idEmpresa) {
 	/***********************************************************************************************************/
-		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getListaOTsParaCerrar(status1, status2);
+		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getListaOTsParaCerrar(status1, status2, idEmpresa);
 		ArrayList<OrdTrabInformOtDTO> listOTsParaCerrarDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
@@ -484,6 +448,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		String statusDeOT  = newOrdTrab.getStatusDeOT();
 		String horaAct     = newOrdTrab.getHoraAct();
 		String cantFotos   = newOrdTrab.getCantFotosAnex();
+		int idEmpresa = newOrdTrab.getIdEmpresa();
 		
 		OrdenesTrabajo nvaOrdTrab = new OrdenesTrabajo();
 		
@@ -499,6 +464,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		nvaOrdTrab.setIdReporteEjecuc(0);
 		nvaOrdTrab.setTiempoEstim(0.25);
 		nvaOrdTrab.setPersonalEstim(1);  
+		nvaOrdTrab.setIdEmpresa(idEmpresa);
 		
 		String idOrdTrab = "0";
 		try {

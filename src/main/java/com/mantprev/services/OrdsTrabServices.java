@@ -19,17 +19,17 @@ public interface OrdsTrabServices {
 	
 	public List<OrdTrabInformHomeDTO> getInformHomeDeOTs(String fechaInic, String fechaFinal, int idEmpresa);
 	
-	public List<OrdTrabInformOtDTO> getListaDeOTsNuevas(String idioma);
+	public List<OrdTrabInformOtDTO> getListaDeOTsNuevas(int idEmpresa);
 	
-	public List<OrdTrabInformOtDTO> getListaNewOTsByEjecutor(String ejecutor, String idioma);
+	public List<OrdTrabInformOtDTO> getListaNewOTsByEjecutor(String ejecutor, int idEmpresa);
 	
 	public List<OrdTrabInformOtDTO> getListOTsEntre2Fechas(String fechaInic, String fechaFinal, int idEmpresa);
 	
 	public List<OrdTrabInformOtDTO> getListOTsByFechasUser(String fechaInic, String fechaFinal, String nombrUser, int idEmpresa); 
 	
-	public List<OrdTrabInformOtDTO> getListOTsParaCerrar(String status1, String status2);
+	public List<OrdTrabInformOtDTO> getListOTsParaCerrar(String status1, String status2, int idEmpresa);
 	
-	public List<OrdTrabInformOtDTO> getListOTsParaCerrarEjecut(String status1, String status2, String ejecutor);
+	public List<OrdTrabInformOtDTO> getListOTsParaCerrarEjecut(String status1, String status2, String ejecutor, int idEmpresa);
 	
 	public String guardarRevisAutomatOT(OrdTrabRevisionDTO dtsOrdTrab);  
 	

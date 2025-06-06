@@ -17,6 +17,7 @@ public class ReptesReptos_DTO {
     private int numMesCons;
     private String ejecutor;
     private String comodin;
+    private int idEmpresa;
     
     
 	

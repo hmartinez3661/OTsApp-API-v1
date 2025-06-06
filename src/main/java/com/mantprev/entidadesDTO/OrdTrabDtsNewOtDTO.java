@@ -16,6 +16,7 @@ public class OrdTrabDtsNewOtDTO {
 	private String fechaDeHoy;
 	private String horaAct;
 	private String cantFotosAnex;
+	private Integer idEmpresa;
 	
 	
 	

@@ -19,6 +19,10 @@ public interface Usuarios_Repository extends CrudRepository <Usuarios, Integer>{
     public List<Usuarios> getUsuarioByName(String nombrOrigUsuario);
 	
 	
+	@Query("select U from Usuarios U where U.nombreUsuario = ?1AND U.idEmpresa = ?2")
+    public Usuarios getUsuarioByNameAndIdEmpresa(String nameUser, int idEmpresa);
+	
+	
 	@Query("select U from Usuarios U where U.emailUsuario = ?1")
     public List<Usuarios> getUsuarioByEmail(String emailUsuario);	
 	
@@ -37,7 +41,6 @@ public interface Usuarios_Repository extends CrudRepository <Usuarios, Integer>{
 	@Query("select U from Usuarios U where U.idUsuario = ?1")
     public Usuarios getUsuarioByIdUser(int idUser);
 
-	
 	
 	
 	

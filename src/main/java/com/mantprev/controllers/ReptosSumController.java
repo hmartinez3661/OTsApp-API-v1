@@ -37,9 +37,9 @@ public class ReptosSumController {
 	
 	 
 	
-	@GetMapping(path = "/listSugNames/{textBuscar}")
+	@GetMapping(path = "/listSugNames/{textBuscar}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<String> getListaSugerNombresReptos(@PathVariable String textBuscar){
+	public List<String> getListaSugerNombresReptos(@PathVariable String textBuscar, @PathVariable int idEmpresa){
 	/*********************************************************************************/	
 		Pageable pageRequest = PageRequest.of(0, 12);
 		Page<Repuestos_Sum> pageRepSum = reptosSumService.getRepuestosByNombreRepto(pageRequest, textBuscar);
@@ -48,20 +48,25 @@ public class ReptosSumController {
 		List<String> listaNombres = new ArrayList<String>();
 		
 		for (int i=0; i<listaReposSum.size(); i++) {
-			String nombRepSum = listaReposSum.get(i).getNombreRep();
-			int idRepSum = listaReposSum.get(i).getIdRepSum();
-			Double costo = listaReposSum.get(i).getCostoProm();
 			
-			listaNombres.add(nombRepSum +"  ("+ costo +"-"+ idRepSum +")");
+			int idEmpresaRep = listaReposSum.get(i).getIdEmpresa();
+			
+			if (idEmpresaRep == idEmpresa) {
+				String nombRepSum = listaReposSum.get(i).getNombreRep();
+				int idRepSum = listaReposSum.get(i).getIdRepSum();
+				Double costo = listaReposSum.get(i).getCostoProm();
+				
+				listaNombres.add(nombRepSum +"  ("+ costo +"-"+ idRepSum +")");
+			}
 		}
 		
 		return listaNombres; 
 	}
 	
 	
-	@GetMapping(path = "/listSugNamesCod/{codigoBuscar}")
+	@GetMapping(path = "/listSugNamesCod/{codigoBuscar}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<String> getListaSugerNombresReptosByCode(@PathVariable String codigoBuscar){
+	public List<String> getListaSugerNombresReptosByCode(@PathVariable String codigoBuscar, @PathVariable int idEmpresa){
 	/*********************************************************************************/	
 		Pageable pageRequest = PageRequest.of(0, 12);
 		Page<Repuestos_Sum> pageRepSum = reptosSumService.getRepuestosByCodigoRepto(pageRequest, codigoBuscar);
@@ -70,13 +75,17 @@ public class ReptosSumController {
 		List<String> listaNombres = new ArrayList<String>();
 		
 		for (int i=0; i<listaReposSum.size(); i++) {
+
+			int idEmpresaRep = listaReposSum.get(i).getIdEmpresa();
 			
-			String codigoRpto = listaReposSum.get(i).getCodigoRep();
-			String nombRepSum = listaReposSum.get(i).getNombreRep();
-			int idRepSum = listaReposSum.get(i).getIdRepSum();
-			Double costo = listaReposSum.get(i).getCostoProm();
-			
-			listaNombres.add(codigoRpto +" * "+ nombRepSum +"  ("+ costo +"-"+ idRepSum +")");
+			if (idEmpresaRep == idEmpresa) {
+				String codigoRpto = listaReposSum.get(i).getCodigoRep();
+				String nombRepSum = listaReposSum.get(i).getNombreRep();
+				int idRepSum = listaReposSum.get(i).getIdRepSum();
+				Double costo = listaReposSum.get(i).getCostoProm();
+				
+				listaNombres.add(codigoRpto +" * "+ nombRepSum +"  ("+ costo +"-"+ idRepSum +")");
+			}
 		}
 		
 		return listaNombres; 
@@ -101,38 +110,38 @@ public class ReptosSumController {
 	}
 	
 	
-	@GetMapping(path = "/getReptoByCode/{codigoRepto}")
+	@GetMapping(path = "/getReptoByCode/{codigoRepto}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public String buscarRepuestoByCodigo(@PathVariable String codigoRepto){
-	/*********************************************************************/	
-		String codResponse = reptosSumService.verificarCodigoRepuesto(codigoRepto);
+	public String buscarRepuestoByCodigo(@PathVariable String codigoRepto, @PathVariable int idEmpresa){
+	/**********************************************************************************************/	
+		String codResponse = reptosSumService.verificarCodigoRepuesto(codigoRepto, idEmpresa);
 		return codResponse; 
 	}
 	
 	
-	@GetMapping(path = "/getCantPagsReptos")
+	@GetMapping(path = "/getCantPagsReptos/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public int getCantPagsRepuestos(){
-	/********************************/	
+	public int getCantPagsRepuestos(@PathVariable int idEmpresa){
+	/************************************************************/	
 		int numPag = 0;
 		int cantItemsXpag = 25;
 		
 		Pageable pageRequest = PageRequest.of(numPag, cantItemsXpag);
-		Page<Repuestos_Sum> pageReptos = reptosSumService.getListaAllReptosPag(pageRequest);  
+		Page<Repuestos_Sum> pageReptos = reptosSumService.getListaAllReptosPag(pageRequest, idEmpresa);  
 		int totPages = pageReptos.getTotalPages();
 		
 		return totPages; 
 	}
 	
 	
-	@GetMapping(path = "/getlistaReptosPag/{numPag}")
+	@GetMapping(path = "/getlistaReptosPag/{numPag}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RepuestosSum_DTO> getListaAllReptosPag(@PathVariable int numPag){
-	/***********************************************************************/	
+	public List<RepuestosSum_DTO> getListaAllReptosPag(@PathVariable int numPag, @PathVariable int idEmpresa){
+	/********************************************************************************************************/	
 		int cantItemsXpag = 25; 
 		
 		Pageable pageRequest = PageRequest.of(numPag, cantItemsXpag);
-		Page<Repuestos_Sum> pageReptos = reptosSumService.getListaAllReptosPag(pageRequest);
+		Page<Repuestos_Sum> pageReptos = reptosSumService.getListaAllReptosPag(pageRequest, idEmpresa);
 		int cantPags = pageReptos.getTotalPages();
 		
 		List<Repuestos_Sum> listaReptos = pageReptos.getContent();
@@ -151,10 +160,10 @@ public class ReptosSumController {
 	}
 	
 	
-	@GetMapping(path = "/getlistReptosByNamePag/{numPag}/{nameRepto}")
+	@GetMapping(path = "/getlistReptosByNamePag/{numPag}/{nameRepto}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RepuestosSum_DTO> getlistReptosByNamePag(@PathVariable int numPag, @PathVariable String nameRepto){
-	/***********************************************************************/	
+	public List<RepuestosSum_DTO> getlistReptosByNamePag(@PathVariable int numPag, @PathVariable String nameRepto, @PathVariable int idEmpresa){
+	/*********************************************************************************************************************************/	
 		int cantItemsXpag = 25; 
 		
 		Pageable pageRequest = PageRequest.of(numPag, cantItemsXpag);
@@ -166,20 +175,24 @@ public class ReptosSumController {
 		
 		for(int i=0; i<listaReptos.size(); i++) {
 			Repuestos_Sum repuesto = listaReptos.get(i);
-			RepuestosSum_DTO repuestoDTO = modelMapper.map(repuesto, RepuestosSum_DTO.class); 
-			repuestoDTO.setEspecifTecn(Integer.toString(cantPags));
+			int idEmpresaRto = repuesto.getIdEmpresa();
 			
-			listReptosDTO.add(repuestoDTO);
+			if(idEmpresaRto == idEmpresa) {
+				RepuestosSum_DTO repuestoDTO = modelMapper.map(repuesto, RepuestosSum_DTO.class); 
+				repuestoDTO.setEspecifTecn(Integer.toString(cantPags));
+				
+				listReptosDTO.add(repuestoDTO);
+			}
 		}
 		
 		return listReptosDTO;  
 	}
 	
 	
-	@GetMapping(path = "/getlistReptosByCodPag/{numPag}/{codRepto}")
+	@GetMapping(path = "/getlistReptosByCodPag/{numPag}/{codRepto}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RepuestosSum_DTO> getListReptosByCodPag(@PathVariable int numPag, @PathVariable String codRepto){
-	/***********************************************************************/	
+	public List<RepuestosSum_DTO> getListReptosByCodPag(@PathVariable int numPag, @PathVariable String codRepto, @PathVariable int idEmpresa){
+	/*****************************************************************************************************/	
 		int cantItemsXpag = 25; 
 		
 		Pageable pageRequest = PageRequest.of(numPag, cantItemsXpag);
@@ -191,19 +204,23 @@ public class ReptosSumController {
 		
 		for(int i=0; i<listaReptos.size(); i++) {
 			Repuestos_Sum repuesto = listaReptos.get(i);
-			RepuestosSum_DTO repuestoDTO = modelMapper.map(repuesto, RepuestosSum_DTO.class); 
-			repuestoDTO.setEspecifTecn(Integer.toString(cantPags));
+			int idEmpresaRto = repuesto.getIdEmpresa();
 			
-			listReptosDTO.add(repuestoDTO);
+			if(idEmpresaRto == idEmpresa) {
+				RepuestosSum_DTO repuestoDTO = modelMapper.map(repuesto, RepuestosSum_DTO.class); 
+				repuestoDTO.setEspecifTecn(Integer.toString(cantPags));
+				
+				listReptosDTO.add(repuestoDTO);
+			}
 		}
 		
 		return listReptosDTO;  
 	}
 	
 	
-	@GetMapping(path = "/getlistReptosByClasifPag/{numPag}/{clasifRepto}")
+	@GetMapping(path = "/getlistReptosByClasifPag/{numPag}/{clasifRepto}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RepuestosSum_DTO> getListReptosByClasificPag(@PathVariable int numPag, @PathVariable String clasifRepto){
+	public List<RepuestosSum_DTO> getListReptosByClasificPag(@PathVariable int numPag, @PathVariable String clasifRepto, @PathVariable int idEmpresa){
 	/************************************************************************************************/	
 		int cantItemsXpag = 25; 
 		
@@ -216,10 +233,14 @@ public class ReptosSumController {
 		
 		for(int i=0; i<listaReptos.size(); i++) {
 			Repuestos_Sum repuesto = listaReptos.get(i);
-			RepuestosSum_DTO repuestoDTO = modelMapper.map(repuesto, RepuestosSum_DTO.class); 
-			repuestoDTO.setEspecifTecn(Integer.toString(cantPags));
+			int idEmpresaRto = repuesto.getIdEmpresa();
 			
-			listReptosDTO.add(repuestoDTO);
+			if(idEmpresaRto == idEmpresa) {
+				RepuestosSum_DTO repuestoDTO = modelMapper.map(repuesto, RepuestosSum_DTO.class); 
+				repuestoDTO.setEspecifTecn(Integer.toString(cantPags));
+				
+				listReptosDTO.add(repuestoDTO);
+			}
 		}
 		
 		return listReptosDTO;  
@@ -245,11 +266,11 @@ public class ReptosSumController {
 	}
 	
 	
-	@PutMapping(path = "/saveListaReptos")
+	@PutMapping(path = "/saveListaReptos/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public String saveListaReptos(@RequestBody List<RepuestosSum_DTO> listReptos){
+	public String saveListaReptos(@PathVariable int idEmpresa, @RequestBody List<RepuestosSum_DTO> listReptos){
 	/****************************************************************************/
-		String response = reptosSumService.saveListaReptos(listReptos);
+		String response = reptosSumService.saveListaReptos(listReptos, idEmpresa);
 		return response;  
 	}
 	

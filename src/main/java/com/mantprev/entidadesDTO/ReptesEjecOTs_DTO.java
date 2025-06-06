@@ -25,6 +25,7 @@ public class ReptesEjecOTs_DTO  {
     private String  nombreEquipo;
     private String  correlatEqu;
     private Integer idEquipo;
+    private Integer idEmpresa;
     
     
    

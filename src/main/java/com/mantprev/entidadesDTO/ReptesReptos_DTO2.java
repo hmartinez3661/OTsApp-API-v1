@@ -15,6 +15,7 @@ public class ReptesReptos_DTO2 {
     private Double  costoTotal;
     private Date    fechaConsumo;
     private Integer idRepSum;
+    private Integer idEmpresa;
 	
 
 }

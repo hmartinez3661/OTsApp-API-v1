@@ -11,6 +11,7 @@ public class PersonalTecn_DTO {
 	private String nombreEmpl;
     private String tipoEjecutor;
     private String informAdic;
+    private Integer idEmpresa;
 	
 	
     

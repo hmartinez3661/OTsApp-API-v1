@@ -182,6 +182,7 @@ public class EquiposService_Impl implements EquiposService {
 		nvoEquipo.setNivelArbol(equipoDTO.getNivelArbol());
 		nvoEquipo.setCorrelativo(equipoDTO.getCorrelativo());
 		nvoEquipo.setCostoHoraParo(0.0); 
+		nvoEquipo.setIdEquipo(equipoDTO.getIdEquipo());
 		
 		int idNvoEquipo = 0;
 		try {

@@ -10,14 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mantprev.entidades.ConfigSpinners;
-import com.mantprev.entidades.ConfigSpn_Espa;
-import com.mantprev.entidades.ConfigSpn_Ingl;
-import com.mantprev.entidades.ConfigSpn_Port;
 import com.mantprev.entidadesDTO.ConfigSpinners_DTO;
 import com.mantprev.repositorios.ConfigSpinner_Repository;
-import com.mantprev.repositorios.ConfigSpnEspa_Repository;
-import com.mantprev.repositorios.ConfigSpnIngl_Repository;
-import com.mantprev.repositorios.ConfigSpnPort_Repository;
 
 
 @Service
@@ -26,15 +20,6 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	
 	@Autowired
 	private ConfigSpinner_Repository configSpinner_Reposit;
-	
-	@Autowired
-	private ConfigSpnEspa_Repository configSpnEspa_Reposit;
-	
-	@Autowired
-	private ConfigSpnIngl_Repository configSpnIngl_Reposit;
-	
-	@Autowired
-	private ConfigSpnPort_Repository configSpnPort_Reposit;   
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -102,184 +87,73 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	
 	@Transactional
 	@Override
-	public String actualizarClasificOTs(int idItemConf, String nombreClasif, String idioma) {
+	public String actualizarClasificOTs(int idItemConf, String nombreClasif, int idEmpresa) {
 	/***********************************************************************/
-		String idiomaSpinners = idioma;
-		
 		if (nombreClasif.equals("-")){
 			nombreClasif = "";
 		}  
 		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	Optional<ConfigSpn_Espa> configOptEs = configSpnEspa_Reposit.findById(idItemConf); 
-	        	
-	        	if (configOptEs != null) {
-	        		
-	        		ConfigSpn_Espa configSpn = configOptEs.get();
-	        		configSpn.setClasificTrabOTs(nombreClasif);
-	        		
-	        		configSpnEspa_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	            
-	
-	        case "pt":  //Portuguez
-	        	Optional<ConfigSpn_Port> configPtOpt = configSpnPort_Reposit.findById(idItemConf);
-	        	
-	        	if (configPtOpt != null) {
-	        		
-	        		ConfigSpn_Port configSpn = configPtOpt.get();
-	        		configSpn.setClasificTrabOTs(nombreClasif);
-	        		
-	        		configSpnPort_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	
-	        default:  //es idioma Ingles (en)
-	        	Optional<ConfigSpn_Ingl> configInglOpt = configSpnIngl_Reposit.findById(idItemConf);
-	        	
-	        	if (configInglOpt != null) {
-	        		
-	        		ConfigSpn_Ingl configSpn = configInglOpt.get();
-	        		configSpn.setClasificTrabOTs(nombreClasif);
-	        		
-	        		configSpnIngl_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	    }
+		Optional<ConfigSpinners> configOpt = configSpinner_Reposit.findById(idItemConf); 
+    	
+    	if (configOpt != null) {
+    		
+    		ConfigSpinners configSpn = configOpt.get();
+    		configSpn.setClasificTrabOTs(nombreClasif);
+    		
+    		configSpinner_Reposit.save(configSpn);
+    		return "EXITO";
+    		
+    	} else {
+    		return "FALLO EN ACTUALIZACION";
+    	}
 	}
 
 
 	@Transactional
 	@Override
-	public String actualizarPrioridadOTs(int idItemConf, String nombrePriorid, String idioma) {
+	public String actualizarPrioridadOTs(int idItemConf, String nombrePriorid, int idEmpresa) {
 	/*************************************************************************/
-		String idiomaSpinners = idioma;
-		
 		if (nombrePriorid.equals("-")){
 			nombrePriorid = "";
 		}  
 		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	Optional<ConfigSpn_Espa> configOptEs = configSpnEspa_Reposit.findById(idItemConf); 
-	        	
-	        	if (configOptEs != null) {
-	        		
-	        		ConfigSpn_Espa configSpn = configOptEs.get();
-	        		configSpn.setPrioridTrabOTs(nombrePriorid);
-	        		
-	        		configSpnEspa_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	            
-	
-	        case "pt":  //Portuguez
-	        	Optional<ConfigSpn_Port> configPtOpt = configSpnPort_Reposit.findById(idItemConf);
-	        	
-	        	if (configPtOpt != null) {
-	        		
-	        		ConfigSpn_Port configSpn = configPtOpt.get();
-	        		configSpn.setPrioridTrabOTs(nombrePriorid);
-	        		
-	        		configSpnPort_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	
-	        default:  //es idioma Ingles (en)
-	        	Optional<ConfigSpn_Ingl> configInglOpt = configSpnIngl_Reposit.findById(idItemConf);
-	        	
-	        	if (configInglOpt != null) {
-	        		
-	        		ConfigSpn_Ingl configSpn = configInglOpt.get();
-	        		configSpn.setPrioridTrabOTs(nombrePriorid);
-	        		
-	        		configSpnIngl_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	    }
+		Optional<ConfigSpinners> configOpt = configSpinner_Reposit.findById(idItemConf); 
+    	
+    	if (configOpt != null) {
+    		
+    		ConfigSpinners configSpn = configOpt.get();
+    		configSpn.setPrioridTrabOTs(nombrePriorid);
+    		
+    		configSpinner_Reposit.save(configSpn);
+    		return "EXITO";
+    		
+    	} else {
+    		return "FALLO EN ACTUALIZACION";
+    	}
 	}
 
 
 	@Transactional
 	@Override
-	public String actualizarClasificFallasOTs(int idItemConf, String nombrClasificFalla, String idioma) {
+	public String actualizarClasificFallasOTs(int idItemConf, String nombrClasificFalla, int idEmpresa) {
 	/*************************************************************************************/
-		String idiomaSpinners = idioma;
-		
 		if (nombrClasificFalla.equals("-")){
 			nombrClasificFalla = "";
 		}  
 		
-		switch(idiomaSpinners) {
-		
-	        case "es":  //Español
-	        	Optional<ConfigSpn_Espa> configOptEs = configSpnEspa_Reposit.findById(idItemConf); 
-	        	
-	        	if (configOptEs != null) {
-	        		
-	        		ConfigSpn_Espa configSpn = configOptEs.get();
-	        		configSpn.setClasificFallas(nombrClasificFalla);
-	        		
-	        		configSpnEspa_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	            
-	
-	        case "pt":  //Portuguez
-	        	Optional<ConfigSpn_Port> configPtOpt = configSpnPort_Reposit.findById(idItemConf);
-	        	
-	        	if (configPtOpt != null) {
-	        		
-	        		ConfigSpn_Port configSpn = configPtOpt.get();
-	        		configSpn.setClasificFallas(nombrClasificFalla);
-	        		
-	        		configSpnPort_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	
-	        default:  //es idioma Ingles (en)
-	        	Optional<ConfigSpn_Ingl> configInglOpt = configSpnIngl_Reposit.findById(idItemConf);
-	        	
-	        	if (configInglOpt != null) {
-	        		
-	        		ConfigSpn_Ingl configSpn = configInglOpt.get();
-	        		configSpn.setClasificFallas(nombrClasificFalla);
-	        		
-	        		configSpnIngl_Reposit.save(configSpn);
-	        		return "EXITO";
-	        		
-	        	} else {
-	        		return "FALLO EN ACTUALIZACION";
-	        	}
-	    }
+		Optional<ConfigSpinners> configOpt = configSpinner_Reposit.findById(idItemConf); 
+    	
+    	if (configOpt != null) {
+    		
+    		ConfigSpinners configSpn = configOpt.get();
+    		configSpn.setClasificFallas(nombrClasificFalla);
+    		
+    		configSpinner_Reposit.save(configSpn);
+    		return "EXITO";
+    		
+    	} else {
+    		return "FALLO EN ACTUALIZACION";
+    	}
 	}
 
 

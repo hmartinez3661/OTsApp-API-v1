@@ -13,9 +13,9 @@ public interface ListaFallasService {
 	
 	public List<RegistroFallasDTO> getListaDeFallas(int idEmpresa); 
 	
-	public String registrarNuevaFalla (String nombrFalla, String tipoFalla, String idioma);
+	public String registrarNuevaFalla (String nombrFalla, String tipoFalla, int idEmpresa);
 	
-	public String eliminarRegistroFalla (String nombreFalla, String idioma);
+	public String eliminarRegistroFalla (String nombreFalla, int idEmpresa);
 	
 	public int guardarDescripcFalla(RegistroFallasDTO descripFalla, int idEmpresa);
 	
