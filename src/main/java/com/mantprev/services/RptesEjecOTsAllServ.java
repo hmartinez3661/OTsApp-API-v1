@@ -33,23 +33,23 @@ public interface RptesEjecOTsAllServ {
 	
 	public List<RepteServExtOTs_DTO> getListaReptesServExterEjecOT2(int idOT); 
 	
-	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTsByDates(String fechaInic, String fechaFnl);
+	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTsByDates(String fechaInic, String fechaFnl, int idEmpresa);
 	
-	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTsByDates2(Date fechaInic, Date fechaFnl);
+	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTsByDates2(Date fechaInic, Date fechaFnl, int idEmpresa);
 	
-	public List<ReptesReptos_DTO> getListReptesReptosEjecOTsByDates(String fechaInic, String fechaFnl, String numFmt);
+	public List<ReptesReptos_DTO> getListReptesReptosEjecOTsByDates(String fechaInic, String fechaFnl, String numFmt, int idEmpresa);
 	
-	public List<RepteHrsParoEquips_DTO> getListReptesHrsParoEquipos(String fechaInic, String fechaFnl);
+	public List<RepteHrsParoEquips_DTO> getListReptesHrsParoEquipos(String fechaInic, String fechaFnl, int idEmpresa);
 	
-	public List<RepteRecurrFallas_DTO> getListReptesRecurrFallas(String nombrFalla, String fechaInic, String fechaFnl);
+	public List<RepteRecurrFallas_DTO> getListReptesRecurrFallas(String nombrFalla, String fechaInic, String fechaFnl, int idEmpresa);
 	
-	public List<RepteRecurrFallas_DTO> getListaFallasByFechas(String fechaInic, String fechaFnl);
+	public List<RepteRecurrFallas_DTO> getListaFallasByFechas(String fechaInic, String fechaFnl, int idEmpresa);
 	
-	public List<RepteTendAveriasDTO> getDtsAveriasTodosEquipos(String fechaInic, String fechaFnl);
+	public List<RepteTendAveriasDTO> getDtsAveriasTodosEquipos(String fechaInic, String fechaFnl, int idEmpesa);
 	
 	public ReptesEjecOTs_DTO getRepteEjecucOT(int idReporte);
 	
-	public List<ReptesEjecOTs_DTO> getlistaReptesEjecucOT(String fechaInic, String fechaFnl);
+	public List<ReptesEjecOTs_DTO> getlistaReptesEjecucOT(String fechaInic, String fechaFnl, int idEmpresa);
 	
 	public String guardarReporteEjecOT2(ReptesEjecOTs_DTO repteEjecOT);
 	
@@ -63,9 +63,9 @@ public interface RptesEjecOTsAllServ {
 	
 	public String guardarRepteServExtEjecOT(RepteServExtOTs_DTO repteServEx);
 	
-	public List<RepteHistorMantto_DTO> getHistorialManttoEquips(String fechaInic, String fechaFnl);
+	public List<RepteHistorMantto_DTO> getHistorialManttoEquips(String fechaInic, String fechaFnl, int idEmpresa);
 	
-	public List<RepteHistorMantto_DTO> getHistorialEquipsOTsClosed(String fechaInic, String fechaFnl, String statusClosed);
+	public List<RepteHistorMantto_DTO> getHistorialEquipsOTsClosed(String fechaInic, String fechaFnl, String statusClosed, int idEmpresa);
 	
 	
 	

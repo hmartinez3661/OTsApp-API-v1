@@ -27,11 +27,11 @@ public class PersonalTecnController {
 	
 	
 	
-	@GetMapping(path = "/getAll")
+	@GetMapping(path = "/getAll/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<PersonalTecn_DTO> getListaPersonalTecnico(){	
-	//**************************************************
-		return this.personalTecnService.getLstaDePersonalTecn(); 
+	public List<PersonalTecn_DTO> getListaPersonalTecnico(@PathVariable int idEmpresa){	
+	//******************************************************************************
+		return this.personalTecnService.getLstaDePersonalTecn(idEmpresa); 
 		
 	} 
 	

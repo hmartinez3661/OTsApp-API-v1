@@ -10,7 +10,7 @@ public interface EquiposService {
 	
 	
 	
-	public List<Equipos01_DTO> getLstaTodosLosEquipos();
+	public List<Equipos01_DTO> getLstaTodosLosEquipos(int idEmpresa);
 	
 	public void eliminarEquipoDeBD(int idEquipo);
 	

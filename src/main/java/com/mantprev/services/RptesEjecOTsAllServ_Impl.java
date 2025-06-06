@@ -213,8 +213,8 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTsByDates(String fechaInic, String fechaFnl) {
-	/*********************************************************************************************/
+	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTsByDates(String fechaInic, String fechaFnl, int idEmpresa) {
+	/**************************************************************************************************************/
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
 		
@@ -226,7 +226,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace(); 
 		}
 		
-		List<ReptesPersEjecOTs> listRtesPersTec = rtesPersEjecOTs_Reposit.getReptsPersEjecOTsByFechas(fecha1, fecha2);
+		List<ReptesPersEjecOTs> listRtesPersTec = rtesPersEjecOTs_Reposit.getReptsPersEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<ReptesPersTecn_DTO> listRtesPerEjecOTsDTO = new ArrayList<ReptesPersTecn_DTO>();
 		
 		for (int i=0; i<listRtesPersTec.size(); i++) {
@@ -252,9 +252,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTsByDates2(Date fechaInic, Date fechaFnl) {
-	/*********************************************************************************************/
-		List<ReptesPersEjecOTs> listRtesPersTec = rtesPersEjecOTs_Reposit.getReptsPersEjecOTsByFechas(fechaInic, fechaFnl);
+	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTsByDates2(Date fechaInic, Date fechaFnl, int idEmpresa) {
+	/**************************************************************************************************************/
+		List<ReptesPersEjecOTs> listRtesPersTec = rtesPersEjecOTs_Reposit.getReptsPersEjecOTsByFechas(fechaInic, fechaFnl, idEmpresa);
 		List<ReptesPersTecn_DTO> listRtesPerEjecOTsDTO = new ArrayList<ReptesPersTecn_DTO>();
 		
 		for (int i=0; i<listRtesPersTec.size(); i++) {
@@ -280,7 +280,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<ReptesReptos_DTO> getListReptesReptosEjecOTsByDates(String fechaInic, String fechaFnl, String numFmt) {
+	public List<ReptesReptos_DTO> getListReptesReptosEjecOTsByDates(String fechaInic, String fechaFnl, String numFmt, int idEmpresa) {
 	/*****************************************************************************************************************/
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -289,7 +289,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		String idioma  = dtsLocale[0];
 		String codPais = dtsLocale[1];
 		
-		Locale locale = new Locale(idioma, codPais); //Locale.of(language, country); 
+		Locale locale = Locale.of(idioma, codPais); //Locale.of(language, country); 
 		NumberFormat numberFmt = NumberFormat.getInstance(locale);
 		numberFmt.setMinimumFractionDigits(2);
 		
@@ -301,7 +301,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace(); 
 		}
 		
-		List<RptesReptosEjecOTs> listRtesReptos = rptesReptosEjecOTs_Reposit.getReptesReptosEjecOTsByFechas(fecha1, fecha2);
+		List<RptesReptosEjecOTs> listRtesReptos = rptesReptosEjecOTs_Reposit.getReptesReptosEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<ReptesReptos_DTO> listRtesReptosDTO = new ArrayList<ReptesReptos_DTO>(); 
 		
 		for (int i=0; i<listRtesReptos.size(); i++) {
@@ -332,7 +332,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<RepteHrsParoEquips_DTO> getListReptesHrsParoEquipos(String fechaInic, String fechaFnl) {
+	public List<RepteHrsParoEquips_DTO> getListReptesHrsParoEquipos(String fechaInic, String fechaFnl, int idEmpresa) {
 	/**************************************************************************************************/	
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -345,7 +345,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace(); 
 		}
 		
-		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2);
+		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<RepteHrsParoEquips_DTO> listRtesParoEquDTO = new ArrayList<RepteHrsParoEquips_DTO>(); 
 		
 		for (int i=0; i<listReptesEjec.size(); i++) {
@@ -376,7 +376,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<RepteRecurrFallas_DTO> getListReptesRecurrFallas(String nombrFalla, String fechaInic, String fechaFnl){
+	public List<RepteRecurrFallas_DTO> getListReptesRecurrFallas(String nombrFalla, String fechaInic, String fechaFnl, int idEmpresa) {
 	/*******************************************************************************************************/	
 		nombrFalla = nombrFalla.replace("-", " "); 
 		Date fecha1 = null;  //new Date();
@@ -390,7 +390,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace(); 
 		}
 		
-		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2);
+		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<RepteRecurrFallas_DTO> listRtesRecurrFallasDTO = new ArrayList<RepteRecurrFallas_DTO>(); 
 		
 		for (int i=0; i<listReptesEjec.size(); i++) {
@@ -418,7 +418,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<RepteRecurrFallas_DTO> getListaFallasByFechas(String fechaInic, String fechaFnl) {
+	public List<RepteRecurrFallas_DTO> getListaFallasByFechas(String fechaInic, String fechaFnl, int idEmpresa) {
 	/*********************************************************************************************/	
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -431,7 +431,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace(); 
 		}
 		
-		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2);
+		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<RepteRecurrFallas_DTO> listRtesRecurrFallasDTO = new ArrayList<RepteRecurrFallas_DTO>(); 
 		
 		for (int i=0; i<listReptesEjec.size(); i++) {
@@ -459,7 +459,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<RepteTendAveriasDTO> getDtsAveriasTodosEquipos(String fechaInic, String fechaFnl) {
+	public List<RepteTendAveriasDTO> getDtsAveriasTodosEquipos(String fechaInic, String fechaFnl, int idEmpresa) {
 	/********************************************************************************************/	
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -472,7 +472,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace();
 		}
 		
-		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.findOTsByFechas(fecha1, fecha2);
+		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
 		List<RepteTendAveriasDTO> repteTendAverDTO = new ArrayList<RepteTendAveriasDTO>(); 
 		
 		for (int i=0; i<listaOrdTrab.size(); i++) {
@@ -521,7 +521,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<ReptesEjecOTs_DTO> getlistaReptesEjecucOT(String fechaInic, String fechaFnl) {
+	public List<ReptesEjecOTs_DTO> getlistaReptesEjecucOT(String fechaInic, String fechaFnl, int idEmpresa) {
 	/**************************************************************************************/
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -534,7 +534,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace();
 		}
 		
-		List<ReptesEjecOTs> listRptesEjecOT = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2); 
+		List<ReptesEjecOTs> listRptesEjecOT = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2, idEmpresa); 
 		List<ReptesEjecOTs_DTO> listRtesEjecDTO = new ArrayList<>();
 		
 		for(int i=0; i<listRptesEjecOT.size(); i++) {
@@ -761,7 +761,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<RepteHistorMantto_DTO> getHistorialManttoEquips(String fechaInic, String fechaFnl) {
+	public List<RepteHistorMantto_DTO> getHistorialManttoEquips(String fechaInic, String fechaFnl, int idEmpresa) {
 	/*********************************************************************************************/	
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -774,7 +774,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace();
 		}
 		
-		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.findOTsByFechas(fecha1, fecha2);
+		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
 		List<RepteHistorMantto_DTO> repteHistoricDTO = new ArrayList<RepteHistorMantto_DTO>(); 
 		
 		for (int i=0; i<listaOrdTrab.size(); i++) {
@@ -803,8 +803,8 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<RepteHistorMantto_DTO> getHistorialEquipsOTsClosed(String fechaInic, String fechaFnl, String statusClosed) {
-	/**************************************************************************************************************/	
+	public List<RepteHistorMantto_DTO> getHistorialEquipsOTsClosed(String fechaInic, String fechaFnl, String statusClosed, int idEmpresa) {
+	/**********************************************************************************************************************************/	
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
 		
@@ -816,7 +816,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ex.printStackTrace();
 		}
 		
-		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.findOTsCerradasByFechas(fecha1, fecha2, statusClosed);
+		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.findOTsCerradasByFechas(fecha1, fecha2, idEmpresa, statusClosed);
 		List<RepteHistorMantto_DTO> repteHistoricDTO = new ArrayList<RepteHistorMantto_DTO>(); 
 		
 		for (int i=0; i<listaOrdTrab.size(); i++) {

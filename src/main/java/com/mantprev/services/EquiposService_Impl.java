@@ -33,9 +33,9 @@ public class EquiposService_Impl implements EquiposService {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<Equipos01_DTO> getLstaTodosLosEquipos() {
-	/**************************************************/
-		List<Equipos> listaEquipos = equipos_Reposit.getListaDeTodosLosEquipos();
+	public List<Equipos01_DTO> getLstaTodosLosEquipos(int idEmpresa) {
+	/****************************************************************/
+		List<Equipos> listaEquipos = equipos_Reposit.getListaDeTodosLosEquipos(idEmpresa);
 		List<Equipos01_DTO> listaEquiposDTO = new ArrayList<Equipos01_DTO>();
 		
 		for(int i=0; i<listaEquipos.size(); i++) {

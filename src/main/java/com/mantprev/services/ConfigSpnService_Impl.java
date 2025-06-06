@@ -73,62 +73,28 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 
 	@Transactional
 	@Override
-	public String actualizarEjecutorOTs(int idItemConf, String nombreEjecut, String idioma) {
+	public String actualizarEjecutorOTs(int idItemConf, String nombreEjecut, int idEmpresa) {
 	/***********************************************************************/
-		String idiomaSpinners = idioma;
+		
 		String strReturn = "";
 		
 		if (nombreEjecut.equals("-")){
 			nombreEjecut = "";
 		}  
 		
-		if (idiomaSpinners.equals("es")) {
-			
-			Optional<ConfigSpn_Espa> configOptEs = configSpnEspa_Reposit.findById(idItemConf); 
-        	
-        	if (configOptEs != null) {
-        		
-        		ConfigSpn_Espa configSpn = configOptEs.get();
-        		configSpn.setEjecutoresOTs(nombreEjecut);
-        		
-        		configSpnEspa_Reposit.save(configSpn);
-        		strReturn = "EXITO";
-        		
-        	} else {
-        		strReturn = "FALLO EN ACTUALIZACION";
-        	}
-			
-		} else if (idiomaSpinners.equals("pt")) {
-			Optional<ConfigSpn_Port> configPtOpt = configSpnPort_Reposit.findById(idItemConf);
-        	
-        	if (configPtOpt != null) {
-        		
-        		ConfigSpn_Port configSpn = configPtOpt.get();
-        		configSpn.setEjecutoresOTs(nombreEjecut);
-        		
-        		configSpnPort_Reposit.save(configSpn);
-        		strReturn = "EXITO";
-        		
-        	} else {
-        		strReturn = "FALLO EN ACTUALIZACION";
-        	}
-			
-		} else if (idiomaSpinners.equals("en")) {
-			
-			Optional<ConfigSpn_Ingl> configInglOpt = configSpnIngl_Reposit.findById(idItemConf);
-        	
-        	if (configInglOpt != null) {
-        		
-        		ConfigSpn_Ingl configSpn = configInglOpt.get();
-        		configSpn.setEjecutoresOTs(nombreEjecut);
-        		
-        		configSpnIngl_Reposit.save(configSpn);
-        		strReturn = "EXITO";
-        		
-        	} else {
-        		strReturn = "FALLO EN ACTUALIZACION";
-        	}
-		}
+		Optional<ConfigSpinners> configOpt = configSpinner_Reposit.findById(idItemConf); 
+    	
+    	if (configOpt != null) {
+    		
+    		ConfigSpinners configSpn = configOpt.get();
+    		configSpn.setEjecutoresOTs(nombreEjecut);
+    		
+    		configSpinner_Reposit.save(configSpn);
+    		strReturn = "EXITO";
+    		
+    	} else {
+    		strReturn = "FALLO EN ACTUALIZACION";
+    	}
 		
 		return strReturn;
 	}

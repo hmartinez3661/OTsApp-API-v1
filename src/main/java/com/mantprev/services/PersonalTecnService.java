@@ -7,7 +7,7 @@ import com.mantprev.entidadesDTO.PersonalTecn_DTO;
 
 public interface PersonalTecnService {
 	
-	public List<PersonalTecn_DTO> getLstaDePersonalTecn(); 
+	public List<PersonalTecn_DTO> getLstaDePersonalTecn(int idEmpresa); 
 	
 	public String registrarNuevoTecnico(String nombrTecnico, String tipoEjecutor);
 	

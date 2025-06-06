@@ -45,19 +45,19 @@ public class ConfigSpinersController {
 	} 
 	
 	
-	@PutMapping(path = "/updateEjec/{idItemConf}/{nombreEjecut}/{idioma}") 
+	@PutMapping(path = "/updateEjec/{idItemConf}/{nombreEjecut}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String actualizarEjecutorOTs(@PathVariable int idItemConf, @PathVariable String nombreEjecut, @PathVariable String idioma){
+	public String actualizarEjecutorOTs(@PathVariable int idItemConf, @PathVariable String nombreEjecut, @PathVariable int idEmpresa){
 	/*************************************************************************************************/	
-		return this.configSpnService.actualizarEjecutorOTs(idItemConf, nombreEjecut, idioma); 
+		return this.configSpnService.actualizarEjecutorOTs(idItemConf, nombreEjecut, idEmpresa); 
 	}
 	
 	
-	@PutMapping(path = "/updateClasif/{idItemConf}/{nombreClasif}/{idioma}") 
+	@PutMapping(path = "/updateClasif/{idItemConf}/{nombreClasif}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String actualizarClasificOTs(@PathVariable int idItemConf, @PathVariable String nombreClasif, @PathVariable String idioma){
+	public String actualizarClasificOTs(@PathVariable int idItemConf, @PathVariable String nombreClasif, @PathVariable int idEmpresa){
 	/*************************************************************************************************/	
-		return this.configSpnService.actualizarClasificOTs(idItemConf, nombreClasif, idioma); 
+		return this.configSpnService.actualizarClasificOTs(idItemConf, nombreClasif, idEmpresa); 
 	}
 	
 	

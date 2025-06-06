@@ -42,11 +42,11 @@ public class OrdenesTrabajoController {
 	}
 	
 	
-	@GetMapping(path = "/getInfHome/{fechaInic}/{fechaFinal}") // @GetMapping
+	@GetMapping(path = "/getInfHome/{fechaInic}/{fechaFinal}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<OrdTrabInformHomeDTO> getInfomHomeDeOTs(@PathVariable String fechaInic, @PathVariable String fechaFinal){	
+	public List<OrdTrabInformHomeDTO> getInfomHomeDeOTs(@PathVariable String fechaInic, @PathVariable String fechaFinal, @PathVariable int idEmpresa){	
 	//************************************************************************************************************
-		return this.ordsTrabServices.getInformHomeDeOTs(fechaInic, fechaFinal); 
+		return this.ordsTrabServices.getInformHomeDeOTs(fechaInic, fechaFinal, idEmpresa); 
 	} 
 	
 	
@@ -66,11 +66,11 @@ public class OrdenesTrabajoController {
 	} 
 	
 	
-	@GetMapping(path = "/getOTsByFechas/{fechaInic}/{fechaFinal}")
+	@GetMapping(path = "/getOTsByFechas/{fechaInic}/{fechaFinal}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<OrdTrabInformOtDTO> getListaOTsByFechas(@PathVariable String fechaInic, @PathVariable String fechaFinal){	
+	public List<OrdTrabInformOtDTO> getListaOTsByFechas(@PathVariable String fechaInic, @PathVariable String fechaFinal, @PathVariable int idEmpresa){	
 	//***********************************************************************************************************
-		return this.ordsTrabServices.getListOTsEntre2Fechas(fechaInic, fechaFinal);
+		return this.ordsTrabServices.getListOTsEntre2Fechas(fechaInic, fechaFinal, idEmpresa);
 	} 
 	
 	
@@ -78,17 +78,17 @@ public class OrdenesTrabajoController {
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
 	public List<OrdTrabInformOtDTO> getListaOTsByFechasUser(@PathVariable String fechaInic, 
 														    @PathVariable String fechaFinal, 
-														    @PathVariable String nombrUser){	
-	//*************************************************************************************
-		return this.ordsTrabServices.getListOTsByFechasUser(fechaInic, fechaFinal, nombrUser);
+														    @PathVariable String nombrUser, @PathVariable int idEmpresa){	
+	//*****************************************************************************************************************
+		return this.ordsTrabServices.getListOTsByFechasUser(fechaInic, fechaFinal, nombrUser, idEmpresa);
 	} 
 	
 	
 	@GetMapping(path = "/OTsLast30days/{fechaInic}/{fechaFinal}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<OrdTrabInformOtDTO> getListaOTsLast30days(@PathVariable String fechaInic, @PathVariable String fechaFinal){	
+	public List<OrdTrabInformOtDTO> getListaOTsLast30days(@PathVariable String fechaInic, @PathVariable String fechaFinal, @PathVariable int idEmpresa){	
 	//***********************************************************************************************************
-		return this.ordsTrabServices.getListOTsEntre2Fechas(fechaInic, fechaFinal);
+		return this.ordsTrabServices.getListOTsEntre2Fechas(fechaInic, fechaFinal, idEmpresa);
 	} 
 	
 	
@@ -96,9 +96,9 @@ public class OrdenesTrabajoController {
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
 	public List<OrdTrabInformOtDTO> getListaOTsLast30daysUser(@PathVariable String fechaInic, 
 														     @PathVariable String fechaFinal, 
-														     @PathVariable String nombrUser){
+														     @PathVariable String nombrUser, @PathVariable int idEmpresa){
 	//***************************************************************************************
-		return this.ordsTrabServices.getListOTsByFechasUser(fechaInic, fechaFinal, nombrUser);
+		return this.ordsTrabServices.getListOTsByFechasUser(fechaInic, fechaFinal, nombrUser, idEmpresa);
 	} 
 	
 	

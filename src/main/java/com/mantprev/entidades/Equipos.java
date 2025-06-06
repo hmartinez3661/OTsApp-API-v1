@@ -38,7 +38,7 @@ public class Equipos{
     private Double costoHoraParo;
     private String caractTecnicas;
     private String nombFotoEquip;
-	private int idEmpresa;
+	private Integer idEmpresa;
     
     
     //* RELACIONES ENTRE TABLAS ******************************************************************
@@ -133,13 +133,15 @@ public class Equipos{
 		this.nombFotoEquip = nombFotoEquip;
 	}
 
-	public int getIdEmpresa() {
+	public Integer getIdEmpresa() {
 		return idEmpresa;
 	}
 
-	public void setIdEmpresa(int idEmpresa) {
+	public void setIdEmpresa(Integer idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
+
+	
 
 	
 

@@ -35,7 +35,7 @@ public class Personal_Tecnico{
     private String fotoEmpl;
     private String informAdic;
     private String statusPers;  // Activo -- Inactivo
-	private int idEmpresa;
+	private Integer idEmpresa;
     
     
     /* RELACION ENTRE TABLAS *********************************/
@@ -146,13 +146,15 @@ public class Personal_Tecnico{
 		this.statusPers = statusPers;
 	}
 
-	public int getIdEmpresa() {
+	public Integer getIdEmpresa() {
 		return idEmpresa;
 	}
 
-	public void setIdEmpresa(int idEmpresa) {
+	public void setIdEmpresa(Integer idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
+
+	
 
 	
 

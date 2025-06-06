@@ -16,12 +16,12 @@ public interface OrdsTrab_Repository extends CrudRepository <OrdenesTrabajo, Int
 
 	
 	
-	@Query("select T from OrdenesTrabajo T where T.fechaIngresoOT between :fecha1 and :fecha2")
-    public List<OrdenesTrabajo> findOTsByFechas(@Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2);
+	@Query("select T from OrdenesTrabajo T where T.fechaIngresoOT between :fecha1 and :fecha2 AND T.idEmpresa =:idEmpresa") // AND T.idEmpresa = ?3
+	public List<OrdenesTrabajo> getOTsByFechas(@Param("idEmpresa") int idEmpresa, @Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2);
 	
 	
-	@Query("select T from OrdenesTrabajo T where T.fechaIngresoOT between :fecha1 and :fecha2 and T.estatusOT = :statusOTs order by T.idOT")
-    public List<OrdenesTrabajo> findOTsCerradasByFechas(@Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2, @Param("statusOTs") String statusOTs);
+	@Query("select T from OrdenesTrabajo T where T.fechaIngresoOT between :fecha1 and :fecha2 and T.estatusOT = :statusOTs AND T.idEmpresa =:idEmpresa order by T.idOT")
+    public List<OrdenesTrabajo> findOTsCerradasByFechas(@Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2, @Param("idEmpresa") int idEmpresa, @Param("statusOTs") String statusOTs);
 	
 	
 	@Query("select T from OrdenesTrabajo T where T.estatusOT = ?1 order by T.idOT desc")

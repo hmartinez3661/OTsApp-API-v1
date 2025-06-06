@@ -14,7 +14,7 @@ public interface ConfigSpnService {
 	
 	public List<ConfigSpinners_DTO> getConfiguracSpinners(int idEmpresa);
 	
-	public String actualizarEjecutorOTs(int idItemConf, String nombreEjecut, String idioma);
+	public String actualizarEjecutorOTs(int idItemConf, String nombreEjecut, int idEmpresa);
 	
 	public String actualizarClasificOTs(int idItemConf, String nombreClasif, String idioma);
 	

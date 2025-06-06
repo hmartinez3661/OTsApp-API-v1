@@ -14,9 +14,9 @@ import com.mantprev.security.UserRegisterRequest;
 public interface UsuariosService {
 	
 	
-	public List<Usuarios01_DTO> getLstaDeSupervisores(); 
+	public List<Usuarios01_DTO> getLstaDeSupervisores(int idEmpresa); 
 	
-	public List<Usuarios01_DTO> getLstaDeUsuarios();  
+	public List<Usuarios01_DTO> getLstaDeUsuarios(int idEmpresa);  
 	
 	public String guardarNvoUsuario(Usuarios nvoUsuario);
 	
@@ -42,7 +42,7 @@ public interface UsuariosService {
 	
 	public String getPasswProvisional(String emailUsuario); 
 	
-	public String actualizarDatosEmpresa(String nombreEmpresa, int nvaCantMaxUsers, Date nvaFechaExpirac);
+	public String actualizarDatosEmpresa(int idEmpresa, int nvaCantMaxUsers, Date nvaFechaExpirac);
 
 	public Usuarios01_DTO getUsuarioByEmail(String emailUser);
 	

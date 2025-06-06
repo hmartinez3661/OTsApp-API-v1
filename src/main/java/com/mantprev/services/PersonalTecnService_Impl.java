@@ -26,9 +26,9 @@ public class PersonalTecnService_Impl implements PersonalTecnService {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<PersonalTecn_DTO> getLstaDePersonalTecn() {
-	/***************************************************/
-		List<Personal_Tecnico> listaPersTecn = persTecnico_Reposit.getListaPersonalTecnico();
+	public List<PersonalTecn_DTO> getLstaDePersonalTecn(int idEmpresa) {
+	/*****************************************************************/
+		List<Personal_Tecnico> listaPersTecn = persTecnico_Reposit.getListaPersonalTecnico(idEmpresa);
 		List<PersonalTecn_DTO> listaPersTecnDTO = new ArrayList<PersonalTecn_DTO>();
 		
 		for(int i=0; i<listaPersTecn.size(); i++) {

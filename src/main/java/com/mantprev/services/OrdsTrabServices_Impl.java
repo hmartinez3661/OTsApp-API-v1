@@ -101,7 +101,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 	
 	@Transactional(readOnly = true) 
 	@Override
-	public List<OrdTrabInformHomeDTO> getInformHomeDeOTs(String fechaInic, String fechaFinal) {
+	public List<OrdTrabInformHomeDTO> getInformHomeDeOTs(String fechaInic, String fechaFinal, int idEmpresa) {
 	/****************************************************************************************/
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -114,7 +114,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 			ex.printStackTrace(); 
 		}
 		
-		List<OrdenesTrabajo> listaOTs = ordsTrab_Reposit.findOTsByFechas(fecha1, fecha2);
+		List<OrdenesTrabajo> listaOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
 		List<OrdTrabInformHomeDTO> infomHomeOTsDTO = new ArrayList<OrdTrabInformHomeDTO>();
 		
 		for(int i=0; i<listaOTs.size(); i++) {
@@ -230,7 +230,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<OrdTrabInformOtDTO> getListOTsEntre2Fechas(String fechaInic, String fechaFinal) {
+	public List<OrdTrabInformOtDTO> getListOTsEntre2Fechas(String fechaInic, String fechaFinal, int idEmpresa) {
 	/******************************************************************************************/ 
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -243,7 +243,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 			ex.printStackTrace(); 
 		}
 		
-		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.findOTsByFechas(fecha1, fecha2);
+		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
 		ArrayList<OrdTrabInformOtDTO> listOTsByFechasDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
@@ -271,7 +271,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<OrdTrabInformOtDTO> getListOTsByFechasUser(String fechaInic, String fechaFinal, String nombrUser) {
+	public List<OrdTrabInformOtDTO> getListOTsByFechasUser(String fechaInic, String fechaFinal, String nombrUser, int idEmpresa) {
 	/*********************************************************************************************************/
 		Date fecha1 = null;  //new Date();
 		Date fecha2 = null;  //new Date(); 
@@ -284,7 +284,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 			ex.printStackTrace(); 
 		}
 		
-		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.findOTsByFechas(fecha1, fecha2);
+		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
 		ArrayList<OrdTrabInformOtDTO> listOTsByFechasDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		

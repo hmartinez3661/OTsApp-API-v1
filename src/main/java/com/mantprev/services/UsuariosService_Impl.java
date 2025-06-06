@@ -52,9 +52,9 @@ public class UsuariosService_Impl implements UsuariosService {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<Usuarios01_DTO> getLstaDeSupervisores() {
+	public List<Usuarios01_DTO> getLstaDeSupervisores(int idEmpresa) {
 	/**************************************************/
-		List<Usuarios> listaUsuarios = (List<Usuarios>) usuariosReposit.findAll();
+		List<Usuarios> listaUsuarios = usuariosReposit.getUsuariosByIdEmpresa(idEmpresa);
 		List<Usuarios01_DTO> listaUsuariosDTO = new ArrayList<Usuarios01_DTO>();
 		
 		for(int i=0; i<listaUsuarios.size(); i++) {
@@ -81,9 +81,9 @@ public class UsuariosService_Impl implements UsuariosService {
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<Usuarios01_DTO> getLstaDeUsuarios() {
+	public List<Usuarios01_DTO> getLstaDeUsuarios(int idEmpresa) {
 	/************************************************/
-		List<Usuarios> listaUsuarios = (List<Usuarios>) usuariosReposit.findAll();
+		List<Usuarios> listaUsuarios = usuariosReposit.getUsuariosByIdEmpresa(idEmpresa);
 		List<Usuarios01_DTO> listaUduariosDTO = new ArrayList<Usuarios01_DTO>();
 		
 		for(int i=0; i<listaUsuarios.size(); i++) {
@@ -396,9 +396,9 @@ public class UsuariosService_Impl implements UsuariosService {
 
 	@Transactional
 	@Override
-	public String actualizarDatosEmpresa(String nombreEmpresa, int nvaCantMaxUsers, Date nvaFechaExpirac) {
-	/*****************************************************************************************************/ 
-		List<Usuarios> listaUsuarios = usuariosReposit.getUsuariosByNombreEmpresa(nombreEmpresa);
+	public String actualizarDatosEmpresa(int idEmpresa, int nvaCantMaxUsers, Date nvaFechaExpirac) {
+	/**********************************************************************************************/ 
+		List<Usuarios> listaUsuarios = usuariosReposit.getUsuariosByIdEmpresa(idEmpresa);
 		ArrayList<Usuarios> nvaListaUsuarios = new ArrayList<Usuarios>();
 		
 		for (int i=0; i<listaUsuarios.size(); i++) {

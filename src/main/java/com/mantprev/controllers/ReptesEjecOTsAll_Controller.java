@@ -91,62 +91,63 @@ public class ReptesEjecOTsAll_Controller {
 	} 
 	
 	
-	@GetMapping(path = "/getRtesPers/{fechaInic}/{fechaFnl}") // @GetMapping
+	@GetMapping(path = "/getRtesPers/{fechaInic}/{fechaFnl}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<ReptesPersTecn_DTO> getListReptsPersEjecOTsByDates(@PathVariable String fechaInic, @PathVariable String fechaFnl){	
+	public List<ReptesPersTecn_DTO> getListReptsPersEjecOTsByDates(@PathVariable String fechaInic, @PathVariable String fechaFnl, @PathVariable int idEmpresa){	
 	//************************************************************************************************************
-		return this.rptesEjecOTsAllServ.getListReptesPersEjecOTsByDates(fechaInic, fechaFnl); 
+		return this.rptesEjecOTsAllServ.getListReptesPersEjecOTsByDates(fechaInic, fechaFnl, idEmpresa); 
 	} 
 	
 	
-	@GetMapping(path = "/getRtesPers2/{fechaInic}/{fechaFnl}") // @GetMapping
+	@GetMapping(path = "/getRtesPers2/{fechaInic}/{fechaFnl}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<ReptesPersTecn_DTO> getListReptsPersEjecOTsByDates2(@PathVariable Date fechaInic, @PathVariable Date fechaFnl){	
-	//************************************************************************************************************
-		return this.rptesEjecOTsAllServ.getListReptesPersEjecOTsByDates2(fechaInic, fechaFnl); 
+	public List<ReptesPersTecn_DTO> getListReptsPersEjecOTsByDates2(@PathVariable Date fechaInic, @PathVariable Date fechaFnl, @PathVariable int idEmpresa){	
+	//*************************************************************************************************************************************************
+		return this.rptesEjecOTsAllServ.getListReptesPersEjecOTsByDates2(fechaInic, fechaFnl, idEmpresa); 
 	} 
 	
 	
-	@GetMapping(path = "/getRtesReptos/{fechaInic}/{fechaFnl}/{numFmt}") // @GetMapping
+	@GetMapping(path = "/getRtesReptos/{fechaInic}/{fechaFnl}/{numFmt}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<ReptesReptos_DTO> getListReptsReptosEjecOTsByDates(@PathVariable String fechaInic, @PathVariable String fechaFnl, @PathVariable String numFmt){	
+	public List<ReptesReptos_DTO> getListReptsReptosEjecOTsByDates(@PathVariable String fechaInic, 
+																   @PathVariable String fechaFnl, @PathVariable String numFmt, @PathVariable int idEmpresa){
 	//************************************************************************************************************
-		return this.rptesEjecOTsAllServ.getListReptesReptosEjecOTsByDates(fechaInic, fechaFnl, numFmt); 
+		return this.rptesEjecOTsAllServ.getListReptesReptosEjecOTsByDates(fechaInic, fechaFnl, numFmt, idEmpresa); 
 	} 
 	
 	
-	@GetMapping(path = "/getRtesHrsParo/{fechaInic}/{fechaFnl}") // @GetMapping
+	@GetMapping(path = "/getRtesHrsParo/{fechaInic}/{fechaFnl}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RepteHrsParoEquips_DTO> getListReptesHrsParoEquipos(@PathVariable String fechaInic, @PathVariable String fechaFnl){	
+	public List<RepteHrsParoEquips_DTO> getListReptesHrsParoEquipos(@PathVariable String fechaInic, @PathVariable String fechaFnl, @PathVariable int idEmpresa){
 	//************************************************************************************************************
-		return this.rptesEjecOTsAllServ.getListReptesHrsParoEquipos(fechaInic, fechaFnl); 
+		return this.rptesEjecOTsAllServ.getListReptesHrsParoEquipos(fechaInic, fechaFnl, idEmpresa); 
 	} 
 	
 	
-	@GetMapping(path = "/getRteRecurrFalla/{nombrFalla}/{fechaInic}/{fechaFnl}") // @GetMapping
+	@GetMapping(path = "/getRteRecurrFalla/{nombrFalla}/{fechaInic}/{fechaFnl}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
 	public List<RepteRecurrFallas_DTO> getListReptesRecurrFallas(@PathVariable String nombrFalla,
 																 @PathVariable String fechaInic, 
-																 @PathVariable String fechaFnl) {	
+																 @PathVariable String fechaFnl, @PathVariable int idEmpresa){
 	//*******************************************************************************************
-		return this.rptesEjecOTsAllServ.getListReptesRecurrFallas(nombrFalla, fechaInic, fechaFnl); 
+		return this.rptesEjecOTsAllServ.getListReptesRecurrFallas(nombrFalla, fechaInic, fechaFnl, idEmpresa); 
 	} 
 	
 	
-	@GetMapping(path = "/getListFallas/{fechaInic}/{fechaFnl}") // @GetMapping
+	@GetMapping(path = "/getListFallas/{fechaInic}/{fechaFnl}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RepteRecurrFallas_DTO> getListReptesRecurrFallas(@PathVariable String fechaInic, @PathVariable String fechaFnl) {	
+	public List<RepteRecurrFallas_DTO> getListReptesRecurrFallas(@PathVariable String fechaInic, @PathVariable String fechaFnl, @PathVariable int idEmpresa) {	
 	//**************************************************************************************************************
-		return this.rptesEjecOTsAllServ.getListaFallasByFechas(fechaInic, fechaFnl); 
+		return this.rptesEjecOTsAllServ.getListaFallasByFechas(fechaInic, fechaFnl, idEmpresa); 
 		
 	} 
 	
 	
-	@GetMapping(path = "/getRepteAver/{fechaInic}/{fechaFnl}") // @GetMapping
+	@GetMapping(path = "/getRepteAver/{fechaInic}/{fechaFnl}/{idEmpresa}")// @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RepteTendAveriasDTO> getDtsAveriasTodosEquipos(@PathVariable String fechaInic, @PathVariable String fechaFnl) {	
+	public List<RepteTendAveriasDTO> getDtsAveriasTodosEquipos(@PathVariable String fechaInic, @PathVariable String fechaFnl, @PathVariable int idEmpresa) {	
 	//**************************************************************************************************************
-		return this.rptesEjecOTsAllServ.getDtsAveriasTodosEquipos(fechaInic, fechaFnl);
+		return this.rptesEjecOTsAllServ.getDtsAveriasTodosEquipos(fechaInic, fechaFnl, idEmpresa);
 		
 	} 
 	
@@ -159,11 +160,11 @@ public class ReptesEjecOTsAll_Controller {
 	} 
 	
 	
-	@GetMapping(path = "/getListReptesEjec/{fechaInic}/{fechaFnl}")
+	@GetMapping(path = "/getListReptesEjec/{fechaInic}/{fechaFnl}/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<ReptesEjecOTs_DTO> getListReptesEjecOT(@PathVariable String fechaInic, @PathVariable String fechaFnl){	
+	public List<ReptesEjecOTs_DTO> getListReptesEjecOT(@PathVariable String fechaInic, @PathVariable String fechaFnl, @PathVariable int idEmpresa){
 	//***************************************************************
-		return this.rptesEjecOTsAllServ.getlistaReptesEjecucOT(fechaInic, fechaFnl); 
+		return this.rptesEjecOTsAllServ.getlistaReptesEjecucOT(fechaInic, fechaFnl, idEmpresa); 
 	} 
 	
 	
@@ -219,20 +220,20 @@ public class ReptesEjecOTsAll_Controller {
 	}
 	
 	
-	@GetMapping(path = "/historEquips/{fechaInic}/{fechaFnl}") // @GetMapping
+	@GetMapping(path = "/historEquips/{fechaInic}/{fechaFnl}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<RepteHistorMantto_DTO> getHistorialManttoEquips(@PathVariable String fechaInic, @PathVariable String fechaFnl) {	
+	public List<RepteHistorMantto_DTO> getHistorialManttoEquips(@PathVariable String fechaInic, @PathVariable String fechaFnl, @PathVariable int idEmpresa) {	
 	//**************************************************************************************************************
-		return this.rptesEjecOTsAllServ.getHistorialManttoEquips(fechaInic, fechaFnl);
+		return this.rptesEjecOTsAllServ.getHistorialManttoEquips(fechaInic, fechaFnl, idEmpresa);
 	} 
 	
 	
-	@GetMapping(path = "/historEquips2/{fechaInic}/{fechaFnl}/{statusClosed}") // @GetMapping
+	@GetMapping(path = "/historEquips2/{fechaInic}/{fechaFnl}/{statusClosed}/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
 	public List<RepteHistorMantto_DTO> getHistorialEquipsOTsClosed(@PathVariable String fechaInic, @PathVariable String fechaFnl,
-																   @PathVariable String statusClosed) {	
-	//**************************************************************************************************************
-		return this.rptesEjecOTsAllServ.getHistorialEquipsOTsClosed(fechaInic, fechaFnl, statusClosed);
+																   @PathVariable String statusClosed, @PathVariable int idEmpresa) {	
+	//*******************************************************************************************************************************
+		return this.rptesEjecOTsAllServ.getHistorialEquipsOTsClosed(fechaInic, fechaFnl, statusClosed, idEmpresa);
 	} 
 	
 	

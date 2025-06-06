@@ -19,6 +19,7 @@ public interface ConfigSpnEspa_Repository extends CrudRepository <ConfigSpn_Espa
 	@Query("select C.estatusOTs from ConfigSpn_Espa C where C.estatusOTs <> '' ")
     List<String> getItemsDeStatusDeOTs();
 	
+	
 	@Query("select C from ConfigSpn_Espa C")
 	List<ConfigSpn_Espa> getConfigSpinners();
 	

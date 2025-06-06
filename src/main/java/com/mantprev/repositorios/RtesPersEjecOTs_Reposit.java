@@ -17,8 +17,9 @@ public interface RtesPersEjecOTs_Reposit extends JpaRepository<ReptesPersEjecOTs
 /*****************************************************************************************/
     
 	
-	@Query("select R from ReptesPersEjecOTs R where R.fechaEjec between :fecha1 and :fecha2")
-    public List<ReptesPersEjecOTs> getReptsPersEjecOTsByFechas(@Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2);
+	@Query("select R from ReptesPersEjecOTs R where R.fechaEjec between :fecha1 and :fecha2 AND R.idEmpresa =:idEmpresa")
+    public List<ReptesPersEjecOTs> getReptsPersEjecOTsByFechas(@Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2,  @Param("idEmpresa") int idEmpresa);
+	
 	
 	@Query("select R from ReptesPersEjecOTs R where R.idOT = ?1")
     List<ReptesPersEjecOTs> getReportesPersonalTrabajoOT(int idOT);

@@ -30,20 +30,20 @@ public class UsuariosController {
 	
 	
 	
-	@GetMapping(path = "/getSuperv")
+	@GetMapping(path = "/getSuperv/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<Usuarios01_DTO> getListaDeSupervisores(){	
+	public List<Usuarios01_DTO> getListaDeSupervisores(@PathVariable int idEmpresa){		
 	//**************************************************
-		return this.usuariosService.getLstaDeSupervisores(); 
+		return this.usuariosService.getLstaDeSupervisores(idEmpresa); 
 		
 	} 
 	
 	
-	@GetMapping(path = "/getAll")
+	@GetMapping(path = "/getAll/{idEmpresa}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<Usuarios01_DTO> getLstaDeUsuarios(){	
-	//**********************************************
-		return this.usuariosService.getLstaDeUsuarios(); 
+	public List<Usuarios01_DTO> getLstaDeUsuarios(@PathVariable int idEmpresa){	
+	//************************************************************
+		return this.usuariosService.getLstaDeUsuarios(idEmpresa); 
 		
 	} 
 	
@@ -100,18 +100,18 @@ public class UsuariosController {
 	
 	@GetMapping(path = "/getUserByEmail/{emailUsuario}")
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public Usuarios getUsuarioByID(@PathVariable String emailUsuario){	
+	public Usuarios getUsuarioByEmail(@PathVariable String emailUsuario){	
 	//***************************************************************
 		return this.usuariosService.getUserByEmail(emailUsuario); 
 		
 	} 
 	
 	
-	@PutMapping(path = "/updateDtsEmpr/{nombreEmpresa}/{nvaCantMaxUsers}/{nvaFechaExpirac}") 
+	@PutMapping(path = "/updateDtsEmpr/{idEmpresa}/{nvaCantMaxUsers}/{nvaFechaExpirac}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String actualizarDatosEmpresa(@PathVariable String nombreEmpresa, @PathVariable int nvaCantMaxUsers, @PathVariable Date nvaFechaExpirac){ 
+	public String actualizarDatosEmpresa(@PathVariable int idEmpresa, @PathVariable int nvaCantMaxUsers, @PathVariable Date nvaFechaExpirac){ 
 	/**************************************************************************************************************************************/	
-		return this.usuariosService.actualizarDatosEmpresa(nombreEmpresa, nvaCantMaxUsers, nvaFechaExpirac); 
+		return this.usuariosService.actualizarDatosEmpresa(idEmpresa, nvaCantMaxUsers, nvaFechaExpirac); 
 		
 	}
 	

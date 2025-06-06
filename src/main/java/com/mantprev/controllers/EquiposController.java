@@ -29,11 +29,11 @@ public class EquiposController {
 	
 	
 	
-	@GetMapping(path = "/getAll") // @GetMapping
+	@GetMapping(path = "/getAll/{idEmpresa}") // @GetMapping
 	@ResponseStatus(HttpStatus.OK) //Cod. 200  
-	public List<Equipos01_DTO> getListaEquipos(){	
-	//******************************************
-		return this.equiposService.getLstaTodosLosEquipos();
+	public List<Equipos01_DTO> getListaEquipos(@PathVariable int idEmpresa){	
+	//*********************************************************************
+		return this.equiposService.getLstaTodosLosEquipos(idEmpresa);
 	} 
 	
 	

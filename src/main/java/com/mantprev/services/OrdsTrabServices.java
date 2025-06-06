@@ -17,15 +17,15 @@ public interface OrdsTrabServices {
 	
 	public String actualizarStatusDeOT(int idOrdTrab, String newStatusOT); 
 	
-	public List<OrdTrabInformHomeDTO> getInformHomeDeOTs(String fechaInic, String fechaFinal);
+	public List<OrdTrabInformHomeDTO> getInformHomeDeOTs(String fechaInic, String fechaFinal, int idEmpresa);
 	
 	public List<OrdTrabInformOtDTO> getListaDeOTsNuevas(String idioma);
 	
 	public List<OrdTrabInformOtDTO> getListaNewOTsByEjecutor(String ejecutor, String idioma);
 	
-	public List<OrdTrabInformOtDTO> getListOTsEntre2Fechas(String fechaInic, String fechaFinal);
+	public List<OrdTrabInformOtDTO> getListOTsEntre2Fechas(String fechaInic, String fechaFinal, int idEmpresa);
 	
-	public List<OrdTrabInformOtDTO> getListOTsByFechasUser(String fechaInic, String fechaFinal, String nombrUser); 
+	public List<OrdTrabInformOtDTO> getListOTsByFechasUser(String fechaInic, String fechaFinal, String nombrUser, int idEmpresa); 
 	
 	public List<OrdTrabInformOtDTO> getListOTsParaCerrar(String status1, String status2);
 	
