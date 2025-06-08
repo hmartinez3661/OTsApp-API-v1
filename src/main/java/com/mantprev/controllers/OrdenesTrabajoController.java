@@ -160,11 +160,11 @@ public class OrdenesTrabajoController {
 	} 
 	
 	
-	@PostMapping(path = "/saveDocumentOT/{idOT}") 
+	@PostMapping(path = "/saveDocumentOT/{idOT}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.OK) //Cod. 200 
-	public String saveDatosDocOT(@RequestParam MultipartFile file, @PathVariable int idOT){
-	/********************************************************************************/	
-		ordsTrabServices.saveDocumentoOT(file, idOT);
+	public String saveDatosDocOT(@RequestParam MultipartFile file, @PathVariable int idOT, @PathVariable int idEmpresa){
+	/*********************************************************************************************************/	
+		ordsTrabServices.saveDocumentoOT(file, idOT, idEmpresa);
 		return "OK";
 	}
 	

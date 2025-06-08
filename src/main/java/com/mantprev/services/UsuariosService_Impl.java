@@ -237,7 +237,7 @@ public class UsuariosService_Impl implements UsuariosService {
 		Usuarios usuario = null;
 		
 		try {
-			usuario = usuariosReposit.getUsuarioByEmail(emailUsuario).get(0);
+			usuario = usuariosReposit.getUsuarioByEmail2(emailUsuario);
 			usuario.setPasswordEncrip(null);
 			usuario.setPasswordNormal(null);
 			return usuario;

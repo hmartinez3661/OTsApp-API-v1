@@ -41,7 +41,7 @@ public interface OrdsTrabServices {
 
 	public List<Documentos_OTs> getListaDocumentosOT(int idOT);
 	
-	public String saveDocumentoOT(MultipartFile fileDoc, int idOT);
+	public String saveDocumentoOT(MultipartFile fileDoc, int idOT, int idEmpresa);
 	
 	
 	

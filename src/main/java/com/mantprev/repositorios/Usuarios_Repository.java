@@ -27,6 +27,10 @@ public interface Usuarios_Repository extends CrudRepository <Usuarios, Integer>{
     public List<Usuarios> getUsuarioByEmail(String emailUsuario);	
 	
 	
+	@Query("select U from Usuarios U where U.emailUsuario = ?1")
+    public Usuarios getUsuarioByEmail2(String emailUsuario);	
+	
+	
 	public Optional<Usuarios> findOneByEmailUsuario(String emailUsuario);	
 	
 	

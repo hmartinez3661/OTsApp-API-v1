@@ -26,7 +26,7 @@ import com.mantprev.services.FotosOTsService;
 @RestController
 @RequestMapping("/api/v1/fotosOTs")
 public class FotosOTsController {
-
+	
 	
 	@Autowired
 	FotosOTsService fotosIngrOTsServ;
@@ -88,11 +88,11 @@ public class FotosOTsController {
 	}
 	
 	
-	@PostMapping(path = "/uploadImgCierre/{idOT}") 
+	@PostMapping(path = "/uploadImgCierre/{idOT}/{idEmpresa}") 
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String uploadFtosCierreToServer(@RequestParam MultipartFile file, @PathVariable int idOT){
+	public String uploadFtosCierreToServer(@RequestParam MultipartFile file, @PathVariable int idOT, @PathVariable int idEmpresa){
 	/*****************************************************************************************/
-		return this.fotosIngrOTsServ.uploadImgsCierreOTsToServer(file, idOT);
+		return this.fotosIngrOTsServ.uploadImgsCierreOTsToServer(file, idOT, idEmpresa);
 	}
 	
 	

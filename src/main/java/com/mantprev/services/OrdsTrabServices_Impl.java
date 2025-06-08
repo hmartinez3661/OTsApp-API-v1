@@ -106,7 +106,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 			ex.printStackTrace(); 
 		}
 		
-		List<OrdenesTrabajo> listaOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
+		List<OrdenesTrabajo> listaOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);   //idEmpresa
 		List<OrdTrabInformHomeDTO> infomHomeOTsDTO = new ArrayList<OrdTrabInformHomeDTO>();
 		
 		for(int i=0; i<listaOTs.size(); i++) {
@@ -207,7 +207,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 			ex.printStackTrace(); 
 		}
 		
-		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
+		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);   //idEmpresa
 		ArrayList<OrdTrabInformOtDTO> listOTsByFechasDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
@@ -248,7 +248,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 			ex.printStackTrace(); 
 		}
 		
-		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
+		List<OrdenesTrabajo> listaPrincOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa,fecha1, fecha2);  //idEmpresa
 		ArrayList<OrdTrabInformOtDTO> listOTsByFechasDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
@@ -495,6 +495,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 			
 			String nombrEqu = ordenTrab.getEquipo().getNombEquipo();
 			String correlat = ordenTrab.getEquipo().getCorrelativo();
+			//int idEmpresa = ordenTrab.getEquipo().getIdEmpresa();
+			
 			ordTrabfDTO.setNombEquipo(nombrEqu);
 			ordTrabfDTO.setCorrelativo(correlat);
 		}
@@ -521,7 +523,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 	
 	@Transactional
 	@Override
-	public String saveDocumentoOT(MultipartFile fileDoc, int idOT){;
+	public String saveDocumentoOT(MultipartFile fileDoc, int idOT, int idEmpresa){;
 	/*******************************************************/
 		MultipartFile docMultipart = fileDoc;
 		String nombreDoc = fileDoc.getOriginalFilename();
@@ -545,6 +547,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		documentOT.setNombreDoc(nombreDoc);
 		documentOT.setNombreSinEsp(nombSinEs); 
 		documentOT.setIdOrdTrab(idOT);
+		documentOT.setIdEmpresa(idEmpresa);
 		
 		documentsOT_repost.save(documentOT);
 		return "OK";

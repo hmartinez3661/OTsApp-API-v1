@@ -131,7 +131,7 @@ public class FotosOTsService_Impl implements FotosOTsService {
 	
 	@Transactional
 	@Override
-	public String uploadImgsCierreOTsToServer(MultipartFile file, int idOT) {  //Utiliza la version de escritorio
+	public String uploadImgsCierreOTsToServer(MultipartFile file, int idOT, int idEmpresa) {  //Utiliza la version de escritorio
 	/******************************************************************/
 		MultipartFile fotoMultipart = file;
 		String nombreFoto = MetodosEstaticos.crearNombreDeFoto();
@@ -151,6 +151,7 @@ public class FotosOTsService_Impl implements FotosOTsService {
 		Fotos_CierreOTs fotoCierre = new Fotos_CierreOTs();
 		fotoCierre.setNombreFoto(nombreFoto);
 		fotoCierre.setIdOrdTrab(idOT);
+		fotoCierre.setIdEmpresa(idEmpresa);
 		
 		fotosCierre_Reposit.save(fotoCierre);
 		return "OK";

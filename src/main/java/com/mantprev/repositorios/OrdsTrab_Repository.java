@@ -20,15 +20,19 @@ public interface OrdsTrab_Repository extends CrudRepository <OrdenesTrabajo, Int
 	public List<OrdenesTrabajo> getOTsByFechas(@Param("idEmpresa") int idEmpresa, @Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2);
 	
 	
+	@Query("select T from OrdenesTrabajo T where T.fechaIngresoOT between :fecha1 and :fecha2")
+	public List<OrdenesTrabajo> getOTsByFechas2(@Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2);
+	
+	
 	@Query("select T from OrdenesTrabajo T where T.fechaIngresoOT between :fecha1 and :fecha2 and T.estatusOT = :statusOTs AND T.idEmpresa =:idEmpresa order by T.idOT")
     public List<OrdenesTrabajo> findOTsCerradasByFechas(@Param("fecha1") Date fecha1, @Param("fecha2") Date fecha2, @Param("idEmpresa") int idEmpresa, @Param("statusOTs") String statusOTs);
 	
 	
-	@Query("select T from OrdenesTrabajo T where T.estatusOT = ?1AND T.idEmpresa = ?2 order by T.idOT desc")
-    public List<OrdenesTrabajo> getListaOrdTrabByStatus(String statusOTs, int idEmpresa);   
+	@Query("select T from OrdenesTrabajo T where T.estatusOT = ?1 AND T.idEmpresa = ?2 order by T.idOT desc")
+    public List<OrdenesTrabajo> getListaOrdTrabByStatus(@Param("estatusOT") String estatusOT, @Param("idEmpresa") int idEmpresa);   
 	
 	
-	@Query("select T from OrdenesTrabajo T where T.estatusOT = ?1 or T.estatusOT = ?2AND T.idEmpresa = ?3")
+	@Query("select T from OrdenesTrabajo T where T.estatusOT = ?1 or T.estatusOT = ?2 AND T.idEmpresa = ?3")
     public List<OrdenesTrabajo> getListaOTsParaCerrar(String status1, String status2, int idEmpresa);
 	
 	

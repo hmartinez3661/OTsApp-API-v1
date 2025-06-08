@@ -27,7 +27,7 @@ public interface FotosOTsService {
 	
 	public String uploadImgsIngrOTsToServer(MultipartFile file, int idOT); 
 	
-	public String uploadImgsCierreOTsToServer(MultipartFile file, int idOT);
+	public String uploadImgsCierreOTsToServer(MultipartFile file, int idOT, int idEmpresa);
 	
 	public String uploadListImgsToServer(List<MultipartFile> listMultipart, @PathVariable int idOT);
 	
