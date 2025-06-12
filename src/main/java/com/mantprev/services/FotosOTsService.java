@@ -25,7 +25,7 @@ public interface FotosOTsService {
 	
 	public String saveNamesFtosCierreOT(ArrayList<String> listNamesFtos, int idOT);
 	
-	public String uploadImgsIngrOTsToServer(MultipartFile file, int idOT); 
+	public String uploadImgsIngrOTsToServer(MultipartFile file, int idOT, int idEmpresa); 
 	
 	public String uploadImgsCierreOTsToServer(MultipartFile file, int idOT, int idEmpresa);
 	

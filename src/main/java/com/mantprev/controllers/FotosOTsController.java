@@ -72,19 +72,11 @@ public class FotosOTsController {
 //*********************************  METODOS QUE USA Mantprev OTs de escritorio
 	
 	
-	@PostMapping(path = "/uploadImgsIngr/{idOT}")  
+	@PostMapping(path = "/uploadImgsIngr/{idOT}/{idEmpresa}")  
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String uploadFtosIngrToServer(@RequestParam MultipartFile file, @PathVariable int idOT){
+	public String uploadFtosIngrToServer(@RequestParam MultipartFile file, @PathVariable int idOT, @PathVariable int idEmpresa){
 	/**********************************************************************************************/
-		return this.fotosIngrOTsServ.uploadImgsIngrOTsToServer(file, idOT); 
-	}
-	
-	
-	@PostMapping(path = "/uploadListImgsIngr/{idOT}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)   //@RequestParam  @RequestPart             
-	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String uploadListImgsIngr(@RequestParam List<MultipartFile> listParts, @PathVariable int idOT){ 
-	/***************************************************************************************************/
-		return this.fotosIngrOTsServ.uploadListImgsToServer(listParts, idOT);
+		return this.fotosIngrOTsServ.uploadImgsIngrOTsToServer(file, idOT, idEmpresa); 
 	}
 	
 	
@@ -93,6 +85,14 @@ public class FotosOTsController {
 	public String uploadFtosCierreToServer(@RequestParam MultipartFile file, @PathVariable int idOT, @PathVariable int idEmpresa){
 	/*****************************************************************************************/
 		return this.fotosIngrOTsServ.uploadImgsCierreOTsToServer(file, idOT, idEmpresa);
+	}
+	
+	
+	@PostMapping(path = "/uploadListImgsIngr/{idOT}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)   //@RequestParam  @RequestPart             
+	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
+	public String uploadListImgsIngr(@RequestParam List<MultipartFile> listParts, @PathVariable int idOT){ 
+	/***************************************************************************************************/
+		return this.fotosIngrOTsServ.uploadListImgsToServer(listParts, idOT);
 	}
 	
 	

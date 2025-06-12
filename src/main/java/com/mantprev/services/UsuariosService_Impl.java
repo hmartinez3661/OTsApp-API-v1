@@ -419,14 +419,10 @@ public class UsuariosService_Impl implements UsuariosService {
 	@Override
 	public Usuarios01_DTO getUsuarioByEmail(String emailUser) {
 	/*********************************************************/
-		Optional<Usuarios> usuarioOpt = usuariosReposit.findOneByEmailUsuario(emailUser);
+		Usuarios usuario = usuariosReposit.getUsuarioByEmail2(emailUser);
 		
 		Usuarios01_DTO usuarioDTO = null;
-		
-		if (usuarioOpt.isPresent()){
-			Usuarios usuario = usuariosReposit.findOneByEmailUsuario(emailUser).get();
-			usuarioDTO = modelMapper.map(usuario, Usuarios01_DTO.class);
-		}
+		usuarioDTO = modelMapper.map(usuario, Usuarios01_DTO.class);
 		
 		return usuarioDTO;
 	}

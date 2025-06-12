@@ -35,7 +35,7 @@ public interface RepuestosSum_Repository extends JpaRepository <Repuestos_Sum, I
 	List<Repuestos_Sum> getSugerenciasNombresRepSum(String textBuscar);
 	
 	
-	@Query("select R from Repuestos_Sum R where R.codigoRep = ?1AND R.idEmpresa = ?2")
+	@Query("select R from Repuestos_Sum R where R.codigoRep = ?1 AND R.idEmpresa = ?2")
 	Repuestos_Sum getRepuestoByCodigoRep(String codigoRep, int idEmpresa);
 	
 	

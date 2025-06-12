@@ -78,16 +78,11 @@ public class EquiposService_Impl implements EquiposService {
 	@Override
 	public void actualizarDatosEquipo(int idEquipo, String nombreEquipo, String correlatEquip) {
 	/******************************************************************************************/
-		Optional<Equipos> equipoOpt = equipos_Reposit.findById(idEquipo);
+		Equipos equipo = equipos_Reposit.getEquipoById(idEquipo);
+		equipo.setNombEquipo(nombreEquipo);
+		equipo.setCorrelativo(correlatEquip);
 		
-		if (equipoOpt != null) {
-			
-			Equipos equipo = equipoOpt.get();
-			equipo.setNombEquipo(nombreEquipo);
-			equipo.setCorrelativo(correlatEquip);
-			
-			equipos_Reposit.save(equipo); 
-		}
+		equipos_Reposit.save(equipo); 
 	}
 
 

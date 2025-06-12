@@ -89,7 +89,9 @@ public class EquiposController {
 										@PathVariable String nombreEquipo, 
 										@PathVariable String correlatEquip) {
 	/************************************************************************/
-		nombreEquipo = nombreEquipo.replaceAll("*", "-").replace('"', '-');
+		nombreEquipo = nombreEquipo.replaceAll("\\*", "-");
+		nombreEquipo = nombreEquipo.replace('"', '-');
+		nombreEquipo = nombreEquipo.replaceAll("/", "-");
 		
 		try {
 			equiposService.actualizarDatosEquipo(idEquipo, nombreEquipo, correlatEquip); 
