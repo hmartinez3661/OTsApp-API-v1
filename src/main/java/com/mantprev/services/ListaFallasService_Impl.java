@@ -68,10 +68,11 @@ public class ListaFallasService_Impl implements ListaFallasService {
 	@Override        //Eliminar Falla en Androi
 	public String eliminarRegistroFalla(String nombreFalla, int idEmpresa) {
 	/********************************************************/
-		RegistroFallas registroFallaEsp = registroFallas_Reposit.getRegistroFallas(nombreFalla, idEmpresa); 
+		List<RegistroFallas> registroFallaList = registroFallas_Reposit.getRegistroFallas(nombreFalla, idEmpresa);
+		RegistroFallas registroFalla = registroFallaList.get(0);
     	
     	try {
-    		registroFallas_Reposit.delete(registroFallaEsp);
+    		registroFallas_Reposit.delete(registroFalla);
     		return "Eliminado";
     		
     	} catch (Exception exp) {

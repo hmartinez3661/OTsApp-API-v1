@@ -12,8 +12,8 @@ import com.mantprev.entidades.RegistroFallas;
 public interface RegistroFallas_Repository extends CrudRepository <RegistroFallas, Integer> {
 
 	
-	@Query("select R from RegistroFallas R where R.nombreFalla = ?1AND R.idEmpresa = ?2")
-    public RegistroFallas getRegistroFallas(String nombreFalla, int idEmpresa);
+	@Query("select R from RegistroFallas R where R.nombreFalla = ?1 AND R.idEmpresa = ?2")
+    public List<RegistroFallas> getRegistroFallas(String nombreFalla, int idEmpresa);
 	
 	
 	@Query("select R from RegistroFallas R WHERE R.idEmpresa = ?1") // order by R.tipoFalla

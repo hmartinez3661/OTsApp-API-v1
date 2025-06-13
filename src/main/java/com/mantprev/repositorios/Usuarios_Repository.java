@@ -20,7 +20,7 @@ public interface Usuarios_Repository extends CrudRepository <Usuarios, Integer>{
 	
 	
 	@Query("select U from Usuarios U where U.nombreUsuario = ?1AND U.idEmpresa = ?2")
-    public Usuarios getUsuarioByNameAndIdEmpresa(String nameUser, int idEmpresa);
+    public List<Usuarios> getUsuarioByNameAndIdEmpresa(String nameUser, int idEmpresa);
 	
 	
 	@Query("select U from Usuarios U where U.emailUsuario = ?1")

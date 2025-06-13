@@ -20,7 +20,7 @@ import com.mantprev.services.PersonalTecnService;
 @RestController
 @RequestMapping("/api/v1/persTecn")
 public class PersonalTecnController {
-
+	
 	
 	@Autowired
 	PersonalTecnService personalTecnService;

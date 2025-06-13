@@ -17,7 +17,7 @@ public interface PersonaTecnico_Repository extends CrudRepository <Personal_Tecn
     public List<Personal_Tecnico> getListaPersonalTecnico(int idEmpresa); 
     
     
-    @Query("select P from Personal_Tecnico P where P.nombreEmpl = ?1AND P.idEmpresa = ?2")
+    @Query("select P from Personal_Tecnico P where P.nombreEmpl = ?1 AND P.idEmpresa = ?2")
     public List<Personal_Tecnico> getPersonalTecnicoByName(String nombrOrigTecnico, int idEmpresa);
     
     

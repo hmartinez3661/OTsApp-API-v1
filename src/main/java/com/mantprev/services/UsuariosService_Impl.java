@@ -154,7 +154,9 @@ public class UsuariosService_Impl implements UsuariosService {
 		String emailUser  = userDTO.getEmailUsuario();
 		String rolDeUser  = userDTO.getUserRol();
 		
-		Usuarios usuario = usuariosReposit.getUsuarioByNameAndIdEmpresa(nombOrigin, idEmpresa);
+		List<Usuarios> listaUsuarios = usuariosReposit.getUsuarioByNameAndIdEmpresa(nombOrigin, idEmpresa);
+		Usuarios usuario = listaUsuarios.get(0);
+		
 		usuario.setNombreUsuario(nombreUser);
 		usuario.setEmailUsuario(emailUser);
 		usuario.setUserRol(rolDeUser);
