@@ -32,7 +32,7 @@ public interface OrdsTrab_Repository extends CrudRepository <OrdenesTrabajo, Int
     public List<OrdenesTrabajo> getListaOrdTrabByStatus(@Param("estatusOT") String estatusOT, @Param("idEmpresa") int idEmpresa);   
 	
 	
-	@Query("select T from OrdenesTrabajo T where T.estatusOT = ?1 or T.estatusOT = ?2 AND T.idEmpresa = ?3")
+	@Query("select T from OrdenesTrabajo T where T.idEmpresa = ?3 AND T.estatusOT = ?1 OR T.estatusOT = ?2")
     public List<OrdenesTrabajo> getListaOTsParaCerrar(String status1, String status2, int idEmpresa);
 	
 	

@@ -25,6 +25,8 @@ public interface Equipos_Repository extends CrudRepository <Equipos, Integer>{
 	
 	@Query("select E from Equipos E where E.idEquipoPadre = ?1 order by E.correlativo") // 
     public List<Equipos> getListaEquiposHijos(int idEquipo);
+
+
 	
 	
 		

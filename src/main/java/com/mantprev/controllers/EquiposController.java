@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mantprev.entidades.Equipos;
 import com.mantprev.entidadesDTO.Equipos01_DTO;
 import com.mantprev.services.EquiposService;
 
@@ -145,7 +146,12 @@ public class EquiposController {
 	} 
 	
 	
-	
+	@PutMapping(path = "/crearArbolEquips")
+	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
+	public String crearGuardarArbolEquipos(@RequestBody List<Equipos> listaEquipsArbol) {
+	/************************************************************************************/
+		return this.equiposService.crearGuardarArbolEquipos(listaEquipsArbol); 
+	}
 	
 	
 	

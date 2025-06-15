@@ -2,6 +2,7 @@ package com.mantprev.services;
 
 import java.util.List;
 
+import com.mantprev.entidades.Equipos;
 import com.mantprev.entidadesDTO.Equipos01_DTO;
 
 
@@ -31,6 +32,8 @@ public interface EquiposService {
 	public String renombrarEquipo(Equipos01_DTO equipoDTO);
 	
 	public int getCantidadOTsDelEquipo(int idEquipo);
+
+	public String crearGuardarArbolEquipos(List<Equipos> listaEquipsArbol); 
 	
 	
 	
