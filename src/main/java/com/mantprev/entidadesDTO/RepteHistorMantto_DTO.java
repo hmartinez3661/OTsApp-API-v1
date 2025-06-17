@@ -7,6 +7,7 @@ import lombok.Data;
 public class RepteHistorMantto_DTO {
 
 	
+	private int numOT;
 	private String idOrdTrab;
     private String trabSolic;
     private String nombEquip;

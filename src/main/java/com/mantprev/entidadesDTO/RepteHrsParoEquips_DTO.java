@@ -7,6 +7,7 @@ import lombok.Data;
 public class RepteHrsParoEquips_DTO {
 
 	
+	private int numOT;
 	private String idOrdenTrabj;
     private String persEjecutor;
     private String clasificTrab;

@@ -3,8 +3,6 @@ package com.mantprev.entidades;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -25,7 +23,6 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 
-
 @NoArgsConstructor   //Constructor vacio
 @AllArgsConstructor  //Constructor con todos loa atributos 
 @Builder 
@@ -39,6 +36,7 @@ public class OrdenesTrabajo {
 	@Column(unique = true, nullable = false)
 	private int idOT;
 	
+	private Integer numOT;
 	private Integer idEquipo;
 	private String  persEjecutor;
 	private String  clasificTrabajo;
@@ -143,6 +141,14 @@ public class OrdenesTrabajo {
 	
 	public void setIdOT(int idOT) {
 		this.idOT = idOT;
+	}
+	
+	public Integer getNumOT() {
+		return numOT;
+	}
+
+	public void setNumOT(Integer numOT) {
+		this.numOT = numOT;
 	}
 	
 	public Integer getIdEquipo() {
@@ -319,6 +325,8 @@ public class OrdenesTrabajo {
 	public void setIdEmpresa(Integer idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
+
+	
 
 	
 	

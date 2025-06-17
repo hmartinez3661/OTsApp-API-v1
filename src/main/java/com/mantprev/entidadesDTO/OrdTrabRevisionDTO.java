@@ -8,6 +8,7 @@ public class OrdTrabRevisionDTO {
 	
 	
 	private int idOrdTrab;
+	private int numOT;
 	private String nombPersReviso;
 	private String fechaRevison;
 	private String horaRevison;

@@ -452,6 +452,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		
 		OrdenesTrabajo nvaOrdTrab = new OrdenesTrabajo();
 		
+		int numOT = ordsTrab_Reposit.getUltimNumOrdenesTrab(idEmpresa) + 1;
+		
 		nvaOrdTrab.setIdEquipo(Integer.parseInt(idEquipo));
 		nvaOrdTrab.setTrabajoSolicit(trabSolic);
 		nvaOrdTrab.setPersEjecutor(persEjecut);
@@ -465,6 +467,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		nvaOrdTrab.setTiempoEstim(0.25);
 		nvaOrdTrab.setPersonalEstim(1);  
 		nvaOrdTrab.setIdEmpresa(idEmpresa);
+		nvaOrdTrab.setNumOT(numOT); 
 		
 		String idOrdTrab = "0";
 		try {

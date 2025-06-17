@@ -36,18 +36,18 @@ public interface OrdsTrab_Repository extends CrudRepository <OrdenesTrabajo, Int
     public List<OrdenesTrabajo> getListaOTsParaCerrar(String status1, String status2, int idEmpresa);
 	
 	
-	@Query("SELECT MAX(idOT) AS idOT FROM OrdenesTrabajo")
-    public int getUltimoIdDeTblOrdenesTrab();
-	
-	
 	@Query("select T from OrdenesTrabajo T where T.idEquipo = ?1")
     public List<OrdenesTrabajo> getOrdenesTrabajoByIdEquipo(int idEquipo);
 
 
-	
+	@Query("SELECT MAX(idOT) AS idOT FROM OrdenesTrabajo")
+    public int getUltimoIdDeTblOrdenesTrab();
     
   
-    
+	@Query("SELECT MAX(numOT) FROM OrdenesTrabajo T WHERE T.idEmpresa = ?1")
+    public int getUltimNumOrdenesTrab(int idEmpresa);
+	
+	
     
     
 	

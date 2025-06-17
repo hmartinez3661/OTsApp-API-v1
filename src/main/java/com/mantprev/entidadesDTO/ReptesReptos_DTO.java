@@ -7,6 +7,7 @@ import lombok.Data;
 public class ReptesReptos_DTO {
 	
 	
+	private int numOT;
 	private String nombreRep;
     private String costTotal;
     private String dateConsu;

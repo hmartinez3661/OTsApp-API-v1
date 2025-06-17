@@ -8,6 +8,7 @@ import lombok.Data;
 public class RepteTendAveriasDTO {
 	
 	
+	private int numOT;
 	private String idOrdenTrabj;
 	private String persEjecutor;
 	private String clasificTrab;

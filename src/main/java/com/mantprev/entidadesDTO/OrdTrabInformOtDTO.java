@@ -10,7 +10,8 @@ import lombok.Data;
 public class OrdTrabInformOtDTO {
 	
 	
-	private int    idOT;
+	private int idOT;
+	private int numOT;
 	private String trabajoSolicit;
 	private String nombEquipo;
 	private String persEjecutor;

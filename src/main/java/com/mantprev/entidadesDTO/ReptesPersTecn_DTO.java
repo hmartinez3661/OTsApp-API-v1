@@ -7,6 +7,7 @@ import lombok.Data;
 public class ReptesPersTecn_DTO {
 	
 	
+	private int numOT;
 	private String nombreEmpl;
     private String tipoEjecut;
     private String cantidHras;

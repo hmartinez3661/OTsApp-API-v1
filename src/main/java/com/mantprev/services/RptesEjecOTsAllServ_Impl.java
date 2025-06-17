@@ -234,6 +234,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			ReptesPersEjecOTs reptePersTec = listRtesPersTec.get(i);
 			ReptesPersTecn_DTO reptePersTecDTO = new ReptesPersTecn_DTO();
 			
+			reptePersTecDTO.setNumOT(reptePersTec.getOrdenTrab().getNumOT());
 			reptePersTecDTO.setNombreEmpl(reptePersTec.getPersonal_tecn().getNombreEmpl());
 			reptePersTecDTO.setTipoEjecut(reptePersTec.getPersonal_tecn().getTipoEjecutor());
 			reptePersTecDTO.setCantidHras(Double.toString(reptePersTec.getCantHrs()));
@@ -316,6 +317,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			repteReptoDTO.setCostTotal(numberFmt.format(costRepto));
 			repteReptoDTO.setDateConsu(MetodosEstaticos.getDateFormated(dateConsumo)); 
 			repteReptoDTO.setIdOrdTrab(Integer.toString(repteRepto.getIdOT()));
+			repteReptoDTO.setNumOT(repteRepto.getOrdenTrab().getNumOT());
 			repteReptoDTO.setTrabSolic(repteRepto.getOrdenTrab().getTrabajoSolicit());
 			repteReptoDTO.setNombEquip(repteRepto.getOrdenTrab().getEquipo().getNombEquipo());
 			repteReptoDTO.setCorrelatE(repteRepto.getOrdenTrab().getEquipo().getCorrelativo());
@@ -356,6 +358,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			if (hrsParo > 0.0) {
 				RepteHrsParoEquips_DTO repteParoEquDTO = new RepteHrsParoEquips_DTO();
 				
+				repteParoEquDTO.setNumOT(repteEjec.getOrdenTrab().getNumOT());
 				repteParoEquDTO.setIdOrdenTrabj(Integer.toString(repteEjec.getIdOT()));
 				repteParoEquDTO.setPersEjecutor(repteEjec.getOrdenTrab().getPersEjecutor());
 				repteParoEquDTO.setClasificTrab(repteEjec.getOrdenTrab().getClasificTrabajo());
@@ -441,7 +444,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 			
 			repteRecurrFalla.setNombreFalla(repteEjec.getNombreFalla());
 			repteRecurrFalla.setTmpParoProd(Double.toString(repteEjec.getTpoParoProduc()));	
-			repteRecurrFalla.setNumOT(repteEjec.getIdOT());
+			repteRecurrFalla.setNumOT(repteEjec.getOrdenTrab().getNumOT());
 			repteRecurrFalla.setFechaDFalla(MetodosEstaticos.getMonthFromDate(repteEjec.getOrdenTrab().getFechaIngresoOT()));
 			repteRecurrFalla.setTmpParoProd(Double.toString(repteEjec.getTpoParoProduc()));
 			repteRecurrFalla.setTmpRealRepa(Double.toString(repteEjec.getTpoRealReparac()));
@@ -484,6 +487,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 					
 					RepteTendAveriasDTO repteTendAver = new RepteTendAveriasDTO();
 					
+					repteTendAver.setNumOT(ordenTrab.getNumOT());
 					repteTendAver.setIdOrdenTrabj(Integer.toString(ordenTrab.getIdOT()));
 					repteTendAver.setPersEjecutor(ordenTrab.getPersEjecutor());	
 					repteTendAver.setClasificTrab(ordenTrab.getClasificTrabajo());
@@ -796,6 +800,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 				
 				RepteHistorMantto_DTO repteHist = new RepteHistorMantto_DTO();
 				
+				repteHist.setNumOT(ordenTrab.getNumOT()); 
 				repteHist.setIdOrdTrab(Integer.toString(ordenTrab.getIdOT()));
 				repteHist.setTrabSolic(ordenTrab.getTrabajoSolicit());	
 				repteHist.setNombEquip(ordenTrab.getEquipo().getNombEquipo());
@@ -839,6 +844,7 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 				RepteHistorMantto_DTO repteHist = new RepteHistorMantto_DTO();
 				
 				repteHist.setIdOrdTrab(Integer.toString(ordenTrab.getIdOT()));
+				repteHist.setNumOT(ordenTrab.getNumOT());
 				repteHist.setTrabSolic(ordenTrab.getTrabajoSolicit());	
 				repteHist.setNombEquip(ordenTrab.getEquipo().getNombEquipo());
 				repteHist.setFechaIgOT(dateFormat.format(ordenTrab.getFechaIngresoOT()));

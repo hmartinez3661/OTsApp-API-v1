@@ -13,7 +13,8 @@ public class OrdenesTrabajoDTO_1 {
 	
 	
 	private int idOT;
-	private int    idEquipo;
+	private int numOT;
+	private int idEquipo;
 	private String persEjecutor;
 	private String clasificTrabajo;
 	private String prioridadOT;

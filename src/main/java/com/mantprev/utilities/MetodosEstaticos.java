@@ -79,10 +79,10 @@ public class MetodosEstaticos {
 	public static String getMonthFromDate (Date fechaIngr) {
 	/*****************************************************/	
 		DateFormat formatFecha = DateFormat.getDateInstance(DateFormat.DEFAULT);
-		String fechaStr = formatFecha.format(fechaIngr);   
-		fechaStr = fechaStr.substring(2, 6).toUpperCase();
+		String fechaStr  = formatFecha.format(fechaIngr);   
+		String fechaStr2 = fechaStr.substring(0, 3).toUpperCase();
 		
-		return fechaStr; //Retorna jun o equivalente
+		return fechaStr2; //Retorna jun o equivalente
 	}
 	
 	

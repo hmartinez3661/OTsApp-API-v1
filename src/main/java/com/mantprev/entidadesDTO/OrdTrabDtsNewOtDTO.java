@@ -7,6 +7,7 @@ import lombok.Data;
 public class OrdTrabDtsNewOtDTO {
 	
 	
+	private int numOT;
 	private String idEquipo;
 	private String trabajoSolicit;
 	private String persEjecutor;

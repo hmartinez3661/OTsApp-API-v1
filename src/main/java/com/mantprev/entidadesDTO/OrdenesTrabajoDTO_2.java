@@ -10,6 +10,7 @@ public class OrdenesTrabajoDTO_2 {
 	
 	
 	private int idOT;
+	private int numOT;
 	private int idEquipo;
 	private String persEjecutor;
 	private String clasificTrabajo;
