@@ -34,7 +34,8 @@ public class ListaFallasService_Impl implements ListaFallasService {
 		
 		List<RegistroFallas> listaFallas = registroFallas_Reposit.getListaDeFallas(idEmpresa);
 		
-		for(int i=0; i<listaFallas.size(); i++) {
+		int listaFallasSize = listaFallas.size();
+		for(int i=0; i < listaFallasSize; i++) {
 			
 			RegistroFallas detalleFall = listaFallas.get(i);
 			RegistroFallasDTO detalleFallaDTO   = modelMapper.map(detalleFall, RegistroFallasDTO.class); 

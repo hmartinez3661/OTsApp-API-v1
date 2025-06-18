@@ -155,11 +155,10 @@ public class ReptosSumService_Impl implements ReptosSumService {
 	@Override
 	public String saveListaReptos(List<RepuestosSum_DTO> listReptosDto, int idEmpresa) {
 	/*********************************************************************************/
-		//boolean existeCodigo = listReptosEnBD.stream().anyMatch(Obj -> "codigoRep".equals(Obj.getCodigoRep())); 
-		
 		listReptosEnBD = reptosSumReposit.getListaTodosRepSum(idEmpresa);
+		int listaReptosSize = listReptosDto.size();
 		
-		for (int i=0; i<listReptosDto.size(); i++) {
+		for (int i=0; i < listaReptosSize; i++) {
 			
 			RepuestosSum_DTO reptoDto = listReptosDto.get(i);
 			String codReptoDto = reptoDto.getCodigoRep();

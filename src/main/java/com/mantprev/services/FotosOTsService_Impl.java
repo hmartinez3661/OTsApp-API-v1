@@ -68,8 +68,9 @@ public class FotosOTsService_Impl implements FotosOTsService {
 		List<Fotos_IngresoOTs> listaFtsIngr = fotosIngresoOTs_Reposit.getListaFotosIngresoOT(idOT);  
 		
 		String nombresFtsIngr = "";
+		int listaFotosSize = listaFtsIngr.size();
 		
-		for(int i=0; i<listaFtsIngr.size(); i++) {
+		for(int i=0; i<listaFotosSize; i++) {
 			
 			Fotos_IngresoOTs fotoIngr = listaFtsIngr.get(i);
 			String nombrFoto = fotoIngr.getNombreFoto();
@@ -88,8 +89,9 @@ public class FotosOTsService_Impl implements FotosOTsService {
 		List<Fotos_CierreOTs> listaFtsCierre = fotosCierreOTs_Reposit.getListaFotosCierreOT(idOT);
 		
 		String nombresFtsCierre = "";
+		int listaFotosSiza = listaFtsCierre.size();
 		
-		for(int i=0; i<listaFtsCierre.size(); i++) {
+		for(int i=0; i<listaFotosSiza; i++) {
 			
 			Fotos_CierreOTs fotoCierre = listaFtsCierre.get(i);
 			String nombrFoto = fotoCierre.getNombreFoto();
@@ -164,8 +166,9 @@ public class FotosOTsService_Impl implements FotosOTsService {
 	public String uploadListImgsToServer(List<MultipartFile> listMultipart, @PathVariable int idOT) {
 	/**********************************************************************************************/
 		String rutaFotosOTs = rutaUploads + "/fotosOTs/";
+		int listaImagesSiza = listMultipart.size();
 		
-		for(int i=0; i<listMultipart.size(); i++) {
+		for(int i=0; i< listaImagesSiza; i++) {
 			
 			MultipartFile fotoMultipart = listMultipart.get(i);
 			String nombreFoto = MetodosEstaticos.crearNombreDeFoto();
@@ -189,7 +192,9 @@ public class FotosOTsService_Impl implements FotosOTsService {
 	@Override
 	public String saveNamesFtosIngrOT(ArrayList<String> listNamesFtos, int idOT) {
 	/****************************************************************************/
-		for(int i=0; i<listNamesFtos.size(); i++) {
+		int listaNamesFtsSiza = listNamesFtos.size();
+		
+		for(int i=0; i< listaNamesFtsSiza; i++) {
 			String nombrFto = listNamesFtos.get(i);		
 			
 			Fotos_IngresoOTs fotoIngr = new Fotos_IngresoOTs();
@@ -211,7 +216,9 @@ public class FotosOTsService_Impl implements FotosOTsService {
 		ArrayList<String> listFtosNames = new ArrayList<>();
 		int cantFotos = listaParts.size() + 1;
 		
-		for(int i=0; i<listaParts.size(); i++) {
+		int listaPartsSize = listaParts.size();
+		
+		for(int i=0; i<listaPartsSize; i++) {
 			int currentFto = i + 1;
 			
 			MultipartFile multipart = listaParts.get(1);
@@ -241,7 +248,9 @@ public class FotosOTsService_Impl implements FotosOTsService {
 	@Override
 	public String saveNamesFtosCierreOT(ArrayList<String> listNamesFtos, int idOT) {
 	/****************************************************************************/
-		for(int i=0; i<listNamesFtos.size(); i++) {
+		int listaNamesFtsSize = listNamesFtos.size();
+		
+		for(int i=0; i < listaNamesFtsSize; i++) {
 			String nombrFto = listNamesFtos.get(i);
 			
 			Fotos_CierreOTs fotoCierre = new Fotos_CierreOTs();

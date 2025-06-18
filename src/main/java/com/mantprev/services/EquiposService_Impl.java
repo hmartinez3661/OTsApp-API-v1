@@ -38,7 +38,8 @@ public class EquiposService_Impl implements EquiposService {
 		List<Equipos> listaEquipos = equipos_Reposit.getListaDeTodosLosEquipos(idEmpresa);
 		List<Equipos01_DTO> listaEquiposDTO = new ArrayList<Equipos01_DTO>();
 		
-		for(int i=0; i<listaEquipos.size(); i++) {
+		int listaEquiposSize = listaEquipos.size();
+		for(int i=0; i<listaEquiposSize; i++) {
 			
 			Equipos equipo = listaEquipos.get(i);
 			Equipos01_DTO equipoDTO = modelMapper.map(equipo, Equipos01_DTO.class); 
@@ -138,7 +139,8 @@ public class EquiposService_Impl implements EquiposService {
 		
 		List<Equipos01_DTO> listaEquiposDTO = new ArrayList<Equipos01_DTO>();
 		
-		for(int i=0; i<listaEquipos.size(); i++) {
+		int listaEquiposSize = listaEquipos.size();
+		for(int i=0; i<listaEquiposSize; i++) {
 			Equipos equipo = listaEquipos.get(i);
 			Equipos01_DTO equipoDTO = modelMapper.map(equipo, Equipos01_DTO.class); 
 			listaEquiposDTO.add(equipoDTO);
@@ -156,7 +158,9 @@ public class EquiposService_Impl implements EquiposService {
 		
 		List<Equipos01_DTO> listaEquiposDTO = new ArrayList<Equipos01_DTO>();
 		
-		for(int i=0; i<listaEquipos.size(); i++) {
+		int listaEquiposSize = listaEquipos.size();
+		
+		for(int i=0; i<listaEquiposSize; i++) {
 			Equipos equipo = listaEquipos.get(i);
 			Equipos01_DTO equipoDTO = modelMapper.map(equipo, Equipos01_DTO.class); 
 			listaEquiposDTO.add(equipoDTO);

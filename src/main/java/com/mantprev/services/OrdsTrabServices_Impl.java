@@ -37,7 +37,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class OrdsTrabServices_Impl implements OrdsTrabServices{
-/******************************************************************/
+/*************************************************************/
 	
 	@Autowired
 	private OrdsTrab_Repository ordsTrab_Reposit;
@@ -109,7 +109,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		List<OrdenesTrabajo> listaOTs = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);   //idEmpresa
 		List<OrdTrabInformHomeDTO> infomHomeOTsDTO = new ArrayList<OrdTrabInformHomeDTO>();
 		
-		for(int i=0; i<listaOTs.size(); i++) {
+		int listaOTsSize = listaOTs.size();
+		for(int i=0; i < listaOTsSize; i++) {
 			
 			OrdenesTrabajo ordTrab = listaOTs.get(i);
 			OrdTrabInformHomeDTO OTinforHomeDTO = modelMapper.map(ordTrab, OrdTrabInformHomeDTO.class); 
@@ -134,7 +135,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		List<OrdTrabInformOtDTO> listaOTsNuevasDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
-		for(int i=0; i<listaNewOTs.size(); i++) {
+		int listaNewOTsSize = listaNewOTs.size();
+		for(int i=0; i < listaNewOTsSize; i++) {
 			
 			ordenTrab = listaNewOTs.get(i);
 			int idRepteEjec = ordenTrab.getIdReporteEjecuc();
@@ -169,7 +171,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		List<OrdTrabInformOtDTO> listaNewOTsDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
-		for(int i=0; i<listaNewOTs.size(); i++) {
+		int listaNewOTsSize = listaNewOTs.size();
+		for(int i=0; i < listaNewOTsSize; i++) {
 			
 			ordenTrab = listaNewOTs.get(i);
 			int idRepteEjec = ordenTrab.getIdReporteEjecuc();
@@ -211,7 +214,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		ArrayList<OrdTrabInformOtDTO> listOTsByFechasDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
-		for(int i=0; i<listaPrincOTs.size(); i++) {
+		int listaOTsSize = listaPrincOTs.size();
+		for(int i=0; i < listaOTsSize; i++) {
 			
 			ordenTrab = listaPrincOTs.get(i);
 			int idRepteEjec = ordenTrab.getIdReporteEjecuc();
@@ -252,7 +256,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		ArrayList<OrdTrabInformOtDTO> listOTsByFechasDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
-		for(int i=0; i<listaPrincOTs.size(); i++) {
+		int listaOTsSize = listaPrincOTs.size();
+		for(int i=0; i < listaOTsSize; i++) {
 			
 			ordenTrab = listaPrincOTs.get(i);
 			int idRepteEjec = ordenTrab.getIdReporteEjecuc();
@@ -286,7 +291,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		ArrayList<OrdTrabInformOtDTO> listOTsParaCerrarDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
-		for(int i=0; i<listaPrincOTs.size(); i++) {
+		int listaOTsSize = listaPrincOTs.size();
+		for(int i=0; i < listaOTsSize; i++) {
 			
 			ordenTrab = listaPrincOTs.get(i);
 			int idRepteEjec = ordenTrab.getIdReporteEjecuc(); 
@@ -316,7 +322,8 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		ArrayList<OrdTrabInformOtDTO> listOTsParaCerrarDTO = new ArrayList<OrdTrabInformOtDTO>();
 		OrdenesTrabajo ordenTrab = null;
 		
-		for(int i=0; i<listaPrincOTs.size(); i++) {
+		int listaOTsSize = listaPrincOTs.size();
+		for(int i=0; i < listaOTsSize; i++) {
 			
 			ordenTrab = listaPrincOTs.get(i);
 			int idRepteEjec = ordenTrab.getIdReporteEjecuc();
@@ -515,7 +522,9 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 	/**********************************************************/
 		List<Documentos_OTs> listDocsOT = documentsOT_repost.getListaDocumentosOT(idOT);
 		
-		for (int i=0; i<listDocsOT.size(); i++) {
+		int listaDocsSize = listDocsOT.size();
+		
+		for (int i=0; i < listaDocsSize; i++) {
 			Documentos_OTs docOT = listDocsOT.get(i);
 			docOT.setComodin(Integer.toString(i+1));
 		}

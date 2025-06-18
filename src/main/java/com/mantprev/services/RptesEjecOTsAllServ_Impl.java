@@ -71,10 +71,10 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	public List<Repte2Datos_DTO> getListReptesPersEjecOTByIdOT(int idOT) {  //Lo utiliza App Androi
 	/****************************************************************/
 		List<ReptesPersEjecOTs> listaReptesPers = rtesPersEjecOTs_Reposit.getReportesPersonalTrabajoOT(idOT);
-		
 		List<Repte2Datos_DTO> listaTencs = new ArrayList<Repte2Datos_DTO>();
+		int listaReptosPersSize = listaReptesPers.size();
 		
-		for (int i=0; i<listaReptesPers.size(); i++) {
+		for (int i=0; i <listaReptosPersSize; i++) {
 			
 			ReptesPersEjecOTs reptePers = listaReptesPers.get(i);
 			Repte2Datos_DTO repte2Dts = new Repte2Datos_DTO();
@@ -94,10 +94,10 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	public List<ReptesPersTecn_DTO> getListReptesPersEjecOTByIdOT2(int idOT) {  //Lo utiliza App Web
 	/****************************************************************/
 		List<ReptesPersEjecOTs> listaReptesPers = rtesPersEjecOTs_Reposit.getReportesPersonalTrabajoOT(idOT);
-		
 		List<ReptesPersTecn_DTO> listaTencs = new ArrayList<ReptesPersTecn_DTO>();
-		
-		for (int i=0; i<listaReptesPers.size(); i++) {
+		int listaReptosPersSize = listaReptesPers.size();
+				
+		for (int i=0; i <listaReptosPersSize; i++) {
 			
 			ReptesPersEjecOTs reptePers = listaReptesPers.get(i);
 			ReptesPersTecn_DTO reptePersTec = new ReptesPersTecn_DTO();
@@ -119,10 +119,10 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	public List<Repte2Datos_DTO> getListReptesRepuestosEjecOT(int idOT) {
 	/******************************************************************/
 		List<RptesReptosEjecOTs> listReptesReptos = rptesReptosEjecOTs_Reposit.getListaReptesRepuestosEjecOT(idOT); 
-		
 		List<Repte2Datos_DTO> listaReptos = new ArrayList<Repte2Datos_DTO>();
+		int listaReptesRtosSize = listReptesReptos.size();
 		
-		for (int i=0; i<listReptesReptos.size(); i++) {
+		for (int i=0; i <listaReptesRtosSize; i++) {
 			
 			RptesReptosEjecOTs repteRep = listReptesReptos.get(i);
 			Repte2Datos_DTO repteRepDTO = new Repte2Datos_DTO(); 
@@ -142,10 +142,10 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	public List<ReptesReptos_DTO> getListReptesRepuestosEjecOT2(int idOT) {
 	/******************************************************************/
 		List<RptesReptosEjecOTs> listReptesReptos = rptesReptosEjecOTs_Reposit.getListaReptesRepuestosEjecOT(idOT); 
-		
 		List<ReptesReptos_DTO> listaReptos = new ArrayList<ReptesReptos_DTO>();
+		int listaReptesRtosSize = listReptesReptos.size();
 		
-		for (int i=0; i<listReptesReptos.size(); i++) {
+		for (int i=0; i <listaReptesRtosSize; i++) {
 			
 			RptesReptosEjecOTs repteRep = listReptesReptos.get(i);
 			ReptesReptos_DTO repteRepDTO = new ReptesReptos_DTO(); 
@@ -167,10 +167,10 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	public List<Repte2Datos_DTO> getListaReptesServExterEjecOT(int idOT) {
 	/******************************************************************/
 		List<RptesServExtEjecOTs> listReptesServExt = rptesServExtEjecOTs_Reposit.getListaReptesServExterEjecOT(idOT); 
-		
 		List<Repte2Datos_DTO> listaServExt = new ArrayList<Repte2Datos_DTO>();
+		int listaRtesServExtSize = listReptesServExt.size();
 		
-		for (int i=0; i<listReptesServExt.size(); i++) {
+		for (int i=0; i<listaRtesServExtSize; i++) {
 			
 			RptesServExtEjecOTs RepteSerExt = listReptesServExt.get(i);
 			Repte2Datos_DTO repteRepDTO = new Repte2Datos_DTO();
@@ -190,10 +190,10 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	public List<RepteServExtOTs_DTO> getListaReptesServExterEjecOT2(int idOT) {
 	/******************************************************************/
 		List<RptesServExtEjecOTs> listReptesServExt = rptesServExtEjecOTs_Reposit.getListaReptesServExterEjecOT(idOT); 
-		
 		List<RepteServExtOTs_DTO> listaServExt = new ArrayList<RepteServExtOTs_DTO>();
+		int listaRtesServExtSize = listReptesServExt.size();
 		
-		for (int i=0; i<listReptesServExt.size(); i++) {
+		for (int i=0; i<listaRtesServExtSize; i++) {
 			
 			RptesServExtEjecOTs RepteSerExt = listReptesServExt.get(i);
 			RepteServExtOTs_DTO repteRepDTO = new RepteServExtOTs_DTO();
@@ -228,8 +228,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<ReptesPersEjecOTs> listRtesPersTec = rtesPersEjecOTs_Reposit.getReptsPersEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<ReptesPersTecn_DTO> listRtesPerEjecOTsDTO = new ArrayList<ReptesPersTecn_DTO>();
+		int listaPersTecnSize = listRtesPersTec.size();
 		
-		for (int i=0; i<listRtesPersTec.size(); i++) {
+		for (int i=0; i < listaPersTecnSize; i++) {
 			
 			ReptesPersEjecOTs reptePersTec = listRtesPersTec.get(i);
 			ReptesPersTecn_DTO reptePersTecDTO = new ReptesPersTecn_DTO();
@@ -257,8 +258,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	/**************************************************************************************************************/
 		List<ReptesPersEjecOTs> listRtesPersTec = rtesPersEjecOTs_Reposit.getReptsPersEjecOTsByFechas(fechaInic, fechaFnl, idEmpresa);
 		List<ReptesPersTecn_DTO> listRtesPerEjecOTsDTO = new ArrayList<ReptesPersTecn_DTO>();
+		int listaPersTecnSize = listRtesPersTec.size();
 		
-		for (int i=0; i<listRtesPersTec.size(); i++) {
+		for (int i=0; i < listaPersTecnSize; i++) {
 			
 			ReptesPersEjecOTs reptePersTec = listRtesPersTec.get(i);
 			ReptesPersTecn_DTO reptePersTecDTO = new ReptesPersTecn_DTO();
@@ -304,8 +306,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<RptesReptosEjecOTs> listRtesReptos = rptesReptosEjecOTs_Reposit.getReptesReptosEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<ReptesReptos_DTO> listRtesReptosDTO = new ArrayList<ReptesReptos_DTO>(); 
+		int listaRtesReptosSize = listRtesReptos.size();
 		
-		for (int i=0; i<listRtesReptos.size(); i++) {
+		for (int i=0; i< listaRtesReptosSize; i++) {
 			
 			RptesReptosEjecOTs repteRepto = listRtesReptos.get(i);
 			Date dateConsumo = repteRepto.getFechaConsumo();
@@ -349,8 +352,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<RepteHrsParoEquips_DTO> listRtesParoEquDTO = new ArrayList<RepteHrsParoEquips_DTO>(); 
+		int listaReptesEjecSize = listReptesEjec.size();
 		
-		for (int i=0; i<listReptesEjec.size(); i++) {
+		for (int i=0; i<listaReptesEjecSize; i++) {
 			
 			ReptesEjecOTs repteEjec = listReptesEjec.get(i);
 			Double hrsParo = repteEjec.getTpoParoProduc();
@@ -395,8 +399,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<RepteRecurrFallas_DTO> listRtesRecurrFallasDTO = new ArrayList<RepteRecurrFallas_DTO>(); 
+		int listaReptesEjecSize = listReptesEjec.size();
 		
-		for (int i=0; i<listReptesEjec.size(); i++) {
+		for (int i=0; i<listaReptesEjecSize; i++) {
 			
 			ReptesEjecOTs repteEjec = listReptesEjec.get(i);
 			String nombrFallaRpte = repteEjec.getNombreFalla();
@@ -436,8 +441,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<ReptesEjecOTs> listReptesEjec = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2, idEmpresa);
 		List<RepteRecurrFallas_DTO> listRtesRecurrFallasDTO = new ArrayList<RepteRecurrFallas_DTO>(); 
+		int listaReptesEjecSize = listReptesEjec.size();
 		
-		for (int i=0; i<listReptesEjec.size(); i++) {
+		for (int i=0; i<listaReptesEjecSize; i++) {
 			
 			ReptesEjecOTs repteEjec = listReptesEjec.get(i);
 			RepteRecurrFallas_DTO repteRecurrFalla = new RepteRecurrFallas_DTO();
@@ -477,8 +483,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
 		List<RepteTendAveriasDTO> repteTendAverDTO = new ArrayList<RepteTendAveriasDTO>(); 
+		int listaOTsSize = listaOrdTrab.size();
 		
-		for (int i=0; i<listaOrdTrab.size(); i++) {
+		for (int i=0; i < listaOTsSize; i++) {
 			
 			OrdenesTrabajo ordenTrab = listaOrdTrab.get(i);
 			if (ordenTrab.getClasificTrabajo() != null) {
@@ -540,8 +547,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<ReptesEjecOTs> listRptesEjecOT = reptesEjecOTs_Reposit.getReptesEjecOTsByFechas(fecha1, fecha2, idEmpresa); 
 		List<ReptesEjecOTs_DTO> listRtesEjecDTO = new ArrayList<>();
+		int listaRptesEjecSize = listRptesEjecOT.size();
 		
-		for(int i=0; i<listRptesEjecOT.size(); i++) {
+		for(int i=0; i< listaRptesEjecSize; i++) {
 			
 			ReptesEjecOTs repteEjec = listRptesEjecOT.get(i);
 			ReptesEjecOTs_DTO repteEjecDTO   = modelMapper.map(repteEjec, ReptesEjecOTs_DTO.class); 
@@ -792,8 +800,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.getOTsByFechas(idEmpresa, fecha1, fecha2);
 		List<RepteHistorMantto_DTO> repteHistoricDTO = new ArrayList<RepteHistorMantto_DTO>(); 
+		int listaOrdTrabSize = listaOrdTrab.size();
 		
-		for (int i=0; i<listaOrdTrab.size(); i++) {
+		for (int i=0; i<listaOrdTrabSize; i++) {
 			
 			OrdenesTrabajo ordenTrab = listaOrdTrab.get(i);
 			if (ordenTrab.getRepteEjecOT() != null) {
@@ -835,8 +844,9 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		
 		List<OrdenesTrabajo> listaOrdTrab = ordsTrab_Reposit.findOTsCerradasByFechas(fecha1, fecha2, idEmpresa, statusClosed);
 		List<RepteHistorMantto_DTO> repteHistoricDTO = new ArrayList<RepteHistorMantto_DTO>(); 
+		int listaOrdTrabSize = listaOrdTrab.size();
 		
-		for (int i=0; i<listaOrdTrab.size(); i++) {
+		for (int i=0; i<listaOrdTrabSize; i++) {
 			
 			OrdenesTrabajo ordenTrab = listaOrdTrab.get(i);
 			if (ordenTrab.getRepteEjecOT() != null) {

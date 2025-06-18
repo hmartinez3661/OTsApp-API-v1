@@ -56,8 +56,9 @@ public class UsuariosService_Impl implements UsuariosService {
 	/**************************************************/
 		List<Usuarios> listaUsuarios = usuariosReposit.getUsuariosByIdEmpresa(idEmpresa);
 		List<Usuarios01_DTO> listaUsuariosDTO = new ArrayList<Usuarios01_DTO>();
+		int listaUsuariosSize = listaUsuarios.size();
 		
-		for(int i=0; i<listaUsuarios.size(); i++) {
+		for(int i=0; i< listaUsuariosSize; i++) {
 			
 			Usuarios usuario = listaUsuarios.get(i);
 			String rolDelUsuario = usuario.getUserRol();
@@ -85,8 +86,9 @@ public class UsuariosService_Impl implements UsuariosService {
 	/************************************************/
 		List<Usuarios> listaUsuarios = usuariosReposit.getUsuariosByIdEmpresa(idEmpresa);
 		List<Usuarios01_DTO> listaUduariosDTO = new ArrayList<Usuarios01_DTO>();
+		int listaUsuariosSize = listaUsuarios.size();
 		
-		for(int i=0; i<listaUsuarios.size(); i++) {
+		for(int i=0; i< listaUsuariosSize; i++) {
 			
 			Usuarios usuario = listaUsuarios.get(i);
 			int idUsuario = usuario.getIdUsuario();

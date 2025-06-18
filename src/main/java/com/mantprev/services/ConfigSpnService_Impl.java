@@ -44,7 +44,8 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 		List<ConfigSpinners_DTO> listaConfigSpnDTO = new ArrayList<ConfigSpinners_DTO>();
 		List<ConfigSpinners> listConfigSpnn = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		for(int i=0; i<listConfigSpnn.size(); i++) {
+		int listaConfigSpinnSize = listConfigSpnn.size();
+		for(int i=0; i<listaConfigSpinnSize; i++) {
 			
 			ConfigSpinners confSpn = listConfigSpnn.get(i);
 			ConfigSpinners_DTO configSpnDTO = modelMapper.map(confSpn, ConfigSpinners_DTO.class); 
@@ -73,7 +74,8 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	/*****************************************************************************/
 		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		for(int i=0; i<listaConfGen.size(); i++) {
+		int listaConfigSize = listaConfGen.size();
+		for(int i=0; i<listaConfigSize; i++) {
 			
 			if (i < listEjecOTs.size()) {
 				
@@ -96,8 +98,8 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	/*************************************************************************************/
 		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
  		
-		
-		for(int i=1; i<listaConfGen.size(); i++) {
+		int listaConfigSize = listaConfGen.size();
+		for(int i=1; i<listaConfigSize; i++) {
 			
 			if (i < listClasificOTs.size()) {
 				
@@ -120,7 +122,8 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	/*******************************************************************************/
 		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		for(int i=0; i<listaConfGen.size(); i++) {
+		int listaConfigSize = listaConfGen.size();
+		for(int i=0; i<listaConfigSize; i++) {
 			
 			if (i < listPrioridsOTs.size()) {
 				
@@ -143,7 +146,8 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	/***********************************************************************************/
 		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		for(int i=0; i<listaConfGen.size(); i++) {
+		int listaConfigSize = listaConfGen.size();
+		for(int i=0; i<listaConfigSize; i++) {
 			
 			if (i < listEstadosEqu.size()) {
 				
@@ -166,7 +170,8 @@ public class ConfigSpnService_Impl implements ConfigSpnService{
 	/**************************************************************************************/
 		List<ConfigSpinners> listaConfGen = configSpinner_Reposit.getListConfigSpinners(idEmpresa);
 		
-		for(int i=0; i<listaConfGen.size(); i++) {
+		int listaConfigSize = listaConfGen.size();
+		for(int i=0; i<listaConfigSize; i++) {
 			
 			if (i < listClasificFall.size()) {
 				

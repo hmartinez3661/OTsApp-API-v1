@@ -30,8 +30,9 @@ public class PersonalTecnService_Impl implements PersonalTecnService {
 	/*****************************************************************/
 		List<Personal_Tecnico> listaPersTecn = persTecnico_Reposit.getListaPersonalTecnico(idEmpresa);
 		List<PersonalTecn_DTO> listaPersTecnDTO = new ArrayList<PersonalTecn_DTO>();
+		int listaPersTecnSize = listaPersTecn.size();
 		
-		for(int i=0; i<listaPersTecn.size(); i++) {
+		for(int i=0; i < listaPersTecnSize; i++) {
 			
 			Personal_Tecnico persTecn = listaPersTecn.get(i);
 			PersonalTecn_DTO persTecnDTO = modelMapper.map(persTecn, PersonalTecn_DTO.class);
