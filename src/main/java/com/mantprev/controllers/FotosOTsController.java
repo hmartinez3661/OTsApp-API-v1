@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -88,11 +89,27 @@ public class FotosOTsController {
 	}
 	
 	
-	@PostMapping(path = "/uploadListImgsIngr/{idOT}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)   //@RequestParam  @RequestPart             
+	@PostMapping(path = "/uploadListImgsIngr/{idOT}/{idEmpresa}")           
 	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
-	public String uploadListImgsIngr(@RequestParam List<MultipartFile> listParts, @PathVariable int idOT){ 
+	public String uploadListImgsIngr(@RequestParam List<MultipartFile> listParts, @PathVariable int idOT,  @PathVariable int idEmpresa){ 
 	/***************************************************************************************************/
-		return this.fotosIngrOTsServ.uploadListImgsToServer(listParts, idOT);
+		return this.fotosIngrOTsServ.uploadListImgsToServer(listParts, idOT);  
+	}
+	
+	
+	@PostMapping(path = "/saveListDtsFtosIngr")           
+	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
+	public String uploadDatosFotosIngrOT(@RequestBody List<Fotos_IngresoOTs> listDtsFotosIngr){  
+	/**************************************************************************************/
+		return this.fotosIngrOTsServ.saveListaDtsFtosIngreso(listDtsFotosIngr);
+	}
+	
+	
+	@PostMapping(path = "/saveListDtsFtosCierre")           
+	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
+	public String uploadDatosFotosCierreOT(@RequestBody List<Fotos_CierreOTs> listDtsFotsCierre){  
+	/**************************************************************************************/
+		return this.fotosIngrOTsServ.saveListaDtsFtosCierre(listDtsFotsCierre);
 	}
 	
 	
@@ -104,7 +121,6 @@ public class FotosOTsController {
 	public String uploadListFtosCierreToServer(@RequestParam List<MultipartFile> listaParts, @PathVariable int idOT){ 
 	/******************************************************************************************************/
 		return this.fotosIngrOTsServ.uploadListImgsCierreOTsToServer(listaParts, idOT);
-				
 	}
 	
 	
@@ -112,7 +128,6 @@ public class FotosOTsController {
     public ResponseEntity<?> downloadImage(@PathVariable String nombreFoto){
 	/*********************************************************************/	
         byte[] imageInbytes = fotosIngrOTsServ.downloadImageFromServer(nombreFoto);
-
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/jpg")).body(imageInbytes);
     }
 	
@@ -122,7 +137,6 @@ public class FotosOTsController {
 	public String uploadImgEquipoToServer(@RequestParam MultipartFile fotoFile, @PathVariable String nombrFto){ 
 	/*************************************************************************************************************/
 		return this.fotosIngrOTsServ.uploadImgEquipoToServer(fotoFile, nombrFto);
-				
 	}
 	
 	
@@ -131,7 +145,6 @@ public class FotosOTsController {
 	public void saveNamesFtosIngrOT(@PathVariable ArrayList<String> listNamesFotos, @PathVariable int idOT){
 	/******************************************************************************************************/	
 		this.fotosIngrOTsServ.saveNamesFtosIngrOT(listNamesFotos, idOT);
-		
 	}
 	
 	
@@ -140,7 +153,6 @@ public class FotosOTsController {
 	public void saveNamesFtosCierreOT(@PathVariable ArrayList<String> listNamesFotos, @PathVariable int idOT){
 	/******************************************************************************************************/	
 		this.fotosIngrOTsServ.saveNamesFtosCierreOT(listNamesFotos, idOT);
-		
 	}
 	
 	

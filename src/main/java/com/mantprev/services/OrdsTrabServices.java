@@ -43,6 +43,8 @@ public interface OrdsTrabServices {
 	
 	public String saveDocumentoOT(MultipartFile fileDoc, int idOT, int idEmpresa);
 	
+	public String saveListDatosDocsOT(List<Documentos_OTs> listaDocsOT);
+	
 	
 	
 	

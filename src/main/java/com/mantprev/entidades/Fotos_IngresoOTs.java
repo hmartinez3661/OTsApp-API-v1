@@ -28,7 +28,7 @@ public class Fotos_IngresoOTs{
     private String  nombreFoto;
     private String  correlatEquip;
     private Integer idOrdTrab;
-	private int idEmpresa;
+	private Integer idEmpresa;
     
     
     //GETTERS AND SETTERS
@@ -73,13 +73,15 @@ public class Fotos_IngresoOTs{
 		this.idOrdTrab = idOrdTrab;
 	}
 
-	public int getIdEmpresa() {
+	public Integer getIdEmpresa() {
 		return idEmpresa;
 	}
 
-	public void setIdEmpresa(int idEmpresa) {
+	public void setIdEmpresa(Integer idEmpresa) {
 		this.idEmpresa = idEmpresa;
 	}
+
+	
     
    
 

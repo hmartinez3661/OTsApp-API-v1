@@ -566,6 +566,15 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 	}
 
 
+	@Transactional
+	@Override
+	public String saveListDatosDocsOT(List<Documentos_OTs> listaDocsOT) {
+	/*******************************************************************/
+		documentsOT_repost.saveAll(listaDocsOT);
+		return "OK";
+	}
+
+
 	
 
 

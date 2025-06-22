@@ -264,7 +264,7 @@ public class FotosOTsService_Impl implements FotosOTsService {
 	}
 
 
-	
+	@Transactional(readOnly = true)
 	@Override
 	public byte[] downloadImageFromServer(String nombreFoto){
 	/*****************************************************/
@@ -298,6 +298,23 @@ public class FotosOTsService_Impl implements FotosOTsService {
 			ex.printStackTrace();
 		}
 		
+		return "OK";
+	}
+
+
+	@Transactional
+	@Override
+	public String saveListaDtsFtosIngreso(List<Fotos_IngresoOTs> listDtsFotosIngr) {
+	/*******************************************************************************/
+		fotosIngrOTs_Reposit.saveAll(listDtsFotosIngr);
+		return "OK";
+	}
+
+	
+	@Transactional
+	@Override
+	public String saveListaDtsFtosCierre(List<Fotos_CierreOTs> listDtsFotosCierre) {
+		fotosCierre_Reposit.saveAll(listDtsFotosCierre);
 		return "OK";
 	}
 	

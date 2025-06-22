@@ -169,7 +169,12 @@ public class OrdenesTrabajoController {
 	}
 	
 	
-	
+	@PostMapping(path = "/saveListDatosDocsOT")           
+	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
+	public String saveListDatosDocsOT(@RequestBody List<Documentos_OTs> listaDocsOT){  
+	/*******************************************************************************/
+		return this.ordsTrabServices.saveListDatosDocsOT(listaDocsOT);
+	}
 	
 	
 	

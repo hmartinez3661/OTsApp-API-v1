@@ -37,7 +37,9 @@ public interface FotosOTsService {
 	
 	public String uploadImgEquipoToServer(MultipartFile fotoFile, String nombrFto);
 	
+	public String saveListaDtsFtosIngreso(List<Fotos_IngresoOTs> listDtsFotosIngr);  
 	
+	public String saveListaDtsFtosCierre(List<Fotos_CierreOTs> listDtsFotosCierre);
 	
 	
 	
