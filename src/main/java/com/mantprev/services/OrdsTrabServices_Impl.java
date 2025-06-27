@@ -526,7 +526,7 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		
 		for (int i=0; i < listaDocsSize; i++) {
 			Documentos_OTs docOT = listDocsOT.get(i);
-			docOT.setComodin(Integer.toString(i+1));
+			docOT.setComodin(Integer.toString(i+1));  //Para numerar el documento
 		}
 		
 		return listDocsOT;
