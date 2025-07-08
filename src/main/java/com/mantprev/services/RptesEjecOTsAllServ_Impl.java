@@ -15,11 +15,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mantprev.entidades.Empresas_Inscrit;
 import com.mantprev.entidades.OrdenesTrabajo;
 import com.mantprev.entidades.ReptesEjecOTs;
 import com.mantprev.entidades.ReptesPersEjecOTs;
 import com.mantprev.entidades.RptesReptosEjecOTs;
 import com.mantprev.entidades.RptesServExtEjecOTs;
+import com.mantprev.entidades.Usuarios;
+import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Repte2Datos_DTO;
 import com.mantprev.entidadesDTO.RepteHistorMantto_DTO;
 import com.mantprev.entidadesDTO.RepteHrsParoEquips_DTO;
@@ -31,11 +34,13 @@ import com.mantprev.entidadesDTO.ReptesPersTecn_DTO;
 import com.mantprev.entidadesDTO.ReptesPersTecn_DTO2;
 import com.mantprev.entidadesDTO.ReptesReptos_DTO;
 import com.mantprev.entidadesDTO.ReptesReptos_DTO2;
+import com.mantprev.repositorios.Empresas_Repository;
 import com.mantprev.repositorios.OrdsTrab_Repository;
 import com.mantprev.repositorios.ReptesEjecOTs_Repository;
 import com.mantprev.repositorios.RptesReptosEjecOTs_Reposit;
 import com.mantprev.repositorios.RptesServExtEjecOTs_Reposit;
 import com.mantprev.repositorios.RtesPersEjecOTs_Reposit;
+import com.mantprev.repositorios.Usuarios_Repository;
 import com.mantprev.utilities.MetodosEstaticos;
 
 
@@ -57,6 +62,12 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 	
 	@Autowired
 	private OrdsTrab_Repository ordsTrab_Reposit;
+	
+	@Autowired
+	private Empresas_Repository empresasInscrit_Reposit;
+	
+	@Autowired
+	private Usuarios_Repository usuariosReposit;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -870,9 +881,51 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		return repteHistoricDTO;
 	}
 
+	
+	//*********** REPORTES PARA USUARIO SUPER-ADMIN (HUGO MARTINEZ) *************************
+	
+
+	@Transactional(readOnly = true)
+	@Override
+	public List<Empresas_DTO> getListaDeEmpresasInscritas() {
+	/*****************************************************/	
+		List<Empresas_Inscrit> listaEmpresas = empresasInscrit_Reposit.getAllEmpresasInscr();
+		
+		List<Empresas_DTO> listaEmpresasDTO = new ArrayList<>();
+		int listaEmpresasSize = listaEmpresas.size();
+		
+		for(int i=0; i< listaEmpresasSize; i++) {
+			
+			Empresas_Inscrit empresaInscr = listaEmpresas.get(i);
+			Empresas_DTO empresaDTO = modelMapper.map(empresaInscr, Empresas_DTO.class); 
+			
+			listaEmpresasDTO.add(empresaDTO);
+		}
+		
+		return listaEmpresasDTO; 
+	}
+
 
     
-	
+	@Transactional(readOnly = true)
+	@Override
+	public List<Usuarios> getLstaDeUsuarios(int idEmpresa) { 
+	/************************************************/
+		List<Usuarios> listaUsuarios = usuariosReposit.getUsuariosByIdEmpresa(idEmpresa);
+		List<Usuarios> listaUserEnv  = new ArrayList<>();
+		int listaUsuariosSize = listaUsuarios.size();
+		
+		for(int i=0; i< listaUsuariosSize; i++) {
+			
+			Usuarios usuario = listaUsuarios.get(i);
+			usuario.setPasswordEncrip(null);
+			usuario.setPasswordNormal(null);
+			
+       	 	listaUserEnv.add(usuario);
+		}
+		
+		return listaUserEnv;
+	}
 	
 	
 	

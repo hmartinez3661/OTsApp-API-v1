@@ -3,6 +3,8 @@ package com.mantprev.services;
 import java.util.Date;
 import java.util.List;
 
+import com.mantprev.entidades.Usuarios;
+import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Repte2Datos_DTO;
 import com.mantprev.entidadesDTO.RepteHistorMantto_DTO;
 import com.mantprev.entidadesDTO.RepteHrsParoEquips_DTO;
@@ -69,7 +71,11 @@ public interface RptesEjecOTsAllServ {
 	
 	
 	
+	//*********** REPORTES PARA USUARIO SUPER-ADMIN (HUGO MARTINEZ) *************************
 	
+	public List<Empresas_DTO> getListaDeEmpresasInscritas();
+	
+	public List<Usuarios> getLstaDeUsuarios(int idEmpresa);
 	
 	
 	

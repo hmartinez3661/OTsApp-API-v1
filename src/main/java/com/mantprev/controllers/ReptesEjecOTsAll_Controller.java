@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mantprev.entidades.Usuarios;
+import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Repte2Datos_DTO;
 import com.mantprev.entidadesDTO.RepteHistorMantto_DTO;
 import com.mantprev.entidadesDTO.RepteHrsParoEquips_DTO;
@@ -240,10 +242,24 @@ public class ReptesEjecOTsAll_Controller {
 	
 	
 	
+	//*********** REPORTES PARA USUARIO SUPER-ADMIN (HUGO MARTINEZ) *************************
 	
 	
+	@GetMapping(path = "/getListaDeEmpesas") // @GetMapping
+	@ResponseStatus(HttpStatus.OK) //Cod. 200  
+	public List<Empresas_DTO> getListaDeEmpresasInscritas() {	
+	//**************************************************************
+		return this.rptesEjecOTsAllServ.getListaDeEmpresasInscritas();
+	} 
 	
 	
+	@GetMapping(path = "/getUsersEmpr/{idEmpresa}")
+	@ResponseStatus(HttpStatus.OK) //Cod. 200  
+	public List<Usuarios> getLstaDeUsuariosEmpr(@PathVariable int idEmpresa){	
+	//************************************************************
+		return this.rptesEjecOTsAllServ.getLstaDeUsuarios(idEmpresa); 
+		
+	} 
 	
 	
 	
