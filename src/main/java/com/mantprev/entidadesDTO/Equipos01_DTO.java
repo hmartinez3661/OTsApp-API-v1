@@ -16,6 +16,7 @@ public class Equipos01_DTO {
     private String caractTecnicas;
     private String nombFotoEquip;
     private Integer idEmpresa;
+    private Double costoHoraParo;
     
     
 	
