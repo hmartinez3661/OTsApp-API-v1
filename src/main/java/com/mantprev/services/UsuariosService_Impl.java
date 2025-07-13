@@ -16,13 +16,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mantprev.entidades.ConfigSpinners;
 import com.mantprev.entidades.Empresas_Inscrit;
+import com.mantprev.entidades.Equipos;
+import com.mantprev.entidades.Personal_Tecnico;
 import com.mantprev.entidades.RegistroFallas;
 import com.mantprev.entidades.Usuarios;
+import com.mantprev.repositorios.ConfigSpinner_Repository;
 import com.mantprev.repositorios.Empresas_Repository;
+import com.mantprev.repositorios.Equipos_Repository;
+import com.mantprev.repositorios.PersonaTecnico_Repository;
+import com.mantprev.repositorios.RegistroFallas_Repository;
 import com.mantprev.repositorios.Usuarios_Repository;
 import com.mantprev.entidadesDTO.Empresas_DTO;
-import com.mantprev.entidadesDTO.Equipos01_DTO;
-import com.mantprev.entidadesDTO.PersonalTecn_DTO;
 import com.mantprev.entidadesDTO.Usuarios01_DTO;
 import com.mantprev.exceptions.UserNotFoundException;
 import com.mantprev.security.AuthResponse;
@@ -46,7 +50,16 @@ public class UsuariosService_Impl implements UsuariosService {
 	private Empresas_Repository empresasReposit;
 	
 	@Autowired
-	private ConfigSpnService configSpinnServ;
+	private ConfigSpinner_Repository configSpinn_Reposit;
+	
+	@Autowired
+	private RegistroFallas_Repository registFallas_Reposit;
+	
+	@Autowired
+	private Equipos_Repository equipos_Reposit;
+	
+	@Autowired
+	private PersonaTecnico_Repository persTecn_Reposit;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -341,11 +354,12 @@ public class UsuariosService_Impl implements UsuariosService {
 			AuthResponse authResponse = new AuthResponse();
 			authResponse.setToken(token);
 			
-			//CREA LAS CONFIGURACIONES INICIALES
+			//CREA LAS CONFIGURACIONES INICIALES DE LA NUEVA EMPRESA ********
 			makeConfigInicialesSpinners(idEmpresa, langGrup);
 			makeConfigInicialesRegistroFallas(idEmpresa, langGrup);
 			crearArbolEquiposInicial(idEmpresa, langGrup);
 			ingresarUnTecnEjecutor(idEmpresa, langGrup);
+			//***************************************************************
 			
 			return authResponse;
 			
@@ -755,7 +769,7 @@ public class UsuariosService_Impl implements UsuariosService {
         }
 
         //Guarda en la base de datos la configuracion de espinners
-        configSpinnServ.setConfigInicSpinners(listConfigSpinners);
+        configSpinn_Reposit.saveAll(listConfigSpinners);
         
     }
 
@@ -938,7 +952,7 @@ public class UsuariosService_Impl implements UsuariosService {
         listRegistroRegistroFallas.add(registroFall16);
 
         //Guarda en la BD la 1a lista de RegistroFallas
-        /* RETROFIT */
+        registFallas_Reposit.saveAll(listRegistroRegistroFallas);
         
     }
 	
@@ -995,9 +1009,9 @@ public class UsuariosService_Impl implements UsuariosService {
     	}
     	
     	//Equipos que formaran el arbol de equipos
-    	List<Equipos01_DTO> listaEquipsArbol = new ArrayList<>(); 
+    	List<Equipos> listaEquipsArbol = new ArrayList<>(); 
     	
-    	Equipos01_DTO equipoRaiz = new Equipos01_DTO();
+    	Equipos equipoRaiz = new Equipos(); 
     	equipoRaiz.setIdEquipoPadre(0);
     	equipoRaiz.setNombEquipo(nombrNodoRaiz);
     	equipoRaiz.setNumHijo("0");
@@ -1008,7 +1022,7 @@ public class UsuariosService_Impl implements UsuariosService {
     	listaEquipsArbol.add(0, equipoRaiz);
     	
     	//PRODUCCION 1 *****************************************
-    	Equipos01_DTO equipoDepto1 = new Equipos01_DTO();
+    	Equipos equipoDepto1 = new Equipos();
     	equipoDepto1.setIdEquipoPadre(0); //Se actualizar en la API
     	equipoDepto1.setNombEquipo(nombrDeptoProd1);
     	equipoDepto1.setNumHijo("1");
@@ -1018,7 +1032,7 @@ public class UsuariosService_Impl implements UsuariosService {
     	equipoDepto1.setIdEmpresa(idNvaEmpresa);
     	listaEquipsArbol.add(1, equipoDepto1);
     	
-    	Equipos01_DTO maq1DeptoProd1 = new Equipos01_DTO();
+    	Equipos maq1DeptoProd1 = new Equipos();
     	maq1DeptoProd1.setIdEquipoPadre(0);  //Se actualizar en la API
     	maq1DeptoProd1.setNombEquipo(equipPro1dDepto1);
     	maq1DeptoProd1.setNumHijo("1");
@@ -1028,7 +1042,7 @@ public class UsuariosService_Impl implements UsuariosService {
     	maq1DeptoProd1.setIdEmpresa(idNvaEmpresa);
     	listaEquipsArbol.add(2, maq1DeptoProd1);
     	
-    	Equipos01_DTO maq2DeptoProd1 = new Equipos01_DTO();
+    	Equipos maq2DeptoProd1 = new Equipos();
     	maq2DeptoProd1.setIdEquipoPadre(0);  //Se actualizar en la API
     	maq2DeptoProd1.setNombEquipo(equipPro2dDepto1);
     	maq2DeptoProd1.setNumHijo("2");
@@ -1039,7 +1053,7 @@ public class UsuariosService_Impl implements UsuariosService {
     	listaEquipsArbol.add(3, maq2DeptoProd1); 
     	
     	//DEPTO PRODUCC 2 ****************
-    	Equipos01_DTO equipoDepto2 = new Equipos01_DTO();
+    	Equipos equipoDepto2 = new Equipos();
     	equipoDepto2.setIdEquipoPadre(0);  //Se actualizar en la API
     	equipoDepto2.setNombEquipo(nombrDeptoProd2);
     	equipoDepto2.setNumHijo("2");
@@ -1049,7 +1063,7 @@ public class UsuariosService_Impl implements UsuariosService {
     	equipoDepto2.setIdEmpresa(idNvaEmpresa);
     	listaEquipsArbol.add(4, equipoDepto2);
     	
-    	Equipos01_DTO maq1DeptoProd2 = new Equipos01_DTO();
+    	Equipos maq1DeptoProd2 = new Equipos();
     	maq1DeptoProd2.setIdEquipoPadre(0);  //Se actualizar en la API
     	maq1DeptoProd2.setNombEquipo(equipPro1dDepto2);
     	maq1DeptoProd2.setNumHijo("1");
@@ -1059,7 +1073,7 @@ public class UsuariosService_Impl implements UsuariosService {
     	maq1DeptoProd2.setIdEmpresa(idNvaEmpresa);
     	listaEquipsArbol.add(5, maq1DeptoProd2);
     	
-    	Equipos01_DTO maq2DeptoProd2 = new Equipos01_DTO();
+    	Equipos maq2DeptoProd2 = new Equipos();
     	maq2DeptoProd2.setIdEquipoPadre(0);  //Se actualizar en la API
     	maq2DeptoProd2.setNombEquipo(equipPro2dDepto2);
     	maq2DeptoProd2.setNumHijo("2");
@@ -1070,7 +1084,7 @@ public class UsuariosService_Impl implements UsuariosService {
     	listaEquipsArbol.add(6, maq2DeptoProd2);
     	
     	//DEPTO PRODUCC 3 ****************
-    	Equipos01_DTO equipoDepto3 = new Equipos01_DTO();
+    	Equipos equipoDepto3 = new Equipos();
     	equipoDepto3.setIdEquipoPadre(0);  //Se actualizar en la API
     	equipoDepto3.setNombEquipo(nombrDeptoProd3);
     	equipoDepto3.setNumHijo("3");
@@ -1081,7 +1095,7 @@ public class UsuariosService_Impl implements UsuariosService {
     	listaEquipsArbol.add(7, equipoDepto3);
     	
     	//DEPTO SERV. GENERALES ****************
-    	Equipos01_DTO deptoServGenerals = new Equipos01_DTO();
+    	Equipos deptoServGenerals = new Equipos();
     	deptoServGenerals.setIdEquipoPadre(0);  //Se actualizar en la API
     	deptoServGenerals.setNombEquipo(nombDeptServGen);
     	deptoServGenerals.setNumHijo("4");
@@ -1091,7 +1105,44 @@ public class UsuariosService_Impl implements UsuariosService {
     	deptoServGenerals.setIdEmpresa(idNvaEmpresa); 
     	listaEquipsArbol.add(8, deptoServGenerals);
 		
-    	//equiposService.crearGuardarArbolDeEquipos(listaEquipsArbol);
+    	
+    	//GUARDA EL ARBOL DE EQUIPOS DE LA NUEVA EMPRESA
+		//Guerda el equipoRaiz
+		equipos_Reposit.save(equipoRaiz);   //Inserta en al arbol
+		int idEquipoRaiz = equipoRaiz.getIdEquipo();
+		
+		//Guarda los Departamentos
+		Equipos deptProduc1 = listaEquipsArbol.get(1);  deptProduc1.setIdEquipoPadre(idEquipoRaiz); 
+		Equipos deptProduc2 = listaEquipsArbol.get(4);  deptProduc2.setIdEquipoPadre(idEquipoRaiz); 
+		Equipos deptProduc3 = listaEquipsArbol.get(7);  deptProduc3.setIdEquipoPadre(idEquipoRaiz); 
+		Equipos deptServGen = listaEquipsArbol.get(8);  deptServGen.setIdEquipoPadre(idEquipoRaiz); 
+		
+		List<Equipos> listDeptsProducc = new ArrayList<>();
+		listDeptsProducc.add(deptProduc1);
+		listDeptsProducc.add(deptProduc2);
+		listDeptsProducc.add(deptProduc3);
+		listDeptsProducc.add(deptServGen);
+		equipos_Reposit.saveAll(listDeptsProducc); //Inserta en al arbol
+		
+		//Guarda los equipos de producc Depto1
+		int idDeptoProduc1 = deptProduc1.getIdEquipo();
+		maq1DeptoProd1.setIdEquipoPadre(idDeptoProduc1); 
+		maq2DeptoProd1.setIdEquipoPadre(idDeptoProduc1);  
+		
+		List<Equipos> maquinasDeptoProd1 = new ArrayList<>();
+		maquinasDeptoProd1.add(maq1DeptoProd1);
+		maquinasDeptoProd1.add(maq2DeptoProd1);
+		equipos_Reposit.saveAll(maquinasDeptoProd1);
+		
+		//Guarda los equipos de producc Depto1
+		int idDeptoProduc2 = deptProduc2.getIdEquipo();
+		maq1DeptoProd2.setIdEquipoPadre(idDeptoProduc2); 
+		maq2DeptoProd2.setIdEquipoPadre(idDeptoProduc2); 
+		
+		List<Equipos> maquinasDeptoProd2 = new ArrayList<>();
+		maquinasDeptoProd2.add(maq1DeptoProd2);
+		maquinasDeptoProd2.add(maq2DeptoProd2);
+		equipos_Reposit.saveAll(maquinasDeptoProd2);
 	}
 	
 	
@@ -1115,15 +1166,15 @@ public class UsuariosService_Impl implements UsuariosService {
 		  		nombreTecn  = "Juan - editar nome";
     	}
     	
-    	PersonalTecn_DTO newPersTec = new PersonalTecn_DTO();
-    	newPersTec.setNombreEmpl(tipoEjector);
+    	Personal_Tecnico newPersTec = new Personal_Tecnico();
+    	newPersTec.setTipoEjecutor(tipoEjector);
     	newPersTec.setNombreEmpl(nombreTecn);
     	newPersTec.setIdEmpresa(idEmpresa);
     	newPersTec.setIdEmpleado(0); 
+    	newPersTec.setStatusPers("Activo");
     	
     	//Procede a registrar el primer tecnico de la empresa
-    	//persTecnServ.registrarNuevoTecnico(newPersTec);
-		
+    	persTecn_Reposit.save(newPersTec);
 	}
 	
 	

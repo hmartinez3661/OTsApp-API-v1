@@ -45,7 +45,7 @@ public interface OrdsTrab_Repository extends CrudRepository <OrdenesTrabajo, Int
     
   
 	@Query("SELECT MAX(numOT) FROM OrdenesTrabajo T WHERE T.idEmpresa = ?1")
-    public int getUltimNumOrdenesTrab(int idEmpresa);
+    public Integer getUltimNumOrdenesTrab(int idEmpresa);
 	
 	
     

@@ -459,7 +459,12 @@ public class OrdsTrabServices_Impl implements OrdsTrabServices{
 		
 		OrdenesTrabajo nvaOrdTrab = new OrdenesTrabajo();
 		
-		int numOT = ordsTrab_Reposit.getUltimNumOrdenesTrab(idEmpresa) + 1;
+		int numOT; //Cuando una empresa no ha generado OTs el ultimo numero va a ser null
+		if(ordsTrab_Reposit.getUltimNumOrdenesTrab(idEmpresa) != null) {
+			numOT = ordsTrab_Reposit.getUltimNumOrdenesTrab(idEmpresa) + 1;
+		} else {
+			numOT = 1;
+		}
 		
 		nvaOrdTrab.setIdEquipo(Integer.parseInt(idEquipo));
 		nvaOrdTrab.setTrabajoSolicit(trabSolic);
