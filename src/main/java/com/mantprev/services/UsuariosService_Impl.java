@@ -400,7 +400,8 @@ public class UsuariosService_Impl implements UsuariosService {
 			nvoUsuario.setFechaFnlSuscrip(dateFnlSuscrip);
 			
 			usuariosReposit.save(nvoUsuario);
-			return passwProv;
+			int idNvoUsuario = nvoUsuario.getIdUsuario();
+			return passwProv +"-"+ idNvoUsuario;  //Retorna el password prov + el Id nuevo User
 			
 		} else {
 			return "***";   //Ya existe un usuario con ese email

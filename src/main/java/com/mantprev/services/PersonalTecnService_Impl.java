@@ -54,7 +54,9 @@ public class PersonalTecnService_Impl implements PersonalTecnService {
 		
 		try {
 			persTecnico_Reposit.save(nvoPersTecn);
-			return "EXITO";
+			
+			int idEmpleado = nvoPersTecn.getIdEmpleado();
+			return Integer.toString(idEmpleado); 
 			
 		} catch (Exception ex) {
 			return "Error al ingresar Datos";

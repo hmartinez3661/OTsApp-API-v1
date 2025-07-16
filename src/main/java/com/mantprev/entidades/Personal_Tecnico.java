@@ -53,39 +53,8 @@ public class Personal_Tecnico{
 		this.listRtesPersEjecOT = listRtesPersEjecOT;
 	}
     
-    
-   /* RELACION ENTRE TABLAS *********************************
-    
-    @JsonIgnore
-    @OneToMany (mappedBy = "empleado", fetch = FetchType.LAZY) 
-    private List<ReptesPersEjecOTs> listRtesPersEjecOT;
-    
-    
-    public List<ReptesPersEjecOTs> getListRtesPersEjecOT() {
-		return listRtesPersEjecOT;
-	}
-	public void setListRtesPersEjecOT(List<ReptesPersEjecOTs> listRtesPersEjecOT) {
-		this.listRtesPersEjecOT = listRtesPersEjecOT;
-	}
-
-	//*********************************************************
-	
-	@JsonIgnore
-	@OneToMany (mappedBy = "empleado", fetch = FetchType.LAZY)
-	private List<ReptesPersEjecRuts> listRtesPersEjecRut;
-	
-	
-	public List<ReptesPersEjecRuts> getListRtesPersEjecRut() {
-		return listRtesPersEjecRut;
-	}
-	
-	public void setListRtesPersEjecRut(List<ReptesPersEjecRuts> listRtesPersEjecRut) {
-		this.listRtesPersEjecRut = listRtesPersEjecRut;
-	}
-	
-	********************************************************/ 
-    
-    
+    /*******************************************************/
+  
     
     
     //GETTERS AND SETTERS
