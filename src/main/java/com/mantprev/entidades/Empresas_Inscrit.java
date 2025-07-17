@@ -27,6 +27,7 @@ public class Empresas_Inscrit {
 	private int cantMaxUsers;
 	private Date fechaSuscrip;
 	private Date fechaFnlSuscrip; 
+	private Integer cantTotalOTs;
 	
 	
 	//Constructor
@@ -122,6 +123,19 @@ public class Empresas_Inscrit {
 	public void setFechaFnlSuscrip(Date fechaFnlSuscrip) {
 		this.fechaFnlSuscrip = fechaFnlSuscrip;
 	}
+
+
+	public Integer getCantTotalOTs() {
+		return cantTotalOTs;
+	}
+
+
+	public void setCantTotalOTs(Integer cantTotalOTs) {
+		this.cantTotalOTs = cantTotalOTs;
+	}
+
+
+	
 
 
 	

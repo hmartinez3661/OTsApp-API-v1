@@ -15,6 +15,7 @@ private int idEmpresa;
 	private int cantMaxUsers;
 	private String fechaSuscrip;
 	private String fechaFnlSuscrip;
+	private int cantTotalOTs;
 	
 	
 	//Constructor
@@ -106,6 +107,14 @@ private int idEmpresa;
 
 	public String getFechaSuscrip() {
 		return fechaSuscrip;
+	}
+
+	public int getCantTotalOTs() {
+		return cantTotalOTs;
+	}
+
+	public void setCantTotalOTs(int cantTotalOTs) {
+		this.cantTotalOTs = cantTotalOTs;
 	}
 	
 	

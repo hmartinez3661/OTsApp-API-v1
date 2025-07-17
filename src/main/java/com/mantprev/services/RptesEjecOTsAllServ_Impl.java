@@ -897,10 +897,18 @@ public class RptesEjecOTsAllServ_Impl implements RptesEjecOTsAllServ {
 		for(int i=0; i< listaEmpresasSize; i++) {
 			
 			Empresas_Inscrit empresaInscr = listaEmpresas.get(i);
+			int idEmpresa = empresaInscr.getIdEmpresa();
+			
+			int totOTsEmpr = 0;
+			Integer cantTotOTsEmpr = ordsTrab_Reposit.getUltimNumOrdenesTrab(idEmpresa);
+			if (cantTotOTsEmpr != null) {
+				totOTsEmpr = cantTotOTsEmpr;
+			}
 			
 			Empresas_DTO empresaDTO = modelMapper.map(empresaInscr, Empresas_DTO.class); 
 			empresaDTO.setFechaSuscrip(MetodosEstaticos.getDateFormated(empresaInscr.getFechaSuscrip())); 
 			empresaDTO.setFechaFnlSuscrip(MetodosEstaticos.getDateFormated(empresaInscr.getFechaFnlSuscrip())); 
+			empresaDTO.setCantTotalOTs(totOTsEmpr); 
 			
 			listaEmpresasDTO.add(empresaDTO);
 		}

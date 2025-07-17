@@ -171,13 +171,12 @@ public class UsuariosService_Impl implements UsuariosService {
 	@Override
 	public String actualizarDatosUsuario1(Usuarios01_DTO userDTO, int idEmpresa) {
 	/***********************************************************************/
-		String nombOrigin = userDTO.getNombreUsuario();
-		String nombreUser = userDTO.getPassword();    //El nuevo nombre de usuario viene el el password desde la APP
+		String nombreUser = userDTO.getNombreUsuario();    //El nuevo nombre de usuario viene el el password desde la APP
 		String emailUser  = userDTO.getEmailUsuario();
 		String rolDeUser  = userDTO.getUserRol();
+		int idDelUsuario  = userDTO.getIdUsuario();		
 		
-		List<Usuarios> listaUsuarios = usuariosReposit.getUsuarioByNameAndIdEmpresa(nombOrigin, idEmpresa);
-		Usuarios usuario = listaUsuarios.get(0);
+		Usuarios usuario = usuariosReposit.getUsuarioByIdUser(idDelUsuario);
 		
 		usuario.setNombreUsuario(nombreUser);
 		usuario.setEmailUsuario(emailUser);
@@ -190,7 +189,7 @@ public class UsuariosService_Impl implements UsuariosService {
 		} catch (Exception ex) {
 			return "FALLO EN ACTUALIZAR USUARIO"; 
 		}
-	}
+	}  
 	
 	
 	@Transactional
