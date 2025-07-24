@@ -113,7 +113,12 @@ public class AuthenticController {
 	} 
 	
 	
-	
+	@GetMapping(path = "/getNewestAppVers")
+	@ResponseStatus(HttpStatus.OK) //Cod. 200  
+	public Integer getNewestAppVersion(){	
+	//***********************************
+		return this.usuariosService.getNewestAppVersion(); 
+	} 
 	
 	
 	

@@ -46,6 +46,11 @@ public interface UsuariosService {
 
 	public Usuarios01_DTO getUsuarioByEmail(String emailUser);
 	
+	public Integer getNewestAppVersion();
+	
+	
+	
+	
 	
 	
 	

@@ -14,12 +14,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mantprev.entidades.Androi_Version;
 import com.mantprev.entidades.ConfigSpinners;
 import com.mantprev.entidades.Empresas_Inscrit;
 import com.mantprev.entidades.Equipos;
 import com.mantprev.entidades.Personal_Tecnico;
 import com.mantprev.entidades.RegistroFallas;
 import com.mantprev.entidades.Usuarios;
+import com.mantprev.repositorios.AndroiVersion_Repository;
 import com.mantprev.repositorios.ConfigSpinner_Repository;
 import com.mantprev.repositorios.Empresas_Repository;
 import com.mantprev.repositorios.Equipos_Repository;
@@ -60,6 +62,9 @@ public class UsuariosService_Impl implements UsuariosService {
 	
 	@Autowired
 	private PersonaTecnico_Repository persTecn_Reposit;
+	
+	@Autowired
+	private AndroiVersion_Repository androiVers_Reposit;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -1175,6 +1180,17 @@ public class UsuariosService_Impl implements UsuariosService {
     	
     	//Procede a registrar el primer tecnico de la empresa
     	persTecn_Reposit.save(newPersTec);
+	}
+
+
+	@Transactional(readOnly = true) 
+	@Override
+	public Integer getNewestAppVersion() {
+	/**********************************/
+		Androi_Version androiVers = androiVers_Reposit.getAndroiVersion();
+		int appVers = androiVers.getVersionCode();
+		
+		return appVers;
 	}
 	
 	
