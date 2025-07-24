@@ -19,38 +19,20 @@
 CREATE DATABASE IF NOT EXISTS `androi_ord_trab2` /*!40100 DEFAULT CHARACTER SET utf8mb3 COLLATE utf8mb3_uca1400_ai_ci */;
 USE `androi_ord_trab2`;
 
--- Dumping structure for table androi_ord_trab2.cant_sab_dom
-CREATE TABLE IF NOT EXISTS `cant_sab_dom` (
-  `numeroMes` int(11) NOT NULL AUTO_INCREMENT,
-  `Anio2019` int(3) DEFAULT 0,
-  `Anio2020` int(3) DEFAULT 0,
-  `Anio2021` int(3) DEFAULT 0,
-  `Anio2022` int(3) DEFAULT 0,
-  `Anio2023` int(3) DEFAULT 0,
-  `Anio2024` int(3) DEFAULT 0,
-  `Anio2025` int(3) DEFAULT 0,
-  `Anio2026` int(3) DEFAULT 0,
-  `Anio2027` int(3) DEFAULT 0,
-  `Anio2028` int(3) DEFAULT 0,
-  `Anio2029` int(3) DEFAULT 0,
-  `Anio2030` int(3) DEFAULT 0,
-  PRIMARY KEY (`numeroMes`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci COMMENT='Guarda en numero de sabados y domingos de los diferentes meses por algunos años';
+-- Dumping structure for table androi_ord_trab2.androi_version
+CREATE TABLE IF NOT EXISTS `androi_version` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `versionCode` int(11) DEFAULT NULL,
+  `versionName` varchar(50) DEFAULT NULL,
+  `dato01` varchar(50) DEFAULT NULL,
+  `dato02` varchar(50) DEFAULT NULL,
+  `dato03` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci COMMENT='Se usa esta tabla para guardar los datos de la ultima version de la aplicacion Androi';
 
--- Dumping data for table androi_ord_trab2.cant_sab_dom: ~12 rows (approximately)
-INSERT INTO `cant_sab_dom` (`numeroMes`, `Anio2019`, `Anio2020`, `Anio2021`, `Anio2022`, `Anio2023`, `Anio2024`, `Anio2025`, `Anio2026`, `Anio2027`, `Anio2028`, `Anio2029`, `Anio2030`) VALUES
-	(1, 8, 8, 10, 10, 9, 8, 8, 9, 10, 10, 8, 8),
-	(2, 8, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8),
-	(3, 10, 9, 8, 8, 8, 10, 10, 9, 8, 8, 9, 10),
-	(4, 8, 8, 8, 9, 10, 8, 8, 8, 8, 10, 9, 8),
-	(5, 8, 10, 10, 9, 8, 8, 9, 10, 10, 8, 8, 8),
-	(6, 10, 8, 8, 8, 8, 10, 9, 8, 8, 8, 9, 10),
-	(7, 8, 8, 9, 10, 10, 8, 8, 8, 9, 10, 9, 8),
-	(8, 9, 10, 9, 8, 8, 9, 10, 10, 9, 8, 8, 9),
-	(9, 9, 8, 8, 8, 9, 9, 8, 8, 8, 9, 10, 9),
-	(10, 8, 9, 10, 10, 9, 8, 8, 9, 10, 9, 8, 8),
-	(11, 9, 9, 8, 8, 8, 9, 10, 9, 8, 8, 8, 9),
-	(12, 9, 8, 8, 9, 10, 9, 8, 8, 8, 10, 10, 9);
+-- Dumping data for table androi_ord_trab2.androi_version: ~1 rows (approximately)
+INSERT INTO `androi_version` (`id`, `versionCode`, `versionName`, `dato01`, `dato02`, `dato03`) VALUES
+	(1, 1, '1.3', NULL, NULL, NULL);
 
 -- Dumping structure for table androi_ord_trab2.config_spinners
 CREATE TABLE IF NOT EXISTS `config_spinners` (
@@ -221,9 +203,9 @@ CREATE TABLE IF NOT EXISTS `documentos_ots` (
   `comodin` varchar(20) DEFAULT NULL,
   `idEmpresa` int(11) DEFAULT NULL,
   PRIMARY KEY (`idDoc`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
--- Dumping data for table androi_ord_trab2.documentos_ots: ~18 rows (approximately)
+-- Dumping data for table androi_ord_trab2.documentos_ots: ~27 rows (approximately)
 INSERT INTO `documentos_ots` (`idDoc`, `nombreDoc`, `nombreSinEsp`, `idOrdTrab`, `comodin`, `idEmpresa`) VALUES
 	(1, 'MANTPREV S.A. VIPSAL 5268TX6SV 258194 08.22.24.pdf', 'MANTPREV*S.A.*VIPSAL*5268TX6SV*258194*08.22.24.pdf', 341, NULL, 223),
 	(2, 'NPE1725108052471.pdf', 'NPE1725108052471.pdf', 341, NULL, 223),
@@ -243,7 +225,15 @@ INSERT INTO `documentos_ots` (`idDoc`, `nombreDoc`, `nombreSinEsp`, `idOrdTrab`,
 	(33, 'ComprobanteIngresoDivisas_2.pdf', 'ComprobanteIngresoDivisas_2.pdf', 740, NULL, 223),
 	(34, 'ComprobanteIngresoDivisas_3.pdf', 'ComprobanteIngresoDivisas_3.pdf', 740, NULL, 223),
 	(35, 'NPE_4-3129.pdf', 'NPE_4-3129.pdf', 742, NULL, 223),
-	(36, 'OFERTA_TÉCNICA_Y_ECONÓMICA_-_HUGO_MARTINEZ.pdf', 'OFERTA_TÉCNICA_Y_ECONÓMICA_-_HUGO_MARTINEZ.pdf', 742, NULL, 223);
+	(36, 'OFERTA_TÉCNICA_Y_ECONÓMICA_-_HUGO_MARTINEZ.pdf', 'OFERTA_TÉCNICA_Y_ECONÓMICA_-_HUGO_MARTINEZ.pdf', 742, NULL, 223),
+	(37, 'BL bill of lading.pdf', 'BL-bill-of-lading.pdf', 747, NULL, 238),
+	(38, 'COMMERCIAL   INVOICE.pdf', 'COMMERCIAL---INVOICE.pdf', 747, NULL, 238),
+	(39, 'DI FORMATO - panama.pdf', 'DI-FORMATO---panama.pdf', 0, NULL, 238),
+	(40, 'Packing List.pdf', 'Packing-List.pdf', 0, NULL, 238),
+	(41, 'DI FORMATO - panama.pdf', 'DI-FORMATO---panama.pdf', 749, NULL, 238),
+	(42, 'Packing List.pdf', 'Packing-List.pdf', 749, NULL, 238),
+	(43, 'BL bill of lading.pdf', 'BL-bill-of-lading.pdf', 748, NULL, 238),
+	(44, 'COMMERCIAL   INVOICE.pdf', 'COMMERCIAL---INVOICE.pdf', 748, NULL, 238);
 
 -- Dumping structure for table androi_ord_trab2.empresas_inscrit
 CREATE TABLE IF NOT EXISTS `empresas_inscrit` (
@@ -256,28 +246,29 @@ CREATE TABLE IF NOT EXISTS `empresas_inscrit` (
   `cantMaxUsers` int(3) DEFAULT NULL,
   `fechaSuscrip` datetime(6) DEFAULT NULL,
   `fechaFnlSuscrip` datetime(6) DEFAULT NULL,
+  `cantTotalOTs` int(11) DEFAULT NULL,
   PRIMARY KEY (`idEmpresa`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=239 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table androi_ord_trab2.empresas_inscrit: ~17 rows (approximately)
-INSERT INTO `empresas_inscrit` (`idEmpresa`, `nombEmpresa`, `paisEmpresa`, `idiomaGrupo`, `simbMoneda`, `codigoPais`, `cantMaxUsers`, `fechaSuscrip`, `fechaFnlSuscrip`) VALUES
-	(210, 'Ind. Mantprev', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(211, 'Cementos de Brasil', 'Brasil', 'pt', 'R$', 'BR', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(212, 'Proaces S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(213, 'Neto Industries', 'México', 'es', '$', 'MX', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(214, 'Neto\'s Industries', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(215, 'Celpac S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(216, 'Cajas y Bolsas S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(217, 'Celpac S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(218, 'Celpac S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(219, 'Cemento Cessa', 'Nicaragua', 'es', 'C$', 'NI', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000'),
-	(220, 'La Constancia S.A.', 'Venezuela', 'es', 'Bs', 'VE', 10, '2025-06-03 00:00:00.000000', '2025-07-18 00:00:00.000000'),
-	(221, 'Cemento Progreso', 'Guatemala', 'es', 'Q', 'GT', 10, '2025-06-03 00:00:00.000000', '2025-07-18 00:00:00.000000'),
-	(222, 'Cajas y Bolsas S.A.', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-03 00:00:00.000000', '2025-07-18 00:00:00.000000'),
-	(223, 'IMACASA', 'United States USA', 'en', '$', 'US', 10, '2025-06-04 00:00:00.000000', '2025-07-19 00:00:00.000000'),
-	(224, 'Salvaplastic', 'Brasil', 'pt', 'R$', 'BR', 10, '2025-06-04 00:00:00.000000', '2025-07-19 00:00:00.000000'),
-	(232, 'BEMISAL', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-10 00:00:00.000000', '2025-07-25 00:00:00.000000'),
-	(238, 'Industrias Mantprev', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-13 00:00:00.000000', '2025-07-28 00:00:00.000000');
+INSERT INTO `empresas_inscrit` (`idEmpresa`, `nombEmpresa`, `paisEmpresa`, `idiomaGrupo`, `simbMoneda`, `codigoPais`, `cantMaxUsers`, `fechaSuscrip`, `fechaFnlSuscrip`, `cantTotalOTs`) VALUES
+	(210, 'Ind. Mantprev', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(211, 'Cementos de Brasil', 'Brasil', 'pt', 'R$', 'BR', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(212, 'Proaces S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(213, 'Neto Industries', 'México', 'es', '$', 'MX', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(214, 'Neto\'s Industries', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(215, 'Celpac S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(216, 'Cajas y Bolsas S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(217, 'Celpac S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(218, 'Celpac S.A.', 'United States USA', 'en', '$', 'US', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(219, 'Cemento Cessa', 'Nicaragua', 'es', 'C$', 'NI', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', NULL),
+	(220, 'La Constancia S.A.', 'Venezuela', 'es', 'Bs', 'VE', 10, '2025-06-03 00:00:00.000000', '2025-07-18 00:00:00.000000', NULL),
+	(221, 'Cemento Progreso', 'Guatemala', 'es', 'Q', 'GT', 10, '2025-06-03 00:00:00.000000', '2025-07-18 00:00:00.000000', NULL),
+	(222, 'Cajas y Bolsas S.A.', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-03 00:00:00.000000', '2025-07-18 00:00:00.000000', NULL),
+	(223, 'IMACASA', 'United States USA', 'en', '$', 'US', 10, '2025-06-04 00:00:00.000000', '2025-07-19 00:00:00.000000', NULL),
+	(224, 'Salvaplastic', 'Brasil', 'pt', 'R$', 'BR', 10, '2025-06-04 00:00:00.000000', '2025-07-19 00:00:00.000000', NULL),
+	(232, 'BEMISAL', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-10 00:00:00.000000', '2025-07-25 00:00:00.000000', NULL),
+	(238, 'Industrias Mantprev', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-13 00:00:00.000000', '2025-07-28 00:00:00.000000', NULL);
 
 -- Dumping structure for table androi_ord_trab2.equipos
 CREATE TABLE IF NOT EXISTS `equipos` (
@@ -292,9 +283,9 @@ CREATE TABLE IF NOT EXISTS `equipos` (
   `nombFotoEquip` varchar(75) DEFAULT NULL,
   `idEmpresa` int(11) DEFAULT NULL,
   PRIMARY KEY (`idEquipo`)
-) ENGINE=InnoDB AUTO_INCREMENT=872 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=884 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
--- Dumping data for table androi_ord_trab2.equipos: ~142 rows (approximately)
+-- Dumping data for table androi_ord_trab2.equipos: ~138 rows (approximately)
 INSERT INTO `equipos` (`idEquipo`, `idEquipoPadre`, `nombEquipo`, `numHijo`, `nivelArbol`, `correlativo`, `costoHoraParo`, `caractTecnicas`, `nombFotoEquip`, `idEmpresa`) VALUES
 	(1, 0, 'PLANTA GENERAL', '0', '0', '0', 0, NULL, NULL, 223),
 	(2, 1, 'DECAPADO', '1', '1', '0.01', 0, 'Ficha Tecn 4 Laminador Cammbio de toto y nueva actualizacion ......AAAAAAAAA', '7rasgZw8I8_03112023_122211.jpg', 223),
@@ -385,12 +376,8 @@ INSERT INTO `equipos` (`idEquipo`, `idEquipoPadre`, `nombEquipo`, `numHijo`, `ni
 	(801, 1, 'SERVICIOS GENERALES ', '7', '1', '0.07', 0, NULL, NULL, 223),
 	(802, 801, 'Caldera 1', '1', '2', '0.07.01', 0, NULL, NULL, 223),
 	(804, 801, 'Compressor 1', '3', '2', '0.07.03', 0, NULL, NULL, 223),
-	(805, 1, 'New equipment--ksk- XYZ', '8', '1', '0.08', 0, NULL, NULL, 223),
-	(808, 805, 'New Equip XYZ', '1', '2', '0.08.01', 0, NULL, NULL, 223),
-	(809, 805, 'New Equip XYZ-2', '2', '2', '0.08..02', 0, NULL, NULL, 223),
 	(810, 1, 'NEW DEPTO. OR PRODUC.LINE', '9', '1', '0.09', 0, NULL, NULL, 223),
 	(811, 810, 'New Equipment 2', '1', '2', '0.09.01', 0, NULL, NULL, 223),
-	(812, 810, 'New Equip 1', '2', '2', '0.09..02', 0, NULL, NULL, 223),
 	(820, 0, 'PLANTA GENERAL', '0', '0', '0', 0, NULL, NULL, 238),
 	(821, 820, 'DEPTO. PRODUCCION 1', '1', '1', '0.01', 0, NULL, NULL, 238),
 	(822, 820, 'DEPTO. PRODUCCION 2', '2', '1', '0.02', 0, NULL, NULL, 238),
@@ -428,16 +415,12 @@ INSERT INTO `equipos` (`idEquipo`, `idEquipoPadre`, `nombEquipo`, `numHijo`, `ni
 	(859, 857, 'New Equipment 2-8', '2', '2', '0.08.02', 0, NULL, NULL, 238),
 	(860, 820, 'NEW DEPTO. 9', '9', '1', '0.09', 0, NULL, NULL, 238),
 	(861, 860, 'New Equipment 1-9', '1', '2', '0.09.01', 0, NULL, NULL, 238),
-	(862, 820, 'NEW DEPTO. 10', '10', '1', '0.10', 0, NULL, NULL, 238),
-	(863, 862, 'New Equipment 1-10', '1', '2', '0.10.01', 0, NULL, NULL, 238),
-	(864, 820, 'NEW DEPTO.- PRODUC.LINE', '11', '1', '0.11', 0, NULL, NULL, 238),
-	(865, 821, 'NEW DEPTO. 11', '12', '1', '0.12', 0, NULL, NULL, 238),
-	(866, 865, 'New Equipment 1-11', '1', '2', '0.12.01', 0, NULL, NULL, 238),
-	(867, 820, 'NEW DEPTO. 12', '13', '1', '0.13', 0, NULL, NULL, 238),
-	(868, 867, 'New Equipment 1-12', '1', '2', '0.13.01', 0, NULL, NULL, 238),
-	(869, 820, 'New Equipment', '13', '1', '0.14', 0, NULL, NULL, 238),
-	(870, 869, 'New Equipment aaa', '1', '2', '0.14.01', 0, NULL, NULL, 238),
-	(871, 869, 'New Equipment bbb', '2', '2', '0.14.02', 0, NULL, NULL, 238);
+	(878, 820, 'NEW DEPTO 10', '10', '1', '0.10', 0, NULL, NULL, 238),
+	(879, 878, 'New Equipment 1 Depto 10', '1', '2', '0.10.01', 0, NULL, NULL, 238),
+	(880, 820, 'NEW DEPTO. 11', '11', '1', '0.11', 0, NULL, NULL, 238),
+	(881, 880, 'New Equipment Depto 11', '1', '2', '0.11.01', 0, NULL, NULL, 238),
+	(882, 820, 'NEW DEPTO. 12', '12', '1', '0.12', 0, NULL, NULL, 238),
+	(883, 882, 'New Equipment Depto 12', '1', '2', '0.12.01', 0, NULL, NULL, 238);
 
 -- Dumping structure for table androi_ord_trab2.fotos_cierre_ots
 CREATE TABLE IF NOT EXISTS `fotos_cierre_ots` (
@@ -447,9 +430,9 @@ CREATE TABLE IF NOT EXISTS `fotos_cierre_ots` (
   `idOrdTrab` int(11) DEFAULT NULL,
   `idEmpresa` int(11) DEFAULT NULL,
   PRIMARY KEY (`idFoto`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=392 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=413 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table androi_ord_trab2.fotos_cierre_ots: ~158 rows (approximately)
+-- Dumping data for table androi_ord_trab2.fotos_cierre_ots: ~174 rows (approximately)
 INSERT INTO `fotos_cierre_ots` (`idFoto`, `nombreFoto`, `correlatEquip`, `idOrdTrab`, `idEmpresa`) VALUES
 	(187, 'H6M9B_Foto-01.jpg', NULL, 187, 223),
 	(188, 'ORWHG_DSC_0171~2.jpg', NULL, 188, 223),
@@ -608,7 +591,28 @@ INSERT INTO `fotos_cierre_ots` (`idFoto`, `nombreFoto`, `correlatEquip`, `idOrdT
 	(388, 'UKLDIwxyJJ_06052025_184940.jpg', NULL, 679, 223),
 	(389, 'MBzNCdY1sr_zAAA.jpg', NULL, 811, 238),
 	(390, 'G11BPsQpkk_zBBBBB.jpg', NULL, 811, 238),
-	(391, 'scdZDxRnoE_ZCCCCC.jpg', NULL, 811, 238);
+	(391, 'scdZDxRnoE_ZCCCCC.jpg', NULL, 811, 238),
+	(392, 'JgGoMyauaC_Gradas_01.jpg', NULL, 828, 238),
+	(393, 'ekZWpuk8lr_Gradas_02.jpeg', NULL, 828, 238),
+	(394, 'HFApHfWudd_Gradas_02.jpeg', NULL, 749, 238),
+	(395, 'zX72xuGDNQ_Gradas_03.jpeg', NULL, 749, 238),
+	(396, 'J0oe2JZVqb_Gradas_03.jpeg', NULL, 830, 238),
+	(397, '3XSxLfi8AZ_Gradas_04.jpeg', NULL, 830, 238),
+	(398, 'c5SkQoayKl_zAAA.jpg', NULL, 661, 223),
+	(399, 'xgEAFgvqSI_zBBBBB.jpg', NULL, 661, 223),
+	(400, 'DB268hjZCf_ZCCCCC.jpg', NULL, 661, 223),
+	(401, '4Q1lXX20Ov_zFoto1.png', NULL, 717, 223),
+	(402, 'abAd0aMrJH_zFoto2.png', NULL, 717, 223),
+	(403, 'qywtdpyJ3j_zFoto3.png', NULL, 717, 223),
+	(404, 'R0vJH1U3VF_P1260466.JPG', NULL, 763, 223),
+	(405, 'DJkNXr2w81_PC210447.JPG', NULL, 763, 223),
+	(406, '1RIIDZ9duu_AA020.jpg', NULL, 812, 223),
+	(407, 'CJBnnpmPuv_AA030.jpg', NULL, 812, 223),
+	(408, 'mt1fkpu6Y8_AA032.jpg', NULL, 812, 223),
+	(409, '5NeYS4uLnO_AA002.jpg', NULL, 752, 223),
+	(410, '0snKDtsXza_Screenshot_20200731-084526.png', NULL, 752, 223),
+	(411, 'h6PbsjB8x7_025.jpg', NULL, 752, 223),
+	(412, 'vRCsOt8kf7_0140.jpg', NULL, 752, 223);
 
 -- Dumping structure for table androi_ord_trab2.fotos_de_equipos
 CREATE TABLE IF NOT EXISTS `fotos_de_equipos` (
@@ -656,9 +660,9 @@ CREATE TABLE IF NOT EXISTS `fotos_ingreso_ots` (
   `idOrdTrab` int(10) DEFAULT NULL,
   `idEmpresa` int(10) DEFAULT NULL,
   PRIMARY KEY (`idFoto`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=524 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=550 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
--- Dumping data for table androi_ord_trab2.fotos_ingreso_ots: ~290 rows (approximately)
+-- Dumping data for table androi_ord_trab2.fotos_ingreso_ots: ~306 rows (approximately)
 INSERT INTO `fotos_ingreso_ots` (`idFoto`, `idEquipo`, `nombreFoto`, `correlatEquip`, `idOrdTrab`, `idEmpresa`) VALUES
 	(187, 1, 'H6M9B_Foto-01.jpg', NULL, 187, 223),
 	(188, 2, 'ORWHG_DSC_0171~2.jpg', NULL, 188, 223),
@@ -949,7 +953,33 @@ INSERT INTO `fotos_ingreso_ots` (`idFoto`, `idEquipo`, `nombreFoto`, `correlatEq
 	(520, NULL, 'sjn0g05WQS_AA032.jpg', NULL, 810, 238),
 	(521, NULL, 'euxDb6mW9w_zFoto1.png', NULL, 811, 238),
 	(522, NULL, 'MKyeFUD9P1_zFoto2.png', NULL, 811, 238),
-	(523, NULL, 'KPOQG5qEpL_zFoto3.png', NULL, 811, 238);
+	(523, NULL, 'KPOQG5qEpL_zFoto3.png', NULL, 811, 238),
+	(524, NULL, 'fopLGff6KR_Gradas_metalicas_04.jpg', NULL, 820, 238),
+	(525, NULL, 'NMQiQO3W9l_Gradas_metalicas.jpg', NULL, 820, 238),
+	(526, NULL, '2YrxSdDYrY_Gradas_metalicas_02.jpg', NULL, 821, 238),
+	(527, NULL, 'xbbHvvvU6L_Gradas_metalicas.jpg', NULL, 821, 238),
+	(528, NULL, 'jJtiTEVZYV_Gradas_metalicas_03.png', NULL, 822, 238),
+	(529, NULL, 'EZt4egn2KX_Gradas_metalicas.jpg', NULL, 822, 238),
+	(530, NULL, 'mMbbu0TL4Z_Gradas_metalicas_02.jpg', NULL, 823, 238),
+	(531, NULL, '85BNlbw7Ha_Gradas_metalicas.jpg', NULL, 823, 238),
+	(532, NULL, 'YxQum5Fluh_Gradas_metalicas_04.jpg', NULL, 824, 238),
+	(533, NULL, 'nnKtCW7kPq_Gradas_metalicas.jpg', NULL, 824, 238),
+	(534, NULL, 'IPRrLVl1IL_Gradas_metalicas_04.jpg', NULL, 825, 238),
+	(535, NULL, 'Fs7ORpSMhk_Gradas_metalicas.jpg', NULL, 825, 238),
+	(536, NULL, 'cMYR7T43Jw_Gradas_metalicas_02.jpg', NULL, 826, 238),
+	(537, NULL, 'LtetDxU6KW_Gradas_metalicas.jpg', NULL, 826, 238),
+	(538, NULL, 'zYZ7N1SlL9_Gradas_metalicas_03.png', NULL, 827, 238),
+	(539, NULL, '4ktH4OKsWS_Gradas_metalicas.jpg', NULL, 827, 238),
+	(540, NULL, 'ZJYyblQwiq_Gradas_metalicas_02.jpg', NULL, 828, 238),
+	(541, NULL, 'SDFAHj1iKz_Gradas_metalicas.jpg', NULL, 828, 238),
+	(542, NULL, 'K6ls6DpEn4_Gradas_metalicas_04.jpg', NULL, 829, 238),
+	(543, NULL, '9VE8mp59n5_Gradas_metalicas.jpg', NULL, 829, 238),
+	(544, NULL, 'wDyqaw9Gal_Gradas_01.jpg', NULL, 830, 238),
+	(545, NULL, 'knqs3f7NWF_Gradas_metalicas_05.jpg', NULL, 830, 238),
+	(546, NULL, 'n5j1gD6Wzs_17072025_222539.jpg', NULL, 831, 223),
+	(547, NULL, 'Y5ySE5yiC2_17072025_222539.jpg', NULL, 831, 223),
+	(548, NULL, 'lVGe0SttGp_17072025_222539.jpg', NULL, 832, 223),
+	(549, NULL, 'owfKu3gWxj_17072025_222539.jpg', NULL, 833, 223);
 
 -- Dumping structure for table androi_ord_trab2.lista_fallas
 CREATE TABLE IF NOT EXISTS `lista_fallas` (
@@ -1090,7 +1120,7 @@ INSERT INTO `lista_fallas` (`idFalla`, `nombreFalla`, `tipoFalla`, `idEmpresa`) 
 	(417, 'Falla de Material', 'Producción', 238),
 	(418, 'Sobrecarga de equipo', 'Producción', 238),
 	(419, 'Calidad de materia prima', 'Producción', 238),
-	(420, 'Rotura de Material XYZ', 'Producción', 238);
+	(420, 'Rotura de Material', 'Producción', 238);
 
 -- Dumping structure for table androi_ord_trab2.ordenes_trabajo
 CREATE TABLE IF NOT EXISTS `ordenes_trabajo` (
@@ -1123,9 +1153,9 @@ CREATE TABLE IF NOT EXISTS `ordenes_trabajo` (
   KEY `FK_tblOrdTrab_tblEquipos` (`idEquipo`),
   CONSTRAINT `FK-idRpteEjecOT` FOREIGN KEY (`idRpteEjecOT`) REFERENCES `reportes_ejec_ots` (`idReporte`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_tblOrdTrab_tblEquipos` FOREIGN KEY (`idEquipo`) REFERENCES `equipos` (`idEquipo`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=812 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=834 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
--- Dumping data for table androi_ord_trab2.ordenes_trabajo: ~681 rows (approximately)
+-- Dumping data for table androi_ord_trab2.ordenes_trabajo: ~709 rows (approximately)
 INSERT INTO `ordenes_trabajo` (`idOT`, `numOT`, `persEjecutor`, `clasificTrabajo`, `prioridadOT`, `trabajoSolicit`, `nombSolicitante`, `fechaIngresoOT`, `horaIngresoOT`, `idReporteEjecuc`, `nombreReviso`, `fechaRevision`, `horaRevision`, `tiempoEstim`, `personalEstim`, `tecnAsignado`, `indicacPreviasTrab`, `explicRechazo`, `estatusOT`, `cantFotosAnex`, `comodinCorrelat`, `idEmpresa`, `idEquipo`, `idRpteEjecOT`) VALUES
 	(3, 0, 'Pers. Mecánico', 'Preventivo de Avería', 'B - Hacer el trabajo hoy', 'Reparación de la cadena de arrastre de bobinas', 'HugoE Martinez', '2016-01-17', '15:56:00', 3, 'Hugo Ernesto Martínez', '2016-09-09', '16:07:00', 4, 2, NULL, '', '', 'Cerrada', 0, NULL, 223, 3, 111),
 	(4, 0, 'Pers. Electricista', 'Preventivo de Avería', 'C - Trabajo Máximo 1 Sem.', 'Instalación de una Lámpara en la paquetera', 'HugoE Martinez', '2017-01-18', '16:00:00', 4, 'Hugo Ernesto Martínez', '2016-09-09', '16:08:00', 3, 2, NULL, '', '', 'Cerrada', 0, NULL, 223, 4, 108),
@@ -1667,7 +1697,7 @@ INSERT INTO `ordenes_trabajo` (`idOT`, `numOT`, `persEjecutor`, `clasificTrabajo
 	(658, 15, 'Mechanical staff', 'Breakdown', 'Make the job today', 'Repair the main door lock', 'HugoE Martinez', '2025-03-20', '22:18:15', 332, 'HugoE Martinez', '2025-06-07', '14:25:20', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 19, 332),
 	(659, 16, 'Electrician staff', 'Breakdown', 'Make the job today', 'Make de ajustment ..........', 'HugoE Martinez', '2025-03-20', '22:50:48', 327, 'HugoE Martinez', '2025-06-07', '14:25:27', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 17, 327),
 	(660, 17, 'Mechanical staff', 'Breakdown', 'Make the job right now', 'Rectificar juego de chuchillas de corte', 'HugoE Martinez', '2025-03-20', '22:54:41', 334, 'HugoE Martinez', '2025-06-07', '14:25:34', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 14, 334),
-	(661, 18, 'Mechanical staff', NULL, 'Make the job today', 'Reparar la bomba de lubricacion', 'HugoE Martinez', '2025-03-20', '22:57:06', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 39, NULL),
+	(661, 18, 'Mechanical staff', 'Breakdown', 'Make the job today', 'Reparar la bomba de lubricacion', 'HugoE Martinez', '2025-03-20', '22:57:06', 352, 'HugoE Martinez', '2025-07-01', '16:25:49', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 39, 352),
 	(662, 19, 'Instrumentation staff', NULL, 'Make the job max 1 week', 'Cambiar boquillas de la secadora de chapa', 'HugoE Martinez', '2025-03-20', '22:58:23', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 13, NULL),
 	(663, 20, 'Instrumentation staff', NULL, 'Make the job today', 'Reparar valvulas de inyeccion de hidrogeno', 'HugoE Martinez', '2025-03-20', '23:00:01', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 26, NULL),
 	(664, 21, 'Mechanical staff', NULL, 'Make the job today', 'Cambiar el neumatico del tambor del freno', 'HugoE Martinez', '2025-03-21', '10:21:16', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 1, NULL, 223, 17, NULL),
@@ -1722,7 +1752,7 @@ INSERT INTO `ordenes_trabajo` (`idOT`, `numOT`, `persEjecutor`, `clasificTrabajo
 	(714, 69, 'Mechanical staff', NULL, 'Make the job max 1 Month', 'Remover incrustaciones de calcio en las campanas de recocido ', 'HugoE Martinez', '2025-04-29', '23:13:57', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 27, NULL),
 	(715, 70, 'Production staff', NULL, 'Make the job today', 'Cambiar manguitos de rodillos 1os. Intermedios ', 'HugoE Martinez', '2025-04-29', '23:54:26', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 19, NULL),
 	(716, 71, 'Production staff', NULL, 'Make the job today', 'Cambiar acoples de ejes 2dos Intermedios ', 'HugoE Martinez', '2025-04-30', '10:58:09', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 19, NULL),
-	(717, 72, 'Mechanical staff', NULL, 'Make the job today', 'Ajustar mecanismo de regulación de corte', 'HugoE Martinez', '2025-04-30', '11:02:06', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 14, NULL),
+	(717, 72, 'Mechanical staff', 'Breakdown', 'Make the job today', 'Ajustar mecanismo de regulación de corte', 'HugoE Martinez', '2025-04-30', '11:02:06', 353, 'HugoE Martinez', '2025-07-01', '16:26:20', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 14, 353),
 	(718, 73, 'Electrician staff', NULL, 'Make the job today', 'calibrar las fuerzas de separación ', 'HugoE Martinez', '2025-04-30', '11:42:40', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 57, NULL),
 	(719, 74, 'Mechanical staff', NULL, 'Make the job max 1 week', 'Instalar cilindros sujeta plancha presión de chapa ', 'HugoE Martinez', '2025-04-30', '15:00:40', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 19, NULL),
 	(720, 75, 'Mechanical staff', NULL, 'Make the job today', 'Cambiar deslizador de diblador ', 'HugoE Martinez', '2025-04-30', '15:09:19', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 19, NULL),
@@ -1741,51 +1771,51 @@ INSERT INTO `ordenes_trabajo` (`idOT`, `numOT`, `persEjecutor`, `clasificTrabajo
 	(733, 88, 'Electrician staff', 'Breakdown prevent', 'Make the job today', 'Reparar el cilindro hidraulico', 'HugoE Martinez', '2025-05-05', '20:13:00', 323, 'Hugo Ernesto', '2025-05-06', '18:23:33', 0.25, 1, NULL, '--', '--', 'Finished', 0, NULL, 223, 10, 323),
 	(734, 89, 'Electrician staff', 'Breakdown prevent', 'Make the job today', 'Recalibrate las fuerzas de separación del mill', 'HugoE Martinez', '2025-05-06', '09:57:50', 325, 'Hugo Ernesto', '2025-05-06', '18:23:24', 0.25, 1, NULL, '--', '--', 'Finished', 0, NULL, 223, 57, 325),
 	(735, 90, 'Mechanical staff', 'Breakdown prevent', 'Make the job right now', 'Ajustar los frenos de la grúa. tarda mucho tiempo en detenerse', 'HugoE Martinez', '2025-05-06', '10:02:07', 319, 'Hugo Ernesto', '2025-05-06', '18:23:07', 0.25, 1, NULL, '--', '--', 'Finished', 0, NULL, 223, 37, 319),
-	(736, 91, 'Production staff', 'Breakdown prevent', 'Make the job right now', 'Cambiar los manguitos de acople de los rodillos 1os Intermedios ', 'HugoE Martinez', '2025-05-06', '10:05:01', 0, 'Hugo Ernesto', '2025-05-06', '18:22:57', 0.25, 1, NULL, '--', '--', 'Reviewed', 3, NULL, 223, 19, NULL),
+	(736, 91, 'Production staff', 'Breakdown prevent', 'Make the job right now', 'Cambiar los manguitos de acople de los rodillos 1os Intermedios ', 'HugoE Martinez', '2025-05-06', '10:05:01', 347, 'Hugo Ernesto', '2025-05-06', '18:22:57', 0.25, 1, NULL, '--', '--', 'Finished', 3, NULL, 223, 19, 347),
 	(737, 92, 'Mechanical staff', 'Breakdown prevent', 'Make the job right now', 'Hacer una buena compañía y reparación a sistema de ajuste de corte', 'HugoE Martinez', '2025-05-06', '17:38:02', 337, 'Hugo Ernesto', '2025-05-06', '18:22:42', 0.25, 1, NULL, '--', '--', 'Finished', 0, NULL, 223, 14, 337),
 	(738, 93, 'Mechanical staff', NULL, 'Make the job today', 'Cambiar los cables de ajuste de crown de la jaula del Laminador ', 'HugoE Martinez', '2025-05-06', '22:55:28', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 1, NULL, 223, 19, NULL),
 	(739, 94, 'Mechanical staff', 'Breakdown prevent', 'Make the job right now', 'dfgdfgdfggdf  g sgdfgdf', 'HugoE Martinez', '2025-06-06', '23:00:10', 326, 'HugoE Martinez', '2025-06-07', '12:33:24', 3, 1, NULL, '', '', 'Finished', 0, NULL, 223, 17, 326),
 	(740, 95, 'Mechanical staff', NULL, 'Make the job right now', 'Cambiar los acoples de los rodillos 2dos Intermedios', 'HugoE Martinez', '2025-06-07', '12:09:28', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 19, NULL),
-	(741, 96, 'Electrician staff', 'Breakdown', 'Make the job today', 'Reparar fuga hidraulica del cilindro del Rompe escamas', 'HugoE Martinez', '2025-06-07', '12:13:00', 0, 'HugoE Martinez', '2025-06-07', '12:34:29', 2.25, 1, NULL, 'Verificar si hay repuestos en bodega', '', 'Reviewed', 0, NULL, 223, 10, NULL),
+	(741, 96, 'Electrician staff', 'Breakdown', 'Make the job today', 'Reparar fuga hidraulica del cilindro del Rompe escamas', 'HugoE Martinez', '2025-06-07', '12:13:00', 346, 'HugoE Martinez', '2025-06-07', '12:34:29', 2.25, 1, NULL, 'Verificar si hay repuestos en bodega', '', 'Finished', 0, NULL, 223, 10, 346),
 	(742, 97, 'Instrumentation staff', NULL, 'Make the job today', 'Revisar dispositivos de seguridad del generador de hidrogeno', 'HugoE Martinez', '2025-06-07', '16:09:36', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 22, NULL),
 	(743, 98, 'Mechanical staff', NULL, 'Make the job today', 'Cambiar el neumático del freno ', 'HugoE Martinez', '2025-06-10', '22:53:16', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 17, NULL),
 	(744, 99, 'Mechanical staff', NULL, 'Make the job today', 'Verificar desgaste de rodillos presión de chapa ', 'HugoE Martinez', '2025-06-11', '10:52:03', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 35, NULL),
-	(745, 100, 'Electrician staff', 'Breakdown prevent', 'Make the job today', 'Repair la grua #3', 'HugoE Martinez', '2025-06-12', '16:31:41', 0, 'HugoE Martinez', '2025-06-12', '16:39:17', 0.25, 1, NULL, NULL, NULL, 'Reviewed', 0, NULL, 223, 36, NULL),
+	(745, 100, 'Electrician staff', 'Breakdown prevent', 'Make the job today', 'Repair la grua #3', 'HugoE Martinez', '2025-06-12', '16:31:41', 345, 'HugoE Martinez', '2025-06-12', '16:39:17', 0.25, 1, NULL, NULL, NULL, 'Finished', 0, NULL, 223, 36, 345),
 	(746, 101, 'Machine tools staff', 'Breakdown prevent', 'Make the job today', 'Afilar un set de cuchillas de corte', 'HugoE Martinez', '2025-06-12', '17:21:43', 333, 'HugoE Martinez', '2025-06-12', '17:22:49', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 14, 333),
 	(747, 1, 'Pers. Mecánico', 'Avería', 'Hacer el trabajo hoy', 'Reparar la maquina de produccin #1', 'hErnesto Martinez', '2025-06-13', '22:28:24', 335, 'hErnesto Martinez', '2025-06-13', '22:31:40', 0.5, 1, NULL, '', '', 'Finalizada', 0, NULL, 238, 825, 335),
-	(748, 2, 'Pers. Mecánico', 'Avería', 'Hacer el trabajo hoy', 'Reparar el prensa Chapa', 'hErnesto Martinez', '2025-06-14', '23:37:21', 0, 'hErnesto Martinez', '2025-06-16', '06:29:31', 0.5, 1, NULL, '', '', 'Revisada', 0, NULL, 238, 825, NULL),
-	(749, 3, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'Reparar el sistema de cambio de giro automatico de la rectificadora', 'hErnesto Martinez', '2025-06-14', '23:44:29', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 826, NULL),
-	(750, 4, 'Pers. Mecánico', NULL, 'Hacer el trabajo hoy', 'Reparar la oaquetera de salida ', 'hErnesto Martinez', '2025-06-16', '12:32:13', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 825, NULL),
-	(751, 102, 'Mechanical staff', 'Breakdown prevent', 'Make the job today', 'Cambiar los rodillos de puerta y fondo por qué están demasiado gastados', 'HugoE Martinez', '2025-06-16', '13:54:22', 0, 'HugoE Martinez', '2025-06-16', '13:56:35', 0.25, 1, NULL, '--', '--', 'Reviewed', 0, NULL, 223, 19, NULL),
-	(752, 103, 'Mechanical staff', NULL, 'Make the job today', 'Reparar gancho de la grua #2 del Laminador', 'HugoE Martinez', '2025-06-16', '17:26:22', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 31, NULL),
-	(753, 104, 'Mechanical staff', NULL, 'Make the job max 1 week', 'Cambiar recina a los suavisadores de agua de suministro para caldera', 'HugoE Martinez', '2025-06-16', '17:48:53', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 32, NULL),
-	(754, 105, 'Electrician staff', NULL, 'Make the job today', 'Cambiar los pernos de sujeción de cachas', 'HugoE Martinez', '2025-06-16', '17:51:33', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 58, NULL),
-	(755, 106, 'Mechanical staff', NULL, 'Make the job today', 'Cambiar sellos a las bombas de las pilas de Decapado', 'HugoE Martinez', '2025-06-18', '18:12:37', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 11, NULL),
-	(756, 107, 'Electrician staff', NULL, 'Make the job today', 'Repair de cilinder hidraulic', 'HugoE Martinez', '2025-06-18', '22:12:29', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 10, NULL),
-	(757, 108, 'Electrician staff', NULL, 'Make the job today', 'Cambiar los aisladores de alimientacion electrica de la grua', 'HugoE Martinez', '2025-06-18', '22:29:47', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 38, NULL),
-	(758, 109, 'Instrumentation staff', NULL, 'Make the job max 1 week', 'Cambiar controladores de nivel de acido regenerado', 'HugoE Martinez', '2025-06-18', '23:13:14', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 33, NULL),
-	(759, 110, 'Mechanical staff', NULL, 'Make the job today', 'Regular la presion del sistema Hidraulico, esta muy baja', 'HugoE Martinez', '2025-06-19', '00:01:38', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 41, NULL),
-	(760, 111, 'Mechanical staff', NULL, 'Make the job max 1 Month', 'Limpiar las incrustaciones de los tubos de agua de la caldera #2', 'HugoE Martinez', '2025-06-19', '00:05:32', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 0, NULL, 223, 32, NULL),
-	(761, 112, 'Machine tools staff', NULL, 'Make the job max 1 Month', 'Fabricar un juego de acoples para ejes 2dos intermedios', 'HugoE Martinez', '2025-06-19', '11:06:07', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 2, NULL, 223, 19, NULL),
-	(762, 113, 'Mechanical staff', NULL, 'Make the job max 1 Month', 'Cambiar cable al puente grua', 'HugoE Martinez', '2025-06-19', '12:01:35', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 3, NULL, 223, 31, NULL),
-	(763, 114, 'Instrumentation staff', NULL, 'Make the job today', 'Cambiar sensores de nivel de acido regeneradod', 'HugoE Martinez', '2025-06-19', '12:06:26', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 3, NULL, 223, 33, NULL),
-	(764, 5, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'Cambiar el manometro de velocidad de la maquina', 'hErnesto Martinez', '2025-06-19', '12:19:19', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 825, NULL),
-	(765, 6, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'Colocar mas luminarisa en todo la planta del Depto de produccion', 'hErnesto Martinez', '2025-06-19', '15:45:21', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 1, NULL, 238, 822, NULL),
-	(766, 7, 'Pers. Electricista', NULL, 'Hacer el trabajo ahora', 'asdf asdfa sdfa fsd ', 'hErnesto Martinez', '2025-06-19', '16:01:22', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 828, NULL),
-	(767, 8, 'Pers. Electricista', NULL, 'Trabajo Máximo 1 Sem.', 'sdfg sdfgsdfgsdfg sdf', 'hErnesto Martinez', '2025-06-19', '16:06:18', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 828, NULL),
-	(768, 9, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'yfdfg dgs dg sdgf sd d ', 'hErnesto Martinez', '2025-06-19', '22:05:35', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 828, NULL),
-	(769, 10, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'rtyrt  eter e e wer et e ', 'hErnesto Martinez', '2025-06-19', '22:08:17', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 830, NULL),
+	(748, 2, 'Pers. Mecánico', 'Avería', 'Hacer el trabajo hoy', 'Reparar el prensa Chapa', 'hErnesto Martinez', '2025-06-14', '23:37:21', 339, 'hErnesto Martinez', '2025-06-16', '06:29:31', 0.5, 1, NULL, '', '', 'Finalizada', 0, NULL, 238, 825, 339),
+	(749, 3, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'Reparar el sistema de cambio de giro automatico de la rectificadora', 'hErnesto Martinez', '2025-06-14', '23:44:29', 342, 'hErnesto Martinez', '2025-07-01', '16:26:52', 0.5, 1, NULL, '', '', 'Finalizada', 0, NULL, 238, 826, 342),
+	(750, 4, 'Pers. Mecánico', 'Avería', 'Hacer el trabajo hoy', 'Reparar la oaquetera de salida ', 'hErnesto Martinez', '2025-06-16', '12:32:13', 0, 'hErnesto Martinez', '2025-07-01', '16:27:01', 0.5, 1, NULL, '', '', 'Revisada', 0, NULL, 238, 825, NULL),
+	(751, 102, 'Mechanical staff', 'Breakdown prevent', 'Make the job today', 'Cambiar los rodillos de puerta y fondo por qué están demasiado gastados', 'HugoE Martinez', '2025-06-16', '13:54:22', 344, 'HugoE Martinez', '2025-06-16', '13:56:35', 0.25, 1, NULL, '--', '--', 'Finished', 0, NULL, 223, 19, 344),
+	(752, 103, 'Mechanical staff', 'Breakdown', 'Make the job today', 'Reparar gancho de la grua #2 del Laminador', 'HugoE Martinez', '2025-06-16', '17:26:22', 356, 'HugoE Martinez', '2025-07-07', '06:09:16', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 31, 356),
+	(753, 104, 'Mechanical staff', 'Breakdown', 'Make the job max 1 week', 'Cambiar recina a los suavisadores de agua de suministro para caldera', 'HugoE Martinez', '2025-06-16', '17:48:53', 0, 'HugoE Martinez', '2025-07-07', '06:09:12', 0.5, 1, NULL, '', '', 'Reviewed', 0, NULL, 223, 32, NULL),
+	(754, 105, 'Electrician staff', 'Breakdown', 'Make the job today', 'Cambiar los pernos de sujeción de cachas', 'HugoE Martinez', '2025-06-16', '17:51:33', 0, 'HugoE Martinez', '2025-07-07', '06:09:06', 0.5, 1, NULL, '', '', 'Reviewed', 0, NULL, 223, 58, NULL),
+	(755, 106, 'Mechanical staff', 'Breakdown', 'Make the job today', 'Cambiar sellos a las bombas de las pilas de Decapado', 'HugoE Martinez', '2025-06-18', '18:12:37', 0, 'HugoE Martinez', '2025-07-07', '06:09:01', 0.5, 1, NULL, '', '', 'Reviewed', 0, NULL, 223, 11, NULL),
+	(756, 107, 'Electrician staff', 'Breakdown', 'Make the job today', 'Repair de cilinder hidraulic', 'HugoE Martinez', '2025-06-18', '22:12:29', 0, 'HugoE Martinez', '2025-07-07', '06:08:57', 0.5, 1, NULL, '', '', 'Reviewed', 0, NULL, 223, 10, NULL),
+	(757, 108, 'Electrician staff', 'Breakdown', 'Make the job today', 'Cambiar los aisladores de alimientacion electrica de la grua', 'HugoE Martinez', '2025-06-18', '22:29:47', 0, 'HugoE Martinez', '2025-07-07', '06:08:53', 0.5, 1, NULL, '', '', 'Reviewed', 0, NULL, 223, 38, NULL),
+	(758, 109, 'Instrumentation staff', 'Breakdown', 'Make the job max 1 week', 'Cambiar controladores de nivel de acido regenerado', 'HugoE Martinez', '2025-06-18', '23:13:14', 0, 'HugoE Martinez', '2025-07-07', '06:08:49', 0.5, 1, NULL, '', '', 'Reviewed', 0, NULL, 223, 33, NULL),
+	(759, 110, 'Mechanical staff', 'Breakdown', 'Make the job today', 'Regular la presion del sistema Hidraulico, esta muy baja', 'HugoE Martinez', '2025-06-19', '00:01:38', 348, 'HugoE Martinez', '2025-07-05', '22:21:14', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 41, 348),
+	(760, 111, 'Mechanical staff', 'Breakdown', 'Make the job max 1 Month', 'Limpiar las incrustaciones de los tubos de agua de la caldera #2', 'HugoE Martinez', '2025-06-19', '00:05:32', 349, 'HugoE Martinez', '2025-07-05', '22:21:08', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 32, 349),
+	(761, 112, 'Machine tools staff', 'Breakdown', 'Make the job max 1 Month', 'Fabricar un juego de acoples para ejes 2dos intermedios', 'HugoE Martinez', '2025-06-19', '11:06:07', 350, 'HugoE Martinez', '2025-07-05', '22:21:04', 0.5, 1, NULL, '', '', 'Finished', 2, NULL, 223, 19, 350),
+	(762, 113, 'Mechanical staff', 'Breakdown', 'Make the job max 1 Month', 'Cambiar cable al puente grua', 'HugoE Martinez', '2025-06-19', '12:01:35', 351, 'HugoE Martinez', '2025-07-05', '22:20:55', 0.5, 1, NULL, '', '', 'Finished', 3, NULL, 223, 31, 351),
+	(763, 114, 'Instrumentation staff', 'Breakdown', 'Make the job today', 'Cambiar sensores de nivel de acido regeneradod', 'HugoE Martinez', '2025-06-19', '12:06:26', 354, 'HugoE Martinez', '2025-07-05', '22:20:51', 0.5, 1, NULL, '', '', 'Finished', 3, NULL, 223, 33, 354),
+	(764, 5, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'Cambiar el manometro de velocidad de la maquina', 'hErnesto Martinez', '2025-06-19', '12:19:19', 340, 'hErnesto Martinez', '2025-07-01', '16:27:14', 0.5, 1, NULL, '', '', 'Finalizada', 3, NULL, 238, 825, 340),
+	(765, 6, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'Colocar mas luminarisa en todo la planta del Depto de produccion', 'hErnesto Martinez', '2025-06-19', '15:45:21', 0, 'hErnesto Martinez', '2025-07-01', '16:27:20', 0.5, 1, NULL, '', '', 'Revisada', 1, NULL, 238, 822, NULL),
+	(766, 7, 'Pers. Electricista', 'Avería', 'Hacer el trabajo ahora', 'asdf asdfa sdfa fsd ', 'hErnesto Martinez', '2025-06-19', '16:01:22', 0, 'hErnesto Martinez', '2025-07-01', '16:27:26', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 828, NULL),
+	(767, 8, 'Pers. Electricista', 'Avería', 'Trabajo Máximo 1 Sem.', 'sdfg sdfgsdfgsdfg sdf', 'hErnesto Martinez', '2025-06-19', '16:06:18', 0, 'hErnesto Martinez', '2025-07-01', '16:27:31', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 828, NULL),
+	(768, 9, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'yfdfg dgs dg sdgf sd d ', 'hErnesto Martinez', '2025-06-19', '22:05:35', 0, 'hErnesto Martinez', '2025-07-01', '16:27:38', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 828, NULL),
+	(769, 10, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'rtyrt  eter e e wer et e ', 'hErnesto Martinez', '2025-06-19', '22:08:17', 0, 'hErnesto Martinez', '2025-07-01', '16:27:44', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 830, NULL),
 	(770, 11, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'gsdfgsdgsdgfsdgsd xcbxcvb dfgsdgsdf', 'hErnesto Martinez', '2025-06-19', '22:15:51', 0, 'hErnesto Martinez', '2025-06-20', '09:46:48', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 827, NULL),
-	(771, 12, 'Pers. Electricista', NULL, 'Trabajo Máximo 1 Sem.', 'fgsdf sdfg sdf dfgsdfg dfg sdfgsd sdfgsd', 'hErnesto Martinez', '2025-06-19', '22:26:40', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 830, NULL),
+	(771, 12, 'Pers. Electricista', 'Avería', 'Trabajo Máximo 1 Sem.', 'fgsdf sdfg sdf dfgsdfg dfg sdfgsd sdfgsd', 'hErnesto Martinez', '2025-06-19', '22:26:40', 0, 'hErnesto Martinez', '2025-07-01', '16:27:53', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 830, NULL),
 	(772, 13, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'ddgsdfgsdfgsdgf ssdfgsgf', 'hErnesto Martinez', '2025-06-19', '23:00:03', 0, 'hErnesto Martinez', '2025-06-20', '09:46:43', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 830, NULL),
 	(773, 14, 'Pers. Electricista', 'Avería', 'Hacer el trabajo ahora', 'dfgsdfgs  sdfg sdgsf ', 'hErnesto Martinez', '2025-06-19', '23:04:13', 0, 'hErnesto Martinez', '2025-06-20', '09:46:52', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 830, NULL),
-	(774, 15, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'yrtyrtyrtyfghdfgh  gfh fgh', 'hErnesto Martinez', '2025-06-19', '23:34:26', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 827, NULL),
+	(774, 15, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'yrtyrtyrtyfghdfgh  gfh fgh', 'hErnesto Martinez', '2025-06-19', '23:34:26', 0, 'hErnesto Martinez', '2025-07-01', '16:27:58', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 827, NULL),
 	(775, 16, 'Pers. Mecánico', 'Avería', 'Hacer el trabajo hoy', 'dgsdf d gsdfg s dfg ', 'hErnesto Martinez', '2025-06-19', '23:57:08', 0, 'hErnesto Martinez', '2025-06-20', '09:46:39', 0.5, 1, NULL, '', '', 'Revisada', 0, NULL, 238, 831, NULL),
 	(776, 17, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'fasd asdf  asf as asdf asdf asd ', 'hErnesto Martinez', '2025-06-20', '00:05:00', 0, 'hErnesto Martinez', '2025-06-20', '09:46:34', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 833, NULL),
-	(777, 18, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'aads as as AS ad ', 'hErnesto Martinez', '2025-06-20', '00:06:19', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 834, NULL),
-	(778, 19, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'gdfg dgf df df dffd', 'hErnesto Martinez', '2025-06-20', '00:16:26', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 832, NULL),
-	(779, 20, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'gdsgsdgdgfgdf', 'hErnesto Martinez', '2025-06-20', '00:18:29', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 1, NULL, 238, 834, NULL),
-	(780, 21, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'gdfg sdfg sd sdf sdf sdgf sgdf', 'hErnesto Martinez', '2025-06-20', '10:40:01', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 840, NULL),
+	(777, 18, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'aads as as AS ad ', 'hErnesto Martinez', '2025-06-20', '00:06:19', 0, 'hErnesto Martinez', '2025-07-01', '16:28:04', 0.5, 1, NULL, '', '', 'Revisada', 0, NULL, 238, 834, NULL),
+	(778, 19, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'gdfg dgf df df dffd', 'hErnesto Martinez', '2025-06-20', '00:16:26', 0, 'hErnesto Martinez', '2025-07-01', '16:28:12', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 832, NULL),
+	(779, 20, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'gdsgsdgdgfgdf', 'hErnesto Martinez', '2025-06-20', '00:18:29', 0, 'hErnesto Martinez', '2025-07-01', '16:28:17', 0.5, 1, NULL, '', '', 'Revisada', 1, NULL, 238, 834, NULL),
+	(780, 21, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'gdfg sdfg sd sdf sdf sdgf sgdf', 'hErnesto Martinez', '2025-06-20', '10:40:01', 0, 'hErnesto Martinez', '2025-07-01', '16:28:23', 0.5, 1, NULL, '', '', 'Revisada', 3, NULL, 238, 840, NULL),
 	(781, 22, 'Instrumentación', NULL, 'Trabajo Máximo 1 Sem.', 'gsds sgdsgd sd sdfgsdfg sdg sdf gsg ', 'hErnesto Martinez', '2025-06-20', '10:48:29', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 825, NULL),
 	(782, 23, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'fgsdfg dsfg sdf sdfg sdfg sg', 'hErnesto Martinez', '2025-06-20', '11:38:53', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 828, NULL),
 	(783, 24, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'sdfasdf sdf asdasdf asdf asf ', 'hErnesto Martinez', '2025-06-20', '11:51:56', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 831, NULL),
@@ -1803,8 +1833,8 @@ INSERT INTO `ordenes_trabajo` (`idOT`, `numOT`, `persEjecutor`, `clasificTrabajo
 	(795, 36, 'Instrumentación', NULL, 'Trabajo Máximo 1 Sem.', 'gegs sdf sd sdsd ', 'hErnesto Martinez', '2025-06-20', '22:11:08', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 828, NULL),
 	(796, 37, 'Pers. Electricista', NULL, 'Trabajo Máximo 1 Sem.', 'fgsdf sdfgs df sd ggfd', 'hErnesto Martinez', '2025-06-21', '00:10:24', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 826, NULL),
 	(797, 38, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'gsdfgsdgfd', 'hErnesto Martinez', '2025-06-21', '00:18:04', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 830, NULL),
-	(798, 39, 'Instrumentación', NULL, 'Hacer el trabajo hoy', 'hdfg fhdfhg dfg dfgh dfhg', 'hErnesto Martinez', '2025-06-21', '00:25:23', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 826, NULL),
-	(799, 40, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'asdf sfdasd sdfas sdf asdf as', 'hErnesto Martinez', '2025-06-21', '00:30:01', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 826, NULL),
+	(798, 39, 'Instrumentación', 'Avería', 'Hacer el trabajo hoy', 'hdfg fhdfhg dfg dfgh dfhg', 'hErnesto Martinez', '2025-06-21', '00:25:23', 0, 'hErnesto Martinez', '2025-07-01', '17:06:58', 0.5, 1, NULL, 'sadf sdfasdfasdfsdf', '', 'Revisada', 3, NULL, 238, 826, NULL),
+	(799, 40, 'Pers. Electricista', 'Preventivo de Avería', 'Hacer el trabajo hoy', 'asdf sfdasd sdfas sdf asdf as', 'hErnesto Martinez', '2025-06-21', '00:30:01', 0, 'hErnesto Martinez', '2025-07-01', '17:07:35', 0.5, 1, NULL, 'sdfasdfasdf', '', 'Revisada', 3, NULL, 238, 826, NULL),
 	(800, 41, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'hsdgsdf sdfgsdfg ', 'hErnesto Martinez', '2025-06-21', '00:36:44', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 828, NULL),
 	(801, 42, 'Pers. Mecánico', NULL, 'Hacer el trabajo ahora', 'dsdgsdf sd g', 'hErnesto Martinez', '2025-06-21', '00:42:11', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 826, NULL),
 	(802, 43, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'dfghdfhdfhdfghd', 'hErnesto Martinez', '2025-06-21', '00:44:50', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 832, NULL),
@@ -1816,7 +1846,29 @@ INSERT INTO `ordenes_trabajo` (`idOT`, `numOT`, `persEjecutor`, `clasificTrabajo
 	(808, 49, 'Maq. Herramientas', NULL, 'Trabajo Máximo 1 Sem.', 'rqwer qr qwer qwer qw qw', 'hErnesto Martinez', '2025-06-21', '13:13:10', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 3, NULL, 238, 830, NULL),
 	(809, 50, 'Pers. Electricista', NULL, 'Hacer el trabajo ahora', 'sdfsdfg dfgsd sdfg sdfg dfg ', 'hErnesto Martinez', '2025-06-21', '13:19:10', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 829, NULL),
 	(810, 51, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'ghfgh fhs sdf dg d fsdga  gsd fg', 'hErnesto Martinez', '2025-06-21', '13:20:01', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 1, NULL, 238, 830, NULL),
-	(811, 52, 'Pers. Mecánico', 'Preventivo de Avería', 'Hacer el trabajo hoy', 'Cambiar aceite al Compresor #1', 'hErnesto Martinez', '2025-06-21', '14:15:53', 338, 'hErnesto Martinez', '2025-06-21', '14:17:34', 0.5, 1, NULL, 'bxgfghdf', '', 'Finalizada', 3, NULL, 238, 832, 338);
+	(811, 52, 'Pers. Mecánico', 'Preventivo de Avería', 'Hacer el trabajo hoy', 'Cambiar aceite al Compresor #1', 'hErnesto Martinez', '2025-06-21', '14:15:53', 338, 'hErnesto Martinez', '2025-06-21', '14:17:34', 0.5, 1, NULL, 'bxgfghdf', '', 'Finalizada', 3, NULL, 238, 832, 338),
+	(812, 115, 'Production staff', 'Breakdown', 'Make the job max 1 week', 'Cambiar el crown #5', 'HugoE Martinez', '2025-07-01', '16:16:19', 355, 'HugoE Martinez', '2025-07-05', '22:20:47', 0.5, 1, NULL, '', '', 'Finished', 0, NULL, 223, 19, 355),
+	(813, 53, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'eqweeqweqewc', 'hErnesto Martinez', '2025-07-01', '17:17:16', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 827, NULL),
+	(814, 54, 'Pers. Electricista', NULL, 'Hacer el trabajo ahora', 'rwercq qwer qwe rq', 'hErnesto Martinez', '2025-07-01', '17:18:19', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 831, NULL),
+	(815, 55, 'Pers. Mecánico', NULL, 'Hacer el trabajo ahora', 'gsdf dfg df sd gsdfg sdfg ', 'hErnesto Martinez', '2025-07-01', '23:43:30', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 827, NULL),
+	(816, 56, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'hgf fh fg dfg dfg dfg dfgh dg', 'hErnesto Martinez', '2025-07-01', '23:58:20', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 828, NULL),
+	(817, 116, 'Electrician staff', 'Breakdown', 'Make the job today', 'Cambiar cilindro hidraulico', 'HugoE Martinez', '2025-07-02', '14:33:25', 0, 'HugoE Martinez', '2025-07-05', '22:20:43', 0.5, 1, NULL, '', '', 'Reviewed', 0, NULL, 223, 10, NULL),
+	(818, 117, 'Electrician staff', 'Breakdown', 'Make the job right now', 'fgh df sdgdfg dg sdfg', 'HugoE Martinez', '2025-07-02', '22:08:20', 0, 'HugoE Martinez', '2025-07-05', '22:20:38', 0.5, 1, NULL, '', '', 'Reviewed', 0, NULL, 223, 16, NULL),
+	(819, 57, 'Pers. Mecánico', NULL, 'Hacer el trabajo ahora', 'vxcvzxcvz xv xzcv zxvc', 'hErnesto Martinez', '2025-07-03', '09:29:50', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 0, NULL, 238, 828, NULL),
+	(820, 58, 'Pers. Mecánico', NULL, 'Hacer el trabajo ahora', 'CVXZV XCVZXC ZXC ZXCV ZX', 'hErnesto Martinez', '2025-07-03', '16:33:27', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 2, NULL, 238, 830, NULL),
+	(821, 59, 'Pers. Mecánico', NULL, 'Hacer el trabajo ahora', 'sdfasf asdf as ', 'hErnesto Martinez', '2025-07-03', '16:40:03', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 2, NULL, 238, 830, NULL),
+	(822, 60, 'Pers. Mecánico', NULL, 'Hacer el trabajo ahora', 'Cambiar aceite a compresor de aire', 'hErnesto Martinez', '2025-07-03', '17:06:28', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 2, NULL, 238, 832, NULL),
+	(823, 61, 'Pers. Mecánico', NULL, 'Trabajo Máximo 1 Sem.', 'sdfgs asd fas asdf asf asd ', 'hErnesto Martinez', '2025-07-03', '17:10:02', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 2, NULL, 238, 833, NULL),
+	(824, 62, 'Pers. Electricista', NULL, 'Trabajo Máximo 1 Sem.', 'sdfg sdf sdf sdf gsdfg ', 'hErnesto Martinez', '2025-07-03', '17:13:43', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 2, NULL, 238, 838, NULL),
+	(825, 63, 'Pers. Mecánico', NULL, 'Hacer el trabajo ahora', 'sdgasdasfsdf', 'hErnesto Martinez', '2025-07-03', '17:17:06', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 2, NULL, 238, 826, NULL),
+	(826, 64, 'Pers. Mecánico', 'Avería', 'Hacer el trabajo hoy', 'gdsdf df sdf sdf gs', 'hErnesto Martinez', '2025-07-03', '21:48:21', 0, 'hErnesto Martinez', '2025-07-03', '22:05:29', 0.5, 1, NULL, '', '', 'Revisada', 2, NULL, 238, 830, NULL),
+	(827, 65, 'Maq. Herramientas', 'Avería', 'Hacer el trabajo hoy', 'gfds dsf sdf d sd sd sg', 'hErnesto Martinez', '2025-07-03', '21:57:15', 0, 'hErnesto Martinez', '2025-07-03', '22:05:20', 0.5, 1, NULL, '', '', 'Revisada', 2, NULL, 238, 826, NULL),
+	(828, 66, 'Pers. Mecánico', 'Avería', 'Trabajo Máximo 1 Sem.', 'sgf dg df sdf gsdf sdfg sdfg ', 'hErnesto Martinez', '2025-07-03', '22:01:19', 341, 'hErnesto Martinez', '2025-07-03', '22:05:15', 0.5, 1, NULL, '', '', 'Finalizada', 2, NULL, 238, 830, 341),
+	(829, 67, 'Pers. Electricista', NULL, 'Hacer el trabajo hoy', 'gsdfsdfgs', 'hErnesto Martinez', '2025-07-04', '11:55:32', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'Nueva OT', 2, NULL, 238, 828, NULL),
+	(830, 68, 'Pers. Electricista', 'Avería', 'Hacer el trabajo hoy', 'Limpiar los paneles generales de Distribuicon 440v', 'hErnesto Martinez', '2025-07-04', '14:24:18', 343, 'hErnesto Martinez', '2025-07-04', '14:39:04', 0.5, 1, NULL, '', '', 'Finalizada', 2, NULL, 238, 834, 343),
+	(831, 118, 'Production staff', NULL, 'Make the job today', 'Hacer un cambio de ejes Backup ', 'HugoE Martinez', '2025-07-17', '22:25:39', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 2, NULL, 223, 19, NULL),
+	(832, 119, 'Mechanical staff', NULL, 'Make the job max 1 week', 'Cambiar ladrillos refractario dañados ', 'HugoE Martinez', '2025-07-17', '22:28:53', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 1, NULL, 223, 22, NULL),
+	(833, 120, 'Machine tools staff', NULL, 'Make the job today', 'Afilar set de cuchillas de corte', 'HugoE Martinez', '2025-07-17', '22:34:15', 0, NULL, NULL, NULL, 0.25, 1, NULL, NULL, NULL, 'New WO', 1, NULL, 223, 14, NULL);
 
 -- Dumping structure for table androi_ord_trab2.personal_tecn
 CREATE TABLE IF NOT EXISTS `personal_tecn` (
@@ -1830,19 +1882,19 @@ CREATE TABLE IF NOT EXISTS `personal_tecn` (
   `statusPers` varchar(10) DEFAULT 'Activo',
   `idEmpresa` int(11) DEFAULT NULL,
   PRIMARY KEY (`idEmpleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
--- Dumping data for table androi_ord_trab2.personal_tecn: ~19 rows (approximately)
+-- Dumping data for table androi_ord_trab2.personal_tecn: ~22 rows (approximately)
 INSERT INTO `personal_tecn` (`idEmpleado`, `nombreEmpl`, `tipoEjecutor`, `email`, `telefono`, `fotoEmpl`, `informAdic`, `statusPers`, `idEmpresa`) VALUES
 	(1, 'Ricardo Martinez', 'Mechanical staff', 'hmartinez3661@hotmail.com', NULL, NULL, '', 'Activo', 223),
 	(6, 'Sarai Martinez', 'Pers. Producción', NULL, NULL, NULL, 'xxxxxxxxx', 'Inactivo', 223),
-	(7, 'Carlos Martinez', 'Electrician staff', NULL, NULL, NULL, '', 'Activo', 223),
+	(7, 'Carlos MartzCald', 'Electrician staff', NULL, NULL, NULL, '', 'Activo', 223),
 	(33, 'Ronny Martinez', 'Instrumentation staff', '', NULL, NULL, '', 'Activo', 223),
-	(42, 'Jenny Sarai', 'Machine tools staff', '', NULL, NULL, '', 'Activo', 223),
+	(42, 'Jenny Sarai', 'Machine tools staff', '', NULL, NULL, '', 'Inactivo', 223),
 	(61, 'Hugo Martinez1', 'Mechanical staff', '', NULL, NULL, '', 'Inactivo', 223),
-	(69, 'Jeson Martinez', 'Production staff', '', NULL, NULL, '', 'Activo', 223),
+	(69, 'Jeson Martinez', 'Production staff', '', NULL, NULL, '', 'Inactivo', 223),
 	(72, 'Sofia AguilarC', 'Instrumentation staff', '', NULL, NULL, '', 'Activo', 223),
-	(73, 'Sigfredo Aguilar', 'Instrumentation staff', NULL, NULL, NULL, '', 'Activo', 223),
+	(73, 'Sigfredo Aguilar', 'Instrumentation staff', NULL, NULL, NULL, '', 'Inactivo', 223),
 	(90, 'Claudia Sara3', 'Electrician staff', NULL, NULL, NULL, '', 'Activo', 223),
 	(99, 'Josué Damián 3', 'Pers. Electricista', NULL, NULL, NULL, NULL, 'Inactivo', 223),
 	(112, 'Rafael Martinez ', 'Pers. Mecánico', NULL, NULL, NULL, '', 'Inactivo', 223),
@@ -1850,9 +1902,12 @@ INSERT INTO `personal_tecn` (`idEmpleado`, `nombreEmpl`, `tipoEjecutor`, `email`
 	(116, 'Hugo Ernesto2', 'Mechanical staff', NULL, NULL, NULL, '', 'Inactivo', 223),
 	(117, 'Hugo Ernesto3', 'Electrician staff', NULL, NULL, NULL, '', 'Inactivo', 223),
 	(118, 'Hugo Ernesto4', 'Electrician staff', NULL, NULL, NULL, '', 'Inactivo', 223),
-	(119, 'Hugo Salguero', 'Electrician staff', NULL, NULL, NULL, '', 'Activo', 223),
+	(119, 'Hugo Salguero', 'Electrician staff', NULL, NULL, NULL, '', 'Inactivo', 223),
 	(120, 'Hugo Salguero', 'Instrumentation staff', NULL, NULL, NULL, '', 'Activo', 223),
-	(121, 'RicardoRaul Martinez', 'Pers. Mecánico', NULL, NULL, NULL, '', 'Activo', 238);
+	(121, 'RicardoRaul Martinez', 'Pers. Mecánico', NULL, NULL, NULL, '', 'Activo', 238),
+	(122, 'Jason Martinez', 'Air Conditioning staff', NULL, NULL, NULL, NULL, NULL, 223),
+	(123, 'Ernesto MartinezS', 'Instrumentation staff', NULL, NULL, NULL, NULL, NULL, 223),
+	(124, 'Jason Martinez', 'Mechanical staff', NULL, NULL, NULL, '', 'Activo', 223);
 
 -- Dumping structure for table androi_ord_trab2.proveedores
 CREATE TABLE IF NOT EXISTS `proveedores` (
@@ -1911,7 +1966,7 @@ CREATE TABLE IF NOT EXISTS `reportes_ejec_ots` (
   PRIMARY KEY (`idReporte`),
   KEY `FK-idEquipo2` (`idOT`),
   CONSTRAINT `FK-idEquipo2` FOREIGN KEY (`idOT`) REFERENCES `ordenes_trabajo` (`idOT`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=339 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=357 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
 -- Dumping data for table androi_ord_trab2.reportes_ejec_ots: ~196 rows (approximately)
 INSERT INTO `reportes_ejec_ots` (`idReporte`, `idOT`, `fechaEjec`, `calidadTrab`, `tpoParoProduc`, `tpoRealReparac`, `nombreSuperv`, `nombreFalla`, `persRecivTrab`, `reporteHistor`, `cantFotosCierre`, `cantRptosUtiliz`, `cantServExter`, `idEmpresa`) VALUES
@@ -2128,7 +2183,25 @@ INSERT INTO `reportes_ejec_ots` (`idReporte`, `idOT`, `fechaEjec`, `calidadTrab`
 	(335, 747, '2025-06-13 00:00:00.000000', 6, 0.5, 0.5, 'hErnesto Martinez', 'Falla mecánica Varias', '', 'Se realizo el trabajo segun lo solicitado', 000, 001, 001, 238),
 	(336, 708, '2025-06-16 00:00:00.000000', 6, 5.5, 0.5, 'Hems4 Martinez', 'Electronic Component Failure', '--', 'The job was done as was requested ', 000, 000, 000, 223),
 	(337, 737, '2025-06-16 00:00:00.000000', 6, 7, 0.5, 'Ernesto MartSalg', 'Poor Lubrication', '--', 'The job was done as was requested ', 000, 000, 000, 223),
-	(338, 811, '2025-06-21 00:00:00.000000', 6, 0.5, 0.5, 'HugoE Martinez', 'Sello de Bomba', '', 'Se realizo el trabsjo', 003, 000, 000, 238);
+	(338, 811, '2025-06-21 00:00:00.000000', 6, 0.5, 0.5, 'HugoE Martinez', 'Sello de Bomba', '', 'Se realizo el trabsjo', 003, 000, 000, 238),
+	(339, 748, '2025-07-01 00:00:00.000000', 6, 0.5, 0.5, 'hErnesto Martinez', 'Falla neumática', '', 'sdf asdf asdf asdf asdf ', 000, 001, 001, 238),
+	(340, 764, '2025-07-01 00:00:00.000000', 6, 0.5, 0.5, 'HugoE Martinez', 'Fatiga de material', '', ' g g sdfg sdfg sdgf sdfg', 000, 000, 000, 238),
+	(341, 828, '2025-07-03 00:00:00.000000', 6, 0.5, 0.5, 'hErnesto Martinez', 'Sello de Bomba', '', 'fd asd asd asdas f', 002, 000, 000, 238),
+	(342, 749, '2025-07-04 00:00:00.000000', 6, 0.5, 0.5, 'hErnesto Martinez', 'Sello de Bomba', '', 'xcvzxcvxc vczx zxc ', 002, 000, 000, 238),
+	(343, 830, '2025-07-04 00:00:00.000000', 6, 0.5, 0.5, 'HugoE Martinez', 'Falla mecánica Varias', '', 'Se realizo el trabajo como se solicito', 002, 000, 000, 238),
+	(344, 751, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Ernesto MartSalg', 'Material Fatigue', '', 'gsdfgs dg sdg sdfg', 000, 000, 000, 223),
+	(345, 745, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Hems4 Martinez', 'Pneumatic Failure', '', ' asfas sdfa sfasf asdasfdasfsd  sdasfasdf ', 000, 000, 000, 223),
+	(346, 741, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'HugoE Martinez', 'Pneumatic Failure', '', 'sfsd a sd sdf as', 002, 000, 000, 223),
+	(347, 736, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Ernesto MartSalg', 'Pump Seal', '', 'fs s asdf af  sdgsdfg we er wert we twer', 002, 000, 000, 223),
+	(348, 759, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Ernesto MartSalg', 'Material Fatigue', '', 'rewr rqwe qwer qwe qwer qwerqwer qwer ', 003, 000, 000, 223),
+	(349, 760, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Ernesto MartSalg', 'Various Mechanical Failure', '', 'fg sdfg df gsdf dfsg sf', 003, 000, 000, 223),
+	(350, 761, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Ernesto MartSalg', 'Electronic Component Failure', '', 'dfgs dfg s dfgsdfsdfgsd dg sdf ', 003, 000, 000, 223),
+	(351, 762, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'HEMS Martinez', 'Material Fatigue', '', 'rqwe  qwe w we qw rqw ', 003, 000, 000, 223),
+	(352, 661, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Ernesto Martinez3', 'Material Fatigue', '', 'ghgj gj     i gj j', 003, 000, 000, 223),
+	(353, 717, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Ernesto MartSalg', 'Material Fatigue', '', 'hlhkjhkh kh k', 003, 000, 000, 223),
+	(354, 763, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Hugo MartSalg', 'Poor Lubrication', '', 'hgjhj gk jg   gjhg kjhg jk', 002, 000, 000, 223),
+	(355, 812, '2025-07-05 00:00:00.000000', 6, 0.5, 0.5, 'Ernesto Martinez3', 'Material Failure', '', 'hjk kj lkjh lkjh h lkhj', 003, 000, 000, 223),
+	(356, 752, '2025-07-07 00:00:00.000000', 6, 0.5, 0.5, 'Hems4 Martinez', 'Insulation Failure', '', 'fdg dfg sdf sdf sgdf', 002, 000, 000, 223);
 
 -- Dumping structure for table androi_ord_trab2.reptes_pers_ejec_ots
 CREATE TABLE IF NOT EXISTS `reptes_pers_ejec_ots` (
@@ -2145,9 +2218,9 @@ CREATE TABLE IF NOT EXISTS `reptes_pers_ejec_ots` (
   CONSTRAINT `FK-idEmpleado` FOREIGN KEY (`idEmpleado`) REFERENCES `personal_tecn` (`idEmpleado`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK-idOT` FOREIGN KEY (`idOT`) REFERENCES `ordenes_trabajo` (`idOT`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FKniiyild6s76l6k0bnio5x7yo8` FOREIGN KEY (`idEmpleado`) REFERENCES `personal_tecn` (`idEmpleado`)
-) ENGINE=InnoDB AUTO_INCREMENT=537 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=557 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
--- Dumping data for table androi_ord_trab2.reptes_pers_ejec_ots: ~127 rows (approximately)
+-- Dumping data for table androi_ord_trab2.reptes_pers_ejec_ots: ~149 rows (approximately)
 INSERT INTO `reptes_pers_ejec_ots` (`idReporte`, `cantHrs`, `calidadTrab`, `fechaEjec`, `idEmpresa`, `idOT`, `idEmpleado`) VALUES
 	(5, 4, 9, '2016-09-06 00:00:00.000000', 223, 4, 1),
 	(10, 0, 8, '2016-09-01 00:00:00.000000', 223, 4, 7),
@@ -2284,7 +2357,27 @@ INSERT INTO `reptes_pers_ejec_ots` (`idReporte`, `cantHrs`, `calidadTrab`, `fech
 	(533, 0.5, 6, '2025-06-13 00:00:00.000000', 238, 747, 121),
 	(534, 0.5, 6, '2025-06-16 00:00:00.000000', 223, 708, 72),
 	(535, 5, 6, '2025-06-16 00:00:00.000000', 223, 737, 90),
-	(536, 0.5, 6, '2025-06-21 00:00:00.000000', 238, 811, 121);
+	(536, 0.5, 6, '2025-06-21 00:00:00.000000', 238, 811, 121),
+	(537, 0.5, 6, '2025-07-01 00:00:00.000000', 238, 748, 121),
+	(538, 0.5, 6, '2025-07-01 00:00:00.000000', 238, 764, 121),
+	(539, 0.5, 6, '2025-07-03 00:00:00.000000', 238, 828, 121),
+	(540, 0.5, 6, '2025-07-04 00:00:00.000000', 238, 749, 121),
+	(541, 0.5, 6, '2025-07-04 00:00:00.000000', 238, 830, 121),
+	(542, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 751, 72),
+	(543, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 745, 90),
+	(544, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 741, 119),
+	(545, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 736, 119),
+	(546, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 759, 119),
+	(547, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 760, 90),
+	(548, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 761, 42),
+	(549, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 762, 115),
+	(550, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 763, 120),
+	(551, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 661, 1),
+	(552, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 661, 115),
+	(553, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 717, 42),
+	(554, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 763, 119),
+	(555, 0.5, 6, '2025-07-05 00:00:00.000000', 223, 812, 69),
+	(556, 0.5, 6, '2025-07-07 00:00:00.000000', 223, 752, 90);
 
 -- Dumping structure for table androi_ord_trab2.reptes_reptos_ejec_ots
 CREATE TABLE IF NOT EXISTS `reptes_reptos_ejec_ots` (
@@ -2301,7 +2394,7 @@ CREATE TABLE IF NOT EXISTS `reptes_reptos_ejec_ots` (
   KEY `FK_reptes_reptos_ejec_ots_repuestos_sum` (`idRepSum`),
   CONSTRAINT `FK-idOT4` FOREIGN KEY (`idOT`) REFERENCES `ordenes_trabajo` (`idOT`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_reptes_reptos_ejec_ots_repuestos_sum` FOREIGN KEY (`idRepSum`) REFERENCES `repuestos_sum` (`idRepSum`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=228 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=229 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
 -- Dumping data for table androi_ord_trab2.reptes_reptos_ejec_ots: ~173 rows (approximately)
 INSERT INTO `reptes_reptos_ejec_ots` (`idReporte`, `idOT`, `nombreRep`, `cantidad`, `costoTotal`, `fechaConsumo`, `idEmpresa`, `idRepSum`) VALUES
@@ -2484,7 +2577,8 @@ INSERT INTO `reptes_reptos_ejec_ots` (`idReporte`, `idOT`, `nombreRep`, `cantida
 	(224, 658, 'Repuesto', NULL, 45, '2025-06-12 00:00:00.000000', 223, NULL),
 	(225, 746, 'Repuesto xyz', 1, 1, '2025-06-11 18:00:00.000000', 223, NULL),
 	(226, 660, 'Rodamiento cdh', NULL, 35, '2025-06-12 00:00:00.000000', 223, NULL),
-	(227, 747, 'Repuesto XYZ', 1, 20, '2025-06-12 18:00:00.000000', 238, NULL);
+	(227, 747, 'Repuesto XYZ', 1, 20, '2025-06-12 18:00:00.000000', 238, NULL),
+	(228, 748, 'Repuesto asdfasdfa', 1, 1, '2025-06-30 18:00:00.000000', 238, NULL);
 
 -- Dumping structure for table androi_ord_trab2.reptes_servext_ejec_ots
 CREATE TABLE IF NOT EXISTS `reptes_servext_ejec_ots` (
@@ -2497,7 +2591,7 @@ CREATE TABLE IF NOT EXISTS `reptes_servext_ejec_ots` (
   PRIMARY KEY (`idReporte`),
   KEY `FK-idOT5` (`idOT`),
   CONSTRAINT `FK-idOT5` FOREIGN KEY (`idOT`) REFERENCES `ordenes_trabajo` (`idOT`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=169 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
 -- Dumping data for table androi_ord_trab2.reptes_servext_ejec_ots: ~136 rows (approximately)
 INSERT INTO `reptes_servext_ejec_ots` (`idReporte`, `idOT`, `nombreServic`, `costoServic`, `fechaServic`, `idEmpresa`) VALUES
@@ -2645,7 +2739,8 @@ INSERT INTO `reptes_servext_ejec_ots` (`idReporte`, `idOT`, `nombreServic`, `cos
 	(164, 656, 'bzbzbzbbz', 6, '2025-06-12 00:00:00.000000', 223),
 	(165, 658, 'Servicio externo', 25.5, '2025-06-12 00:00:00.000000', 223),
 	(166, 660, 'Servicio externo ', 42, '2025-06-12 00:00:00.000000', 223),
-	(167, 747, 'Servicio Externo XYZ', 25, '2025-06-13 00:00:00.000000', 238);
+	(167, 747, 'Servicio Externo XYZ', 25, '2025-06-13 00:00:00.000000', 238),
+	(168, 748, 'asdf asdf asdf asdf asdf', 25, '2025-07-01 00:00:00.000000', 238);
 
 -- Dumping structure for table androi_ord_trab2.repuestos_sum
 CREATE TABLE IF NOT EXISTS `repuestos_sum` (
@@ -2904,25 +2999,21 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `fechaFnlSuscrip` datetime(6) DEFAULT NULL,
   `idEmpresa` int(11) DEFAULT NULL,
   PRIMARY KEY (`idUsuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=243 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_uca1400_ai_ci;
 
--- Dumping data for table androi_ord_trab2.usuarios: ~14 rows (approximately)
+-- Dumping data for table androi_ord_trab2.usuarios: ~10 rows (approximately)
 INSERT INTO `usuarios` (`idUsuario`, `nombreUsuario`, `emailUsuario`, `passwordEncrip`, `passwordNormal`, `userRol`, `telefonoUser`, `nombreEmpresa`, `paisEmpresa`, `idiomaGrupo`, `simbMoneda`, `codigoPais`, `cantMaxUsers`, `fechaSuscrip`, `fechaFnlSuscrip`, `idEmpresa`) VALUES
 	(175, 'Claudia Santos', 'claudiasaras@hotmail.com', '$2a$10$4dJ8IReUTr83uBthL9ahUuQNh.NHppEs24bHVNOuN5FHF11o7vGhW', 'sara123', 'ADM-ADMIN', '3', 'Sara Co', 'Brasil', 'pt', 'R$', 'BR', 10, '2025-04-10 00:00:00.000000', '2025-05-25 00:00:00.000000', NULL),
 	(198, 'Ernesto Martinez', 'infomantprev1@mantprev.com', '$2a$10$B.JwR4YHDa2t5Go2pNRV3e7AbN5dLl./70eIh5qgcM1jAjELOe8bO', 'neto123', 'ADM-ADMIN', NULL, 'Proaces S.A.', 'El Salvador', 'es', '$', 'SV', 10, '2025-05-31 00:00:00.000000', '2025-07-15 00:00:00.000000', 198),
 	(200, 'Hems Martinez', 'hemartinez3662@gmail.com', '$2a$10$Jxqd9dhr3mfxYypNm0MOhOEYO05oXCVTvrltQrp6cNXibmJgiooDq', 'mantprevH4CSF', 'SDM-Maintenance_Supervisor', NULL, 'Consorcio Internacional S.A.', 'United States USA', 'en', '$', 'US', 10, NULL, '2025-06-07 00:00:00.000000', 151),
-	(217, 'HugoE Martinez', 'support@mantprev.com', '$2a$10$voFCzl.YVnwJfDFUmtm2LuVsDAfbXaEqW9etyP4zfg0Me3rTcbyfS', 'hugo123', 'ADM-ADMIN', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, '2025-06-02 00:00:00.000000', '2027-07-17 00:00:00.000000', 223),
+	(217, 'HugoE Martinez', 'support@mantprev.com', '$2a$10$voFCzl.YVnwJfDFUmtm2LuVsDAfbXaEqW9etyP4zfg0Me3rTcbyfS', 'hugo123', 'SPR-ADMIN', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, '2025-06-02 00:00:00.000000', '2027-07-17 00:00:00.000000', 223),
 	(218, 'Neto Martinez', 'infoMantprev2@mantprev.com', '$2a$10$GNSxe7eUoOyjpbLCeE9YYuReXXtB3/pcU4HZhjp7wdy/AxMZu..6a', 'neto1234', 'ADM-ADMIN', NULL, 'Cemento Cessa', 'Nicaragua', 'es', 'C$', 'NI', 10, '2025-06-02 00:00:00.000000', '2025-07-17 00:00:00.000000', 219),
 	(219, 'Hugo Salguero', 'infoMantprev3@mantprev.com', '$2a$10$fPyOTjjZCoSNp1iYN4a6r.I0RzffrjoiPBC52y5XGzoCG9Kzu5JTi', 'hugo234', 'ADM-ADMIN', NULL, 'Cajas y Bolsas S.A.', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-03 00:00:00.000000', '2025-07-18 00:00:00.000000', 222),
-	(220, 'Hems4 Martinez', 'infoMantprev4@mantprev.com', '$2a$10$Uk/pZFZP3JfTP07IhkkQpuc8gyAPI/GSTGiYUZllNEcvDcC/aedke', 'neto321', 'ADM-ADMIN', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, '2025-06-04 00:00:00.000000', '2027-07-17 00:00:00.000000', 223),
 	(221, 'HEMS Martinez', 'infoMantprev5@mantprev.com', '$2a$10$IwYbTHmWKMeB0J2KATkNaOWMKJUM5pafcHRm79Rj5hqfJhtzrYm7.', 'hems123', 'ADM-ADMIN', NULL, 'Salvaplastic', 'Brasil', 'pt', 'R$', 'BR', 10, '2025-06-04 00:00:00.000000', '2025-07-19 00:00:00.000000', 224),
-	(222, 'HEMS Martinez', 'hmartinezhmartinez1@hotmail.com', '$2a$10$QPmxR27YlSoEYOVvhdKMeeWcpGZozYl5fsUJN/FKnt.iC7I1lGPeS', 'mantprevPA4KS', 'SDM-Maintenance_Supervisor', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, NULL, '2027-07-17 00:00:00.000000', 223),
 	(232, 'Ernesto MartSalg', 'hemartinez3661@gmail.com', '$2a$10$32LcGZPOcV3z77ky6Y/kaunx45q6gLSfc3Tjt37EFqbLpofoIENZ2', 'mantprev3QC8J', 'SDM-Mainten. supervisor', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, NULL, '2027-07-17 00:00:00.000000', 223),
 	(238, 'hErnesto Martinez', 'infoMantprev@mantprev.com', '$2a$10$z8sH95hUDEh4GiyWIxw/7eu97EaghLts22zwauk3B4s1TMub46b1C', 'info123', 'ADM-ADMIN', NULL, 'Industrias Mantprev', 'El Salvador', 'es', '$', 'SV', 10, '2025-06-13 00:00:00.000000', '2025-07-28 00:00:00.000000', 238),
-	(239, 'HugoE Martinez', 'hmartinezhmartinez2@hotmail.com', '$2a$10$kGioePd6Wxo4OfsZZNHW6eqX1iZdIuhIPWjeM2QO6Aq2e0slF6NO.', 'mantprev8JVDQ', 'ADM-ADMIN', NULL, 'Industrias Mantprev', 'El Salvador', 'es', '$', 'SV', 10, NULL, '2025-07-28 00:00:00.000000', 238),
-	(240, 'Ernesto Martinez3', 'hmartinez3661@hotmail.com', '$2a$10$uMox798s5ECSzEdLNCezNeUgTg9jrckR3MJFqb8jU72VO.t/Vb3hO', 'mantprev93EJ2', 'ADM-ADMIN', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, NULL, '2027-07-17 00:00:00.000000', 223),
-	(241, 'Ernesto Salguero', 'hmartinezhmartinez3@hotmail.com', '$2a$10$dgZqLul156tm/LFKSsULT.l4qUiC1d3IJToRYoOhcnQRdmO00odhe', 'mantprevBL5BF', 'SDM-Maintenance_Supervisor', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, NULL, '2027-07-17 00:00:00.000000', 223),
-	(242, 'Hugo MartSalg', 'hmartinezhmartinez@hotmail.com', '$2a$10$qIfNf97PCdh1DQIQw3RWCOsj1L3NNXMLSHYwmiGtGQSqFGWPHaRqi', 'mantprev9EDL6', 'ADM-ADMIN', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, NULL, '2027-07-17 00:00:00.000000', 223);
+	(242, 'Hugo MartSalg', 'hmartinezhmartinez2@hotmail.com', '$2a$10$qIfNf97PCdh1DQIQw3RWCOsj1L3NNXMLSHYwmiGtGQSqFGWPHaRqi', 'mantprev9EDL6', 'EWO-Work_Order_Issuer', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, NULL, '2027-07-17 00:00:00.000000', 223),
+	(247, 'CesarL Martinez', 'hmartinezhmartinez@hotmail.com', '$2a$10$L/BnaK9XN8652qddxaxR..ZRtejTWKr.XGiH42G6UeEa9tLwwIXHO', 'mantprev62QGA', 'EWO-Work_Order_Issuer', NULL, 'Procesadora de Acero S.A.', 'United States USA', 'en', '$', 'US', 20, NULL, '2027-07-17 00:00:00.000000', 223);
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
