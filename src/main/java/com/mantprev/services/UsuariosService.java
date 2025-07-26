@@ -48,6 +48,8 @@ public interface UsuariosService {
 	
 	public Integer getNewestAppVersion();
 	
+	public String saveAndroiAPKversion(int version);
+	
 	
 	
 	

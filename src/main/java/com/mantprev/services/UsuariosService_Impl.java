@@ -1192,6 +1192,18 @@ public class UsuariosService_Impl implements UsuariosService {
 		
 		return appVers;
 	}
+
+
+	@Transactional
+	@Override
+	public String saveAndroiAPKversion(int version) {
+	/*************************************************/
+		Androi_Version androiVers = androiVers_Reposit.getAndroiVersion();
+		androiVers.setVersionCode(version); 
+		
+		androiVers_Reposit.save(androiVers);
+		return null;
+	}
 	
 	
 	

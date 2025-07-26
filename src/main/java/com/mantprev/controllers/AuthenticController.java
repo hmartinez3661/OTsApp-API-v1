@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mantprev.entidades.Androi_Version;
 import com.mantprev.entidadesDTO.ConfigSpinners_DTO;
 import com.mantprev.entidadesDTO.Empresas_DTO;
 import com.mantprev.entidadesDTO.Usuarios01_DTO;
@@ -121,7 +122,13 @@ public class AuthenticController {
 	} 
 	
 	
-	
+	@PostMapping(path = "/saveAndroiVers") //Actualizza en la BD la version del APK androi que esta en el Play Store
+	@ResponseStatus(HttpStatus.ACCEPTED) //Cod. 202
+	public String saveAppAndroiVersionOnDB(@RequestBody Androi_Version androiVers){ 
+	/**********************************************************************/	
+		int androiVersInt = androiVers.getVersionCode();
+		return this.usuariosService.saveAndroiAPKversion(androiVersInt); 
+	}
 	
 	
 	
