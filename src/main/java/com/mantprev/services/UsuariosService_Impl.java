@@ -979,38 +979,38 @@ public class UsuariosService_Impl implements UsuariosService {
     	switch(idiomaGrupo) {
     	  	case "es":
     		  	nombrNodoRaiz = "PLANTA GENERAL";
-    	    	nombrDeptoProd1 = "DEPTO. PRODUCCION 1";
-    	    	nombrDeptoProd2 = "DEPTO. PRODUCCION 2";
-    	    	nombrDeptoProd3 = "DEPTO. PRODUCCION 3";
-    	    	nombDeptServGen = "DEPTO. SERV. GENERALES";
-    	    	equipPro1dDepto1 = "Máquina Producc. 1-1";
-    	    	equipPro2dDepto1 = "Máquina Producc. 2-1";
-    	    	equipPro1dDepto2 = "Máquina Producc. 1-2";
-    	    	equipPro2dDepto2 = "Máquina Producc. 2-2";
+    	    	nombrDeptoProd1 = "DEPTO. PRODUCCION 1 (edit name)";
+    	    	nombrDeptoProd2 = "DEPTO. PRODUCCION 2 (edit name)";
+    	    	nombrDeptoProd3 = "DEPTO. PRODUCCION 3 (edit name)";
+    	    	nombDeptServGen = "DEPTO. SERV. GENERALES (edit name)";
+    	    	equipPro1dDepto1 = "Máquina Producc. 1-1 (edit name)";
+    	    	equipPro2dDepto1 = "Máquina Producc. 2-1 (edit name)";
+    	    	equipPro1dDepto2 = "Máquina Producc. 1-2 (edit name)";
+    	    	equipPro2dDepto2 = "Máquina Producc. 2-2 (edit name)";
     	    	break;
     	    
     	  	case "en":
     		  	nombrNodoRaiz = "GENERAL PLANT";
-  	    		nombrDeptoProd1 = "PRODUCT. DEPARTMENT 1";
-  	    		nombrDeptoProd2 = "PRODUCT. DEPARTMENT 2";
-  	    		nombrDeptoProd3 = "PRODUCT. DEPARTMENT 3";
-    	    	nombDeptServGen = "GENERAL SERVICES DEPT.";
-  	    		equipPro1dDepto1 = "Production Machine 1-1";
-  	    		equipPro2dDepto1 = "Production Machine 2-1";
-  	    		equipPro1dDepto2 = "Production Machine 1-2";
-  	    		equipPro2dDepto2 = "Production Machine 2-2";
+  	    		nombrDeptoProd1 = "PRODUCT. DEPARTMENT 1 (edit name)";
+  	    		nombrDeptoProd2 = "PRODUCT. DEPARTMENT 2 (edit name)";
+  	    		nombrDeptoProd3 = "PRODUCT. DEPARTMENT 3 (edit name)";
+    	    	nombDeptServGen = "GENERAL SERVICES DEPT. (edit name)";
+  	    		equipPro1dDepto1 = "Production Machine 1-1 (edit name)";
+  	    		equipPro2dDepto1 = "Production Machine 2-1 (edit name)";
+  	    		equipPro1dDepto2 = "Production Machine 1-2 (edit name)";
+  	    		equipPro2dDepto2 = "Production Machine 2-2 (edit name)";
   	    		break;
     	    
     	  	case "pt":
   		  		nombrNodoRaiz = "PLANTA GERAL";
-	    		nombrDeptoProd1 = "DEPTO. PRODUÇÃO 1";
-	    		nombrDeptoProd2 = "DEPTO. PRODUÇÃO 2";
-	    		nombrDeptoProd3 = "DEPTO. PRODUÇÃO 3";
-    	    	nombDeptServGen = "DEPTO. SERVIÇO. EM GERAL";
-	    		equipPro1dDepto1 = "Máquina produção 1-1";
-	    		equipPro2dDepto1 = "Máquina produção 2-1";
-	    		equipPro1dDepto2 = "Máquina produção 1-2";
-	    		equipPro2dDepto2 = "Máquina produção 2-2";
+	    		nombrDeptoProd1 = "DEPTO. PRODUÇÃO 1 (edit name)";
+	    		nombrDeptoProd2 = "DEPTO. PRODUÇÃO 2 (edit name)";
+	    		nombrDeptoProd3 = "DEPTO. PRODUÇÃO 3 (edit name)";
+    	    	nombDeptServGen = "DEPTO. SERVIÇO. EM GERAL (edit name)";
+	    		equipPro1dDepto1 = "Máquina produção 1-1 (edit name)";
+	    		equipPro2dDepto1 = "Máquina produção 2-1 (edit name)";
+	    		equipPro1dDepto2 = "Máquina produção 1-2 (edit name)";
+	    		equipPro2dDepto2 = "Máquina produção 2-2 (edit name)";
     	}
     	
     	//Equipos que formaran el arbol de equipos
